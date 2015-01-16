@@ -3,7 +3,7 @@
   <frameworkImplementation>org.apache.uima.java</frameworkImplementation>
   <implementationName>org.wso2.uima.cpe.consumer.TwitterCPE_Consumer</implementationName>
   <processingResourceMetaData>
-    <name>twitterCPE_consumer</name>
+    <name>twitterCPE_Databridge</name>
     <description/>
     <version>1.0</version>
     <vendor/>

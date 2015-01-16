@@ -43,13 +43,13 @@ public class RunCPE {
 		//System.out.println("Application Started");
 
 		streamer.startStream(handler);
-		Thread.sleep(30000);
+		Thread.sleep(45000);
 		Logger.getLogger(RunCPE.class).info("Streaming Tweets Started");
 		
 		float start = System.currentTimeMillis();
 		
 		while (true) {
-			Thread.sleep(60000);
+			Thread.sleep(30000);
 
 			//Logger.getLogger(RunCPE.class).info("1 Minute Window Expired ");
 			System.out.println("\n*******************1 Minute Window Expired*********************");
