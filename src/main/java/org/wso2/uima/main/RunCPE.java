@@ -13,6 +13,7 @@ import org.apache.uima.util.XMLInputSource;
 import org.wso2.uima.cpe.reader.StatusHandler;
 import org.wso2.uima.cpe.reader.TwitterStreamer;
 import org.wso2.uima.cpe.reader.data.Tweet;
+import org.wso2.uima.demo.DemoClient;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -46,13 +47,17 @@ public class RunCPE {
 		Thread.sleep(45000);
 		Logger.getLogger(RunCPE.class).info("Streaming Tweets Started");
 		
-		float start = System.currentTimeMillis();
-		
-		while (true) {
-			Thread.sleep(30000);
 
-			//Logger.getLogger(RunCPE.class).info("1 Minute Window Expired ");
+		//runs the demo client which streams past tweets from road.lk
+		// comment if you want to work only real time tweets
+		DemoClient client = new DemoClient(sharedList);
+
+		while (true) {
+
 			System.out.println("\n*******************1 Minute Window Expired*********************");
+			// fetch next {amount} of demo tweets
+			client.fetchNext(10);
+
 			Logger.getLogger(RunCPE.class).info(
 					"Tweets Recieved : " + sharedList.size());
 
@@ -61,14 +66,12 @@ public class RunCPE {
 						"Recieved : " + t.toString());
 			}
 
-
+			System.out.println();
 			cpe = UIMAFramework.produceCollectionProcessingEngine(cpe_desc);
 			cpe.addStatusCallbackListener(new statusCallBackCPE());
 			cpe.process();
-			
-		//	Logger.getLogger(RunCPE.class).info("Setting new start time");
-		//	start = System.currentTimeMillis();
-			
+
+			Thread.sleep(60000);
 		}
 
 	}

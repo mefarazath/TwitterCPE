@@ -19,11 +19,6 @@
 
 package org.wso2.uima.cpe.consumer;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.Iterator;
-
 import org.apache.uima.cas.CAS;
 import org.apache.uima.cas.CASException;
 import org.apache.uima.collection.CasConsumer_ImplBase;
@@ -34,8 +29,12 @@ import org.apache.uima.resource.ResourceInitializationException;
 import org.apache.uima.resource.ResourceProcessException;
 import org.apache.uima.util.ProcessTrace;
 import org.wso2.uima.types.HashTag;
-
 import twitter4j.Logger;
+
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Iterator;
 
 /**
  * An example of CAS Consumer. <br>
@@ -52,7 +51,7 @@ import twitter4j.Logger;
  * 
  */
 
-public class AnnotationPrinter extends CasConsumer_ImplBase implements CasObjectProcessor {
+class AnnotationPrinter extends CasConsumer_ImplBase implements CasObjectProcessor {
   File outFile;
 
   FileWriter fileWriter;

@@ -52,7 +52,7 @@ public class TwitterCPE_Consumer extends CasConsumer_ImplBase{
             locationString = locationString + annotation.getCoveredText()+" ";
         }
 
-        Logger.getLogger(TwitterCPE_Consumer.class).info("Annotated Text :  "+locationString);
+        Logger.getLogger(TwitterCPE_Consumer.class).info("Annotated Text :  "+locationString.trim());
 
         //Publish event for a valid stream
         if (streamID != null && !locationString.isEmpty()) {
@@ -61,7 +61,7 @@ public class TwitterCPE_Consumer extends CasConsumer_ImplBase{
             try {
 
                 twittercounter++;
-                publishEvents(dataPublisher, streamID, locationString);
+                publishEvents(dataPublisher, streamID, locationString.trim());
 
             } catch (AgentException e1) {
                 // TODO Auto-generated catch block
