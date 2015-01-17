@@ -22,9 +22,10 @@ import java.util.Iterator;
 public class TwitterCPE_Consumer extends CasConsumer_ImplBase{
 
     public static int twittercounter= 0;
-    public static final String STREAM_NAME1 = "org.uima.twitterfeed.in";
-    public static final String VERSION1 = "1.0.0";
-    public static String streamID = "org.uima.twitterfeed.in:1.0.0";
+
+    public static final String STREAM_NAME = "org.wso2.uima.TwitterExtractedFeed";
+    public static final String VERSION = "1.0.0";
+    public static String streamID = null;
     public static DataPublisher dataPublisher;
 
     @Override
@@ -39,16 +40,7 @@ public class TwitterCPE_Consumer extends CasConsumer_ImplBase{
             e2.printStackTrace();
         }
 
-        String annotationString1="", annotationString2=null;
-	  
-/*	  FSIndex index1 = output.getAnnotationIndex(NounPhraseAnnotation.type);
-	  for (Iterator<NounPhraseAnnotation> it = index1.iterator(); it.hasNext();) {
-	    NounPhraseAnnotation annotation = it.next();
-	//    System.out.println("AN1...(" + annotation.getBegin() + "," + 
-	//      annotation.getEnd() + "): " + 
-	//      annotation.getCoveredText());
-	    annotationString1 = annotationString1 + annotation.getCoveredText();
-	  }	*/
+        String locationString="";
 
         FSIndex index2 = output.getAnnotationIndex(LocationIdentification.type);
         for (Iterator<LocationIdentification> it = index2.iterator(); it.hasNext();) {
@@ -57,22 +49,24 @@ public class TwitterCPE_Consumer extends CasConsumer_ImplBase{
             //      annotation.getEnd() + "): " +
             //      annotation.getCoveredText());
 
-            annotationString2 = annotationString2 + annotation.getCoveredText()+" | ";
+            locationString = locationString + annotation.getCoveredText()+" ";
         }
 
-        Logger.getLogger(TwitterCPE_Consumer.class).info("Annotated Text :  "+annotationString2);
+        Logger.getLogger(TwitterCPE_Consumer.class).info("Annotated Text :  "+locationString);
+
         //Publish event for a valid stream
-        if (!streamID.isEmpty()) {
-            System.out.println("Stream ID: " + streamID+"  Published");
+        if (streamID != null && !locationString.isEmpty()) {
+            System.out.println("Stream ID: " + streamID+"  to be Published");
 
             try {
+
                 twittercounter++;
-                publishEvents(dataPublisher, streamID, annotationString2);
+                publishEvents(dataPublisher, streamID, locationString);
+
             } catch (AgentException e1) {
                 // TODO Auto-generated catch block
                 e1.printStackTrace();
             }
-            //            System.out.println("Events published : " + sentEventCount);
 
             try {
                 Thread.sleep(3000);
@@ -88,9 +82,8 @@ public class TwitterCPE_Consumer extends CasConsumer_ImplBase{
 
     @Override
     public void initialize() throws ResourceInitializationException {
-
-        String streamId1 = null;
-        System.out.println("Starting Statistics Agent");
+      // String streamId1 = null;
+      //  System.out.println("Starting Statistics Agent");
 
         KeyStoreUtil.setTrustStoreParams();
 
@@ -99,8 +92,13 @@ public class TwitterCPE_Consumer extends CasConsumer_ImplBase{
         String username = "admin";
         String password = "admin";
 
+       String url = "tcp://"+host+":"+port;
+
         try {
-            dataPublisher = new DataPublisher("tcp://localhost:7611", "admin", "admin");
+
+            dataPublisher = new DataPublisher(url,username,password);
+            twitter4j.Logger.getLogger(TwitterCPE_Consumer.class).debug("Data Publisher Created");
+
         } catch (MalformedURLException e1) {
             // TODO Auto-generated catch block
             e1.printStackTrace();
@@ -116,45 +114,46 @@ public class TwitterCPE_Consumer extends CasConsumer_ImplBase{
         }
 
 
-
         try {
-            streamId1 = dataPublisher.findStream(STREAM_NAME1, VERSION1);
-            System.out.println("Stream already defined");
+            streamID = dataPublisher.findStream(STREAM_NAME, VERSION);
+            twitter4j.Logger.getLogger( TwitterCPE_Consumer.class).debug("Stream Definition Already Exists");
 
         } catch (NoStreamDefinitionExistException | AgentException | StreamDefinitionException e) {
             try {
-                streamId1 = dataPublisher.defineStream("{" +
-                        "  'name':'" + STREAM_NAME1 + "'," +
-                        "  'version':'" + VERSION1 + "'," +
-                        "  'nickName': 'Statistics'," +
-                        "  'description': 'Service statistics'," +
-                        "  'metaData':[" +
-                        "          {'name':'feed_count','type':'INT'}," +
-                        "          {'name':'feed_timestamp','type':'STRING'}," +
-                        "  ]," +
-                        "  'payloadData':[" +
-                        "          {'name':'traffic_location','type':'STRING'}" +
-                      //  "          {'name':'traffic_level','type':'STRING'}," +
-                        "  ]" +
+                 streamID = dataPublisher.defineStream("{" +
+                        " 'name':'"+STREAM_NAME+"'," +
+                        " 'version':'"+ VERSION +"'," +
+                        " 'nickName': 'TwitterCEP'," +
+                        " 'description': 'Some Desc'," +
+                        " 'tags':['UIMA', 'CEP']," +
+                        " 'metaData':[" +
+                        "       {'name':'timeStamp','type':'STRING'}" +
+                        " ]," +
+                        " 'payloadData':[" +
+                        "       {'name':'Location','type':'STRING'}" +
+                        " ]" +
                         "}");
-                Logger.getLogger(TwitterCPE_Consumer.class).info("Stream was not found");
+
+                twitter4j.Logger.getLogger(TwitterCPE_Consumer.class).info("Stream ID : "+streamID);
+                twitter4j.Logger.getLogger(TwitterCPE_Consumer.class).debug("Stream was not found and defined successfully");
+
             } catch (AgentException | MalformedStreamDefinitionException
                     | StreamDefinitionException
                     | DifferentStreamDefinitionAlreadyDefinedException e1) {
                 // TODO Auto-generated catch block
                 e1.printStackTrace();
+                twitter4j.Logger.getLogger(TwitterCPE_Consumer.class).debug("Stream Definition Failed");
             }
 
-            System.out.println("Catch reached");
-            streamID=streamId1;
+
         }
 
-        System.out.println("/////////////////" + streamId1);
+//      /  System.out.println("/////////////////   " + streamId1);
         super.initialize();
 
     }
 
-    private static void publishEvents(DataPublisher dataPublisher, String streamId, String annotation2)
+    private static void publishEvents(DataPublisher dataPublisher, String streamId, String annotation)
             throws AgentException {
 
         Date date= new Date();
@@ -162,20 +161,20 @@ public class TwitterCPE_Consumer extends CasConsumer_ImplBase{
 
 
         Object[] meta = new Object[]{
-                twittercounter,
                 time
         };
 
         Object[] payload = new Object[]{
-             //   annotation1,
-                annotation2
+                annotation
         };
 
-        Object[] correlation = null;
+        Object[] correlation = new Object[]{};
 
         Event statisticsEvent = new Event(streamId, System.currentTimeMillis(),
                 meta, correlation, payload);
+
         dataPublisher.publish(statisticsEvent);
+        twitter4j.Logger.getLogger(TwitterCPE_Consumer.class).info("Event Published Successfully");
     }
 
 }

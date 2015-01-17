@@ -1,0 +1,8 @@
+# Created by .ignore support plugin (hsz.mobi)
+.idea
+.settings
+target
+.classpath
+.project
+org.wso2.cpe.uima.twitter-cpe.iml
+TwitterCPE.iml
