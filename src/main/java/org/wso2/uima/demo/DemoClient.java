@@ -39,7 +39,7 @@ public class DemoClient extends Thread {
 
            Tweet t = demoTweets.get(current);
            payLoadDestination.add(t);
-           System.out.println((current+1) + " Tweet added to payload dest.");
+           Logger.getLogger(DemoClient.class).info((current + 1) + " Tweet added to payload dest.");
            Logger.getLogger(DemoClient.class).info(t.getText());
            current++;
            count--;
