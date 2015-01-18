@@ -5,18 +5,165 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3be68e29-265e-4add-ab10-159f304e6bc0" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/org.wso2.cpe.uima.twitter-cpe-1.0.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/MANIFEST.MF" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/.name" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/compiler.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/copyright/profiles_settings.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/encodings.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/libraries/Maven__bouncycastle_bcprov_jdk15_132.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/libraries/Maven__com_google_code_gson_gson_2_1.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/libraries/Maven__com_google_guava_guava_13_0_1.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/libraries/Maven__com_hazelcast_hazelcast_3_0_1.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/libraries/Maven__com_hazelcast_wso2_hazelcast_3_0_1_wso2v1.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/libraries/Maven__com_ibm_icu_icu4j_2_6_1.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/libraries/Maven__commons_cli_commons_cli_1_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/libraries/Maven__commons_codec_commons_codec_1_2.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/libraries/Maven__commons_collections_wso2_commons_collections_3_2_0_wso2v1.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/libraries/Maven__commons_dbcp_wso2_commons_dbcp_1_4_0_wso2v1.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/libraries/Maven__commons_fileupload_commons_fileupload_1_2.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/libraries/Maven__commons_fileupload_wso2_commons_fileupload_1_2_0_wso2v1.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/libraries/Maven__commons_httpclient_commons_httpclient_3_1.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/libraries/Maven__commons_httpclient_wso2_commons_httpclient_3_1_0_wso2v2.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/libraries/Maven__commons_io_commons_io_2_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/libraries/Maven__commons_io_commons_io_2_4.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/libraries/Maven__commons_io_wso2_commons_io_2_0_0_wso2v2.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/libraries/Maven__commons_lang_commons_lang_1_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/libraries/Maven__commons_logging_commons_logging_1_1_1.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/libraries/Maven__commons_pool_commons_pool_1_5.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/libraries/Maven__commons_pool_commons_pool_1_5_6.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/libraries/Maven__commons_pool_wso2_commons_pool_1_5_0_wso2v1.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/libraries/Maven__commons_pool_wso2_commons_pool_1_5_6_wso2v1.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/libraries/Maven__dom4j_dom4j_1_6_1.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/libraries/Maven__jaxen_jaxen_1_1_1.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/libraries/Maven__jdom_jdom_1_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/libraries/Maven__jline_jline_0_9_94.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/libraries/Maven__junit_junit_3_8_1.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/libraries/Maven__libthrift_wso2_libthrift_0_7_wso2v1.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/libraries/Maven__log4j_log4j_1_2_14.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/libraries/Maven__net_sf_jwordnet_jwnl_1_3_3.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/libraries/Maven__net_sourceforge_findbugs_annotations_1_3_2.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/libraries/Maven__org_apache_abdera_wso2_abdera_1_0_0_wso2v3.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/libraries/Maven__org_apache_ant_ant_1_7_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/libraries/Maven__org_apache_ant_ant_launcher_1_7_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/libraries/Maven__org_apache_ant_wso2_ant_1_7_0_wso2v1.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/libraries/Maven__org_apache_axis2_wso2_axis2_1_6_1_wso2v10.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/libraries/Maven__org_apache_commons_ssl_not_yet_commons_ssl_0_3_9.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/libraries/Maven__org_apache_geronimo_specs_geronimo_activation_1_1_spec_1_0_2.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/libraries/Maven__org_apache_geronimo_specs_geronimo_javamail_1_4_spec_1_6.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/libraries/Maven__org_apache_geronimo_specs_geronimo_stax_api_1_0_spec_1_0_1.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/libraries/Maven__org_apache_httpcomponents_wso2_httpclient_4_2_5_wso2v1.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/libraries/Maven__org_apache_httpcomponents_wso2_httpcore_4_1_0_wso2v1.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/libraries/Maven__org_apache_neethi_wso2_neethi_2_0_4_wso2v4.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/libraries/Maven__org_apache_opennlp_opennlp_maxent_3_0_3.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/libraries/Maven__org_apache_opennlp_opennlp_tools_1_5_3.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/libraries/Maven__org_apache_poi_poi_3_9.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/libraries/Maven__org_apache_poi_poi_scratchpad_3_9.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/libraries/Maven__org_apache_poi_wso2_poi_scratchpad_3_9_0_wso2v1.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/libraries/Maven__org_apache_tomcat_ha_wso2_tomcat_ha_7_0_34_wso2v1.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/libraries/Maven__org_apache_tomcat_tomcat_annotations_api_7_0_34.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/libraries/Maven__org_apache_tomcat_tomcat_api_7_0_34.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/libraries/Maven__org_apache_tomcat_tomcat_catalina_7_0_34.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/libraries/Maven__org_apache_tomcat_tomcat_catalina_ha_7_0_34.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/libraries/Maven__org_apache_tomcat_tomcat_jdbc_7_0_34.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/libraries/Maven__org_apache_tomcat_tomcat_juli_7_0_34.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/libraries/Maven__org_apache_tomcat_tomcat_tribes_7_0_34.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/libraries/Maven__org_apache_tomcat_tomcat_util_7_0_34.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/libraries/Maven__org_apache_tomcat_wso2_jdbc_pool_7_0_34_wso2v1.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/libraries/Maven__org_apache_uima_jVinci_2_6_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/libraries/Maven__org_apache_uima_uimaj_adapter_vinci_2_6_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/libraries/Maven__org_apache_uima_uimaj_core_2_6_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/libraries/Maven__org_apache_uima_uimaj_cpe_2_6_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/libraries/Maven__org_apache_ws_commons_axiom_axiom_api_1_2_11.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/libraries/Maven__org_apache_ws_commons_axiom_axiom_impl_1_2_11.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/libraries/Maven__org_apache_ws_commons_axiom_wso2_axiom_1_2_11_wso2v4.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/libraries/Maven__org_apache_ws_commons_schema_XmlSchema_1_4_7_wso2v2.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/libraries/Maven__org_apache_ws_commons_schema_wso2_XmlSchema_1_4_7_wso2v2.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/libraries/Maven__org_codehaus_woodstox_wstx_asl_3_2_9.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/libraries/Maven__org_compass_project_wso2_compass_2_0_1_wso2v2.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/libraries/Maven__org_eclipse_equinox_javax_servlet_3_0_0_v201112011016.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/libraries/Maven__org_eclipse_equinox_org_apache_log4j_1_2_13_v200706111418.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/libraries/Maven__org_eclipse_equinox_org_eclipse_equinox_http_helper_1_1_0_wso2v1.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/libraries/Maven__org_eclipse_osgi_org_eclipse_osgi_3_8_1_v20120830_144521.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/libraries/Maven__org_eclipse_osgi_org_eclipse_osgi_services_3_3_100_v20120522_1822.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/libraries/Maven__org_igniterealtime_smack_wso2_smack_3_0_4_wso2v1.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/libraries/Maven__org_igniterealtime_smack_wso2_smackx_3_0_4_wso2v1.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/libraries/Maven__org_jboss_spec_javax_transaction_jboss_transaction_api_1_1_spec_1_0_0_Final.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/libraries/Maven__org_json_wso2_json_2_0_0_wso2v1.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/libraries/Maven__org_twitter4j_twitter4j_async_4_0_2.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/libraries/Maven__org_twitter4j_twitter4j_core_4_0_2.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/libraries/Maven__org_twitter4j_twitter4j_media_4_0_2.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/libraries/Maven__org_twitter4j_twitter4j_media_support_4_0_2.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/libraries/Maven__org_twitter4j_twitter4j_stream_4_0_2.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/libraries/Maven__org_wso2_carbon_javax_cache_wso2_4_2_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/libraries/Maven__org_wso2_carbon_org_wso2_carbon_authenticator_proxy_4_2_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/libraries/Maven__org_wso2_carbon_org_wso2_carbon_authenticator_stub_4_2_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/libraries/Maven__org_wso2_carbon_org_wso2_carbon_base_4_2_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/libraries/Maven__org_wso2_carbon_org_wso2_carbon_bootstrap_4_2_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/libraries/Maven__org_wso2_carbon_org_wso2_carbon_core_4_2_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/libraries/Maven__org_wso2_carbon_org_wso2_carbon_core_common_4_2_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/libraries/Maven__org_wso2_carbon_org_wso2_carbon_databridge__4_2_1.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/libraries/Maven__org_wso2_carbon_org_wso2_carbon_databridge_agent_thrift_4_2_1.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/libraries/Maven__org_wso2_carbon_org_wso2_carbon_databridge_agent_thrift_4_2_3.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/libraries/Maven__org_wso2_carbon_org_wso2_carbon_databridge_commons_4_2_1.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/libraries/Maven__org_wso2_carbon_org_wso2_carbon_databridge_commons_4_2_2.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/libraries/Maven__org_wso2_carbon_org_wso2_carbon_databridge_commons_thrift_4_2_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/libraries/Maven__org_wso2_carbon_org_wso2_carbon_databridge_core_4_2_1.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/libraries/Maven__org_wso2_carbon_org_wso2_carbon_identity_authentication_4_2_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/libraries/Maven__org_wso2_carbon_org_wso2_carbon_logging_4_2_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/libraries/Maven__org_wso2_carbon_org_wso2_carbon_ndatasource_common_4_2_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/libraries/Maven__org_wso2_carbon_org_wso2_carbon_ndatasource_rdbms_4_2_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/libraries/Maven__org_wso2_carbon_org_wso2_carbon_queuing_4_2_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/libraries/Maven__org_wso2_carbon_org_wso2_carbon_registry_api_4_2_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/libraries/Maven__org_wso2_carbon_org_wso2_carbon_registry_core_4_2_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/libraries/Maven__org_wso2_carbon_org_wso2_carbon_registry_xboot_4_2_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/libraries/Maven__org_wso2_carbon_org_wso2_carbon_securevault_4_2_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/libraries/Maven__org_wso2_carbon_org_wso2_carbon_user_api_4_2_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/libraries/Maven__org_wso2_carbon_org_wso2_carbon_user_core_4_2_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/libraries/Maven__org_wso2_carbon_org_wso2_carbon_utils_4_2_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/libraries/Maven__org_wso2_securevault_org_wso2_securevault_1_0_0_wso2v2.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/libraries/Maven__slf4j_wso2_slf4j_1_5_10_wso2v1.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/libraries/Maven__wrapper_wrapper_3_2_3.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/libraries/Maven__wsdl4j_wsdl4j_1_6_2.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/libraries/Maven__wsdl4j_wso2_wsdl4j_1_6_2_wso2v2.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/libraries/Maven__xalan_xalan_2_6_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/libraries/Maven__xerces_xercesImpl_2_6_2.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/libraries/Maven__xerces_xmlParserAPIs_2_6_2.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/libraries/Maven__xml_apis_xml_apis_1_3_02.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/libraries/Maven__xom_xom_1_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/misc.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/modules.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/scopes/scope_settings.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/uiDesigner.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/vcs.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.idea/workspace.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.project" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/.settings/org.eclipse.m2e.core.prefs" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/TwitterCPE.iml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/conf/log4j.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/conf/security/client-truststore.jks" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/conf/security/wso2carbon.jks" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/descriptors/analysis-engine/HashTagDescriptor.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/descriptors/analysis-engine/LocationIdentifierDescriptor.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/descriptors/consumers/AnnotationPrinter.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/descriptors/consumers/twitterCEP_Databridge.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/descriptors/consumers/twitterCPE_consumer_Printer.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/descriptors/cpe/twitterCPE.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/descriptors/readers/TwitterCollectionReader_Descriptor.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/pom.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/resources/models/en-chunker.bin" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/resources/models/en-ner-location.bin" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/resources/models/en-sent.bin" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/resources/models/en-token.bin" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/target/MANIFEST.MF" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/org/wso2/uima/main/RunCPE.class" afterPath="$PROJECT_DIR$/target/classes/org/wso2/uima/main/RunCPE.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/org/wso2/uima/cpe/consumer/TwitterCPE_Consumer.class" afterPath="$PROJECT_DIR$/target/classes/org/wso2/uima/cpe/consumer/TwitterCPE_Consumer.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/wso2/uima/demo/DemoClient.java" afterPath="$PROJECT_DIR$/src/main/java/org/wso2/uima/demo/DemoClient.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/wso2/uima/main/RunCPE.java" afterPath="$PROJECT_DIR$/src/main/java/org/wso2/uima/main/RunCPE.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/wso2/uima/demo/TweetExtractor.java" afterPath="$PROJECT_DIR$/src/main/java/org/wso2/uima/demo/TweetExtractor.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/org/wso2/uima/main/statusCallBackCPE.class" afterPath="$PROJECT_DIR$/target/classes/org/wso2/uima/main/statusCallBackCPE.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TwitterCPE.iml" afterPath="$PROJECT_DIR$/TwitterCPE.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/wso2/uima/cpe/consumer/TwitterCPE_Consumer.java" afterPath="$PROJECT_DIR$/src/main/java/org/wso2/uima/cpe/consumer/TwitterCPE_Consumer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/descriptors/cpe/twitterCPE.xml" afterPath="$PROJECT_DIR$/descriptors/cpe/twitterCPE.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/test-classes/descriptors/cpe/twitterCPE.xml" afterPath="$PROJECT_DIR$/target/test-classes/descriptors/cpe/twitterCPE.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/encodings.xml" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/test-classes/.idea/workspace.xml" afterPath="$PROJECT_DIR$/target/test-classes/.idea/workspace.xml" />
     </list>
     <ignored path="TwitterCPE.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -51,11 +198,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="RunCPE.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="RunCPE.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/wso2/uima/main/RunCPE.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="2.8216217" vertical-offset="0" max-vertical-offset="2196">
+            <state vertical-scroll-proportion="0.0" vertical-offset="1296" max-vertical-offset="2196">
               <caret line="72" column="0" selection-start-line="72" selection-start-column="0" selection-end-line="72" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="1.314394" vertical-offset="1705" max-vertical-offset="2304">
+              <caret line="114" column="0" selection-start-line="114" selection-start-column="0" selection-end-line="114" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -64,9 +221,10 @@
       <file leaf-file-name="TwitterCPE_Consumer.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/wso2/uima/cpe/consumer/TwitterCPE_Consumer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1682" max-vertical-offset="2052">
-              <caret line="53" column="76" selection-start-line="53" selection-start-column="76" selection-end-line="53" selection-end-column="76" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1030" max-vertical-offset="2376">
+              <caret line="66" column="9" selection-start-line="66" selection-start-column="9" selection-end-line="66" selection-end-column="9" />
               <folding>
+                <element signature="imports" expanded="true" />
                 <element signature="method#initialize#0;class#TwitterCPE_Consumer#0" expanded="false" />
               </folding>
             </state>
@@ -114,7 +272,6 @@
         <option value="$PROJECT_DIR$/src/main/java/org/wso2/uima/cpe/reader/TwitterStreamer.java" />
         <option value="$PROJECT_DIR$/descriptors/analysis-engine/LocationIdentifierDescriptor.xml" />
         <option value="$PROJECT_DIR$/descriptors/consumers/twitterCEP_Databridge.xml" />
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/org.wso2.cpe.uima.twitter-cpe.iml" />
         <option value="$PROJECT_DIR$/conf/log4j.properties" />
         <option value="$PROJECT_DIR$/.gitignore" />
@@ -128,8 +285,9 @@
         <option value="$PROJECT_DIR$/src/main/java/org/wso2/uima/cpe/ae/TrafficLevelAnalyser.java" />
         <option value="$PROJECT_DIR$/descriptors/cpe/twitterCPE.xml" />
         <option value="$PROJECT_DIR$/descriptors/analysis-engine/TrafficLocationAE.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/org/wso2/uima/cpe/consumer/TwitterCPE_Consumer.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/wso2/uima/main/RunCPE.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/wso2/uima/cpe/consumer/TwitterCPE_Consumer.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
       </list>
     </option>
   </component>
@@ -704,16 +862,16 @@
       <workItem from="1421403313556" duration="1403000" />
       <workItem from="1421481560203" duration="2965000" />
       <workItem from="1421489375104" duration="19135000" />
-      <workItem from="1421564067061" duration="7769000" />
+      <workItem from="1421564067061" duration="8592000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="65936000" />
+    <option name="totallyTimeSpent" value="66759000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="51" y="-4" width="1315" height="772" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -736,8 +894,8 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.13159968" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24743892" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.36265433" sideWeight="0.49960598" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24743892" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.52623457" sideWeight="0.49960598" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -787,6 +945,7 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="594" max-vertical-offset="1764">
           <caret line="70" column="11" selection-start-line="70" selection-start-column="9" selection-end-line="75" selection-end-column="2" />
           <folding>
+            <element signature="imports" expanded="true" />
             <element signature="method#initialize#0;class#TwitterCPE_Consumer#0" expanded="false" />
           </folding>
         </state>
@@ -1061,9 +1220,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/wso2/uima/cpe/consumer/TwitterCPE_Consumer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1682" max-vertical-offset="2052">
-          <caret line="53" column="76" selection-start-line="53" selection-start-column="76" selection-end-line="53" selection-end-column="76" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="1030" max-vertical-offset="2376">
+          <caret line="66" column="9" selection-start-line="66" selection-start-column="9" selection-end-line="66" selection-end-column="9" />
           <folding>
+            <element signature="imports" expanded="true" />
             <element signature="method#initialize#0;class#TwitterCPE_Consumer#0" expanded="false" />
           </folding>
         </state>
@@ -1071,8 +1231,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/wso2/uima/main/RunCPE.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="2.8216217" vertical-offset="0" max-vertical-offset="2196">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2196">
           <caret line="72" column="0" selection-start-line="72" selection-start-column="0" selection-end-line="72" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.314394" vertical-offset="1705" max-vertical-offset="2304">
+          <caret line="114" column="0" selection-start-line="114" selection-start-column="0" selection-end-line="114" selection-end-column="0" />
           <folding />
         </state>
       </provider>

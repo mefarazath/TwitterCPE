@@ -1,6 +1,5 @@
 package org.wso2.uima.cpe.consumer;
 
-import com.sun.istack.internal.logging.Logger;
 import org.apache.uima.cas.CAS;
 import org.apache.uima.cas.CASException;
 import org.apache.uima.cas.FSIndex;
@@ -14,6 +13,7 @@ import org.wso2.carbon.databridge.commons.Event;
 import org.wso2.carbon.databridge.commons.exception.*;
 import org.wso2.uima.types.LocationIdentification;
 import org.wso2.uima.types.TrafficLevelIdentifier;
+import twitter4j.Logger;
 
 import java.net.MalformedURLException;
 import java.sql.Timestamp;

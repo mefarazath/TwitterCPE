@@ -26,5 +26,8 @@
         <module name="TwitterCPE" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="TwitterCPE" target="1.7" />
+    </bytecodeTargetLevel>
   </component>
 </project>
