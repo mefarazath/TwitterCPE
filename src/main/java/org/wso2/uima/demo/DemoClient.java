@@ -10,6 +10,7 @@ import java.util.ArrayList;
  */
 public class DemoClient extends Thread {
     int currentIndex = 0;
+    String user;
     ArrayList<Tweet> demoTweets ;
     ArrayList<Tweet> payLoadDestination;
 
@@ -18,13 +19,14 @@ public class DemoClient extends Thread {
      * @param tweetStorage destination to which tweets should be stored
      *
      */
-    public DemoClient(ArrayList<Tweet> tweetStorage){
+    public DemoClient(ArrayList<Tweet> tweetStorage, String user){
         this.payLoadDestination = tweetStorage;
+        this.user = user;
         initDemoTweets();
     }
 
     private void initDemoTweets() {
-        demoTweets = new TweetExtractor().getTweetList();
+        demoTweets = new TweetExtractor(this.user).getTweetList();
     }
 
     /***

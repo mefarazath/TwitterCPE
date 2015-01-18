@@ -8,9 +8,9 @@
         </collectionIterator>
     </collectionReader>
     <casProcessors casPoolSize="3" processingUnitThreadCount="1">
-        <casProcessor deployment="integrated" name="LocationIdentifier">
+        <casProcessor deployment="integrated" name="TrafficLocationAE">
             <descriptor>
-                <import location="../analysis-engine/LocationIdentifierDescriptor.xml"/>
+                <import location="../analysis-engine/TrafficLocationAE.xml"/>
             </descriptor>
             <deploymentParameters/>
             <errorHandling>

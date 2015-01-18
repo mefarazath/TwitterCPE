@@ -13,6 +13,11 @@ import java.util.List;
  */
 public class TweetExtractor {
     private static ArrayList<Tweet> tweetList;
+    private static String user_to_follow;
+
+    public TweetExtractor(String user_to_follow){
+        this.user_to_follow = user_to_follow;
+    }
 
     public static void main(String[] args) throws IOException {
         // Oauth keys -- should not be exposed plain in code --
@@ -36,7 +41,7 @@ public class TweetExtractor {
 
         Paging paging;
         // twitter username of the user to get the timeline of
-        String user = "road_lk";
+
         tweetList = new ArrayList<Tweet>();
         long min_id = Long.MAX_VALUE - 1;
 
@@ -55,7 +60,7 @@ public class TweetExtractor {
                     paging.setMaxId(min_id - 1);
 
 
-                List<Status> temp = twitterApp.getUserTimeline(user, paging);
+                List<Status> temp = twitterApp.getUserTimeline(user_to_follow, paging);
                 // System.out.println("Tweets for the request : " + temp.size());
                 // statuses.addAll(temp);
                 // System.out.println("Tweet Count : " + count);

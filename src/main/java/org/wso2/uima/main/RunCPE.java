@@ -10,8 +10,6 @@ import org.apache.uima.collection.metadata.CpeDescription;
 import org.apache.uima.resource.ResourceInitializationException;
 import org.apache.uima.util.InvalidXMLException;
 import org.apache.uima.util.XMLInputSource;
-import org.wso2.uima.cpe.reader.StatusHandler;
-import org.wso2.uima.cpe.reader.TwitterStreamer;
 import org.wso2.uima.cpe.reader.data.Tweet;
 import org.wso2.uima.demo.DemoClient;
 
@@ -24,6 +22,7 @@ public class RunCPE {
 
 	public static ArrayList<Tweet> sharedList;	
 	private final Logger logger = Logger.getLogger(RunCPE.class);
+	public static DemoClient client;
 
 
 	public static void main(String[] args)
@@ -39,24 +38,25 @@ public class RunCPE {
 
 		long[] follow = new long[] { 711930980, 808888003, 4366881, 2984541727l };
 
-		TwitterStreamer streamer = new TwitterStreamer(follow);
-		StatusHandler handler = new StatusHandler(sharedList);
+		//TwitterStreamer streamer = new TwitterStreamer(follow);
+		//StatusHandler handler = new StatusHandler(sharedList);
 		//System.out.println("Application Started");
 
-		streamer.startStream(handler);
-		Thread.sleep(45000);
+		//streamer.startStream(handler);
+		Thread.sleep(10000);
 		Logger.getLogger(RunCPE.class).info("Streaming Tweets Started");
 		
 
 		//runs the demo client which streams past tweets from road.lk
 		// comment if you want to work only real time tweets
-		DemoClient client = new DemoClient(sharedList);
+		client = new DemoClient(sharedList, "road_lk");
+		//client.fetchNext(100);
 
 		while (true) {
 
 			System.out.println("\n*******************1 Minute Window Expired*********************");
 			// fetch next {amount} of demo tweets
-			client.fetchNext(10);
+			client.fetchNext(100);
 
 			Logger.getLogger(RunCPE.class).info(
 					"Tweets Recieved : " + sharedList.size());
@@ -70,8 +70,7 @@ public class RunCPE {
 			cpe = UIMAFramework.produceCollectionProcessingEngine(cpe_desc);
 			cpe.addStatusCallbackListener(new statusCallBackCPE());
 			cpe.process();
-
-			Thread.sleep(60000);
+			Thread.sleep(30000);
 		}
 
 	}
@@ -99,6 +98,7 @@ class statusCallBackCPE implements StatusCallbackListener{
 		System.out.println("Collection Process Complete");
 		RunCPE.sharedList.clear();
 		System.out.println("*************************Tweets Cleared*************************\n");
+
 	//	Logger.getLogger(RunCPE.class).info("Clearing List");
 
 	}

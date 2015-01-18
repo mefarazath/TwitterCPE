@@ -13,6 +13,7 @@ import org.wso2.carbon.databridge.agent.thrift.exception.AgentException;
 import org.wso2.carbon.databridge.commons.Event;
 import org.wso2.carbon.databridge.commons.exception.*;
 import org.wso2.uima.types.LocationIdentification;
+import org.wso2.uima.types.TrafficLevelIdentifier;
 
 import java.net.MalformedURLException;
 import java.sql.Timestamp;
@@ -40,40 +41,58 @@ public class TwitterCPE_Consumer extends CasConsumer_ImplBase{
             e2.printStackTrace();
         }
 
-        String locationString="";
+        String tweetText = "\n"+output.getDocumentText();
+        String locationString="\n";
 
-        FSIndex index2 = output.getAnnotationIndex(LocationIdentification.type);
-        for (Iterator<LocationIdentification> it = index2.iterator(); it.hasNext();) {
+        FSIndex locationIndex = output.getAnnotationIndex(LocationIdentification.type);
+        for (Iterator<LocationIdentification> it = locationIndex.iterator(); it.hasNext();) {
             LocationIdentification annotation = it.next();
             //    System.out.println("AN2...(" + annotation.getBegin() + "," +
             //      annotation.getEnd() + "): " +
             //      annotation.getCoveredText());
 
-            locationString = locationString + annotation.getCoveredText()+" ";
+            locationString = locationString + annotation.getCoveredText()+"|";
+        }
+
+
+        String trafficLevel = "";
+        FSIndex trafficLevelIndex =
+                output.getAnnotationIndex(TrafficLevelIdentifier.type);
+        for(Iterator<TrafficLevelIdentifier> it = trafficLevelIndex.iterator(); it.hasNext();){
+            TrafficLevelIdentifier level = it.next();
+            trafficLevel = level.getTrafficLevel();
         }
 
         Logger.getLogger(TwitterCPE_Consumer.class).info("Annotated Text :  "+locationString.trim());
+        Logger.getLogger(TwitterCPE_Consumer.class).info("Annotated Text :  "+trafficLevel);
+
 
         //Publish event for a valid stream
-        if (streamID != null && !locationString.isEmpty()) {
+        if (streamID != null && !trafficLevel.isEmpty()) {
             System.out.println("Stream ID: " + streamID+"  to be Published");
 
             try {
 
                 twittercounter++;
-                publishEvents(dataPublisher, streamID, locationString.trim());
+                publishEvents(
+                        dataPublisher,
+                        streamID,
+                        locationString,
+                        "\n"+trafficLevel,
+                        tweetText
+                );
 
             } catch (AgentException e1) {
                 // TODO Auto-generated catch block
                 e1.printStackTrace();
             }
 
-            try {
+         /*   try {
                 Thread.sleep(3000);
             } catch (InterruptedException e) {
                 //ignore
             }
-
+*/
 
         }
 
@@ -130,7 +149,9 @@ public class TwitterCPE_Consumer extends CasConsumer_ImplBase{
                         "       {'name':'timeStamp','type':'STRING'}" +
                         " ]," +
                         " 'payloadData':[" +
-                        "       {'name':'Location','type':'STRING'}" +
+                        "       {'name':'Location','type':'STRING'}," +
+                        "       {'name':'TrafficLevel','type':'STRING'},"+
+                        "       {'name':'TweetText','type':'STRING'}"+
                         " ]" +
                         "}");
 
@@ -153,7 +174,7 @@ public class TwitterCPE_Consumer extends CasConsumer_ImplBase{
 
     }
 
-    private static void publishEvents(DataPublisher dataPublisher, String streamId, String annotation)
+    private static void publishEvents(DataPublisher dataPublisher, String streamId, String ... payloadArgs)
             throws AgentException {
 
         Date date= new Date();
@@ -164,9 +185,7 @@ public class TwitterCPE_Consumer extends CasConsumer_ImplBase{
                 time
         };
 
-        Object[] payload = new Object[]{
-                annotation
-        };
+        Object[] payload = payloadArgs;
 
         Object[] correlation = new Object[]{};
 
