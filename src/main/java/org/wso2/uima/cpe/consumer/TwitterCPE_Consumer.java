@@ -73,7 +73,7 @@ public class TwitterCPE_Consumer extends CasConsumer_ImplBase{
        // locationString = "Colombo";
 
         //Publish event for a valid stream
-        if (streamID != null && !locationString.equals("") && !trafficLevel.equals("Random") ) {
+        if (streamID != null && !locationString.equals("")) {
             System.out.println("Stream ID: " + streamID+"  to be Published");
 
             try {
@@ -117,7 +117,7 @@ public class TwitterCPE_Consumer extends CasConsumer_ImplBase{
 
         KeyStoreUtil.setTrustStoreParams();
 
-        String host = "10.100.4.14";
+        String host = "10.100.4.39";
         String port = "7611";
         String username = "admin";
         String password = "admin";
@@ -150,7 +150,7 @@ public class TwitterCPE_Consumer extends CasConsumer_ImplBase{
 
         } catch (NoStreamDefinitionExistException | AgentException | StreamDefinitionException e) {
             try {
-                 StreamDefinition streamDef = new StreamDefinition(VERSION).;
+                 StreamDefinition streamDef = new StreamDefinition(VERSION);
                  streamDef.setNickName("TwitterCEP");
                  streamDef.setDescription("Extracted Data Feed from Tweets");
                  streamDef.addTag("UIMA");

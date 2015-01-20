@@ -56,7 +56,7 @@ public class RunCPE {
 
 			System.out.println("\n*******************1 Minute Window Expired*********************");
 			// fetch next {amount} of demo tweets
-			client.fetchNext(8);
+			client.fetchNext(100);
 
 			Logger.getLogger(RunCPE.class).info(
 					"Tweets Recieved : " + sharedList.size());
