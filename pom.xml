@@ -51,7 +51,18 @@
       <artifactId>org.wso2.carbon.databridge.commons</artifactId>
       <version>4.2.2</version>
     </dependency>
+    <dependency>
+      <groupId>org.apache.axiom</groupId>
+      <artifactId>com.springsource.org.apache.axiom</artifactId>
+      <version>1.2.13</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.httpcomponents</groupId>
+      <artifactId>httpclient</artifactId>
+      <version>4.2.5</version>
+    </dependency>
   </dependencies>
+
   <repositories>
     <repository>
       <releases>

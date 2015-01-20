@@ -10,6 +10,7 @@ import org.apache.uima.resource.ResourceProcessException;
 import org.wso2.carbon.databridge.agent.thrift.DataPublisher;
 import org.wso2.carbon.databridge.agent.thrift.exception.AgentException;
 import org.wso2.carbon.databridge.commons.Event;
+import org.wso2.carbon.databridge.commons.StreamDefinition;
 import org.wso2.carbon.databridge.commons.exception.*;
 import org.wso2.uima.types.LocationIdentification;
 import org.wso2.uima.types.TrafficLevelIdentifier;
@@ -42,7 +43,7 @@ public class TwitterCPE_Consumer extends CasConsumer_ImplBase{
         }
 
         String tweetText = "\n"+output.getDocumentText();
-        String locationString="\n";
+        String locationString="";
 
         FSIndex locationIndex = output.getAnnotationIndex(LocationIdentification.type);
         for (Iterator<LocationIdentification> it = locationIndex.iterator(); it.hasNext();) {
@@ -50,9 +51,10 @@ public class TwitterCPE_Consumer extends CasConsumer_ImplBase{
             //    System.out.println("AN2...(" + annotation.getBegin() + "," +
             //      annotation.getEnd() + "): " +
             //      annotation.getCoveredText());
-
-            locationString = locationString + annotation.getCoveredText()+"|";
+            if(!locationString.contains(annotation.getCoveredText()))
+                locationString = locationString + annotation.getCoveredText()+" ";
         }
+
 
 
         String trafficLevel = "";
@@ -63,24 +65,33 @@ public class TwitterCPE_Consumer extends CasConsumer_ImplBase{
             trafficLevel = level.getTrafficLevel();
         }
 
-        Logger.getLogger(TwitterCPE_Consumer.class).info("Annotated Text :  "+locationString.trim());
-        Logger.getLogger(TwitterCPE_Consumer.class).info("Annotated Text :  "+trafficLevel);
+        //locationString = locationString.substring(0,locationString.length()-1);
+        Logger.getLogger(TwitterCPE_Consumer.class).info("Annotated Location :  "+locationString);
+        Logger.getLogger(TwitterCPE_Consumer.class).info("Annotated Traffic :  "+trafficLevel);
 
+
+       // locationString = "Colombo";
 
         //Publish event for a valid stream
-        if (streamID != null && !trafficLevel.isEmpty()) {
+        if (streamID != null && !locationString.equals("") && !trafficLevel.equals("Random") ) {
             System.out.println("Stream ID: " + streamID+"  to be Published");
 
             try {
 
                 twittercounter++;
-                publishEvents(
-                        dataPublisher,
-                        streamID,
-                        locationString,
-                        "\n"+trafficLevel,
-                        tweetText
-                );
+
+             //   String[] locations = locationString.substring(0,locationString.length()-1).split(",");
+           //     System.out.println("LOCATIONS DETECTED  : "+locations.length);
+             //   for(String location : locations){
+                    publishEvents(
+                            dataPublisher,
+                            streamID,
+                            locationString.trim(),
+                            trafficLevel,
+                            tweetText
+                    );
+               // }
+
 
             } catch (AgentException e1) {
                 // TODO Auto-generated catch block
@@ -106,7 +117,7 @@ public class TwitterCPE_Consumer extends CasConsumer_ImplBase{
 
         KeyStoreUtil.setTrustStoreParams();
 
-        String host = "localhost";
+        String host = "10.100.4.14";
         String port = "7611";
         String username = "admin";
         String password = "admin";
@@ -139,6 +150,13 @@ public class TwitterCPE_Consumer extends CasConsumer_ImplBase{
 
         } catch (NoStreamDefinitionExistException | AgentException | StreamDefinitionException e) {
             try {
+                 StreamDefinition streamDef = new StreamDefinition(VERSION).;
+                 streamDef.setNickName("TwitterCEP");
+                 streamDef.setDescription("Extracted Data Feed from Tweets");
+                 streamDef.addTag("UIMA");
+                 streamDef.addTag("CEP");
+
+
                  streamID = dataPublisher.defineStream("{" +
                         " 'name':'"+STREAM_NAME+"'," +
                         " 'version':'"+ VERSION +"'," +
@@ -179,7 +197,7 @@ public class TwitterCPE_Consumer extends CasConsumer_ImplBase{
 
         Date date= new Date();
         String time=new Timestamp(date.getTime()).toString();
-
+       
 
         Object[] meta = new Object[]{
                 time
@@ -193,7 +211,7 @@ public class TwitterCPE_Consumer extends CasConsumer_ImplBase{
                 meta, correlation, payload);
 
         dataPublisher.publish(statisticsEvent);
-        twitter4j.Logger.getLogger(TwitterCPE_Consumer.class).info("Event Published Successfully");
+        twitter4j.Logger.getLogger(TwitterCPE_Consumer.class).info("Event Published Via DataBridge Successfully");
     }
 
 }
