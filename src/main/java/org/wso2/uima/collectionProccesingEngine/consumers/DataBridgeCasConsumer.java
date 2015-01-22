@@ -24,12 +24,17 @@ import java.util.Iterator;
 
 public class DataBridgeCasConsumer extends CasConsumer_ImplBase{
 
-    public static int twittercounter= 0;
+    private static int twittercounter= 0;
 
-    public static final String STREAM_NAME = "org.wso2.uima.TwitterExtractedFeed";
-    public static final String VERSION = "1.0.0";
-    public static String streamID = null;
-    public static DataPublisher dataPublisher;
+    private static final String STREAM_NAME = "org.wso2.uima.TwitterExtractedFeed";
+    private static final String VERSION = "1.0.0";
+
+    private static final String PARAM_SERVER_URL = "serverURL";
+    private static final String PARAM_USERNAME = "username";
+    private static final String PARAM_PASSWORD = "password";
+
+    private static String streamID = null;
+    private static DataPublisher dataPublisher;
 
     private static Logger logger = Logger.getLogger(DataBridgeCasConsumer.class);
 
@@ -69,8 +74,8 @@ public class DataBridgeCasConsumer extends CasConsumer_ImplBase{
         }
 
         //locationString = locationString.substring(0,locationString.length()-1);
-        logger.info("Annotated Location :  " + locationString);
-        logger.info("Annotated Traffic :  " + trafficLevel);
+        logger.debug("Annotated Location :  " + locationString.trim());
+        logger.debug("Annotated Traffic :  " + trafficLevel);
 
 
        // locationString = "Colombo";
@@ -120,12 +125,10 @@ public class DataBridgeCasConsumer extends CasConsumer_ImplBase{
 
         KeyStoreUtil.setTrustStoreParams();
 
-        String host = "10.100.4.14";
-        String port = "7611";
-        String username = "admin";
-        String password = "admin";
-
-       String url = "tcp://"+host+":"+port;
+       // get the configuration parameters from the descriptor file
+       String url = (String)getConfigParameterValue(PARAM_SERVER_URL);
+       String username = (String)getConfigParameterValue(PARAM_USERNAME);
+       String password = (String)getConfigParameterValue(PARAM_PASSWORD);
 
         try {
 
@@ -176,7 +179,7 @@ public class DataBridgeCasConsumer extends CasConsumer_ImplBase{
                         " ]" +
                         "}");
 
-                logger.info("Stream ID : "+streamID);
+                logger.debug("Stream ID : "+streamID);
                 logger.debug("Stream was not found and defined successfully");
 
             } catch (AgentException | MalformedStreamDefinitionException

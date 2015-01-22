@@ -43,10 +43,7 @@ public class CEPwithActiveMQ {
                 Thread.sleep(60000);
 
                 if(!cpe.isProcessing()) {
-                    logger.info("******** Performance Report *********\n"+cpe.getPerformanceReport().toString());
-                }else{
-                    while (cpe.isProcessing())
-                        Thread.sleep(500);
+                    logger.info("\n******** Performance Report *********\n"+cpe.getPerformanceReport().toString());
                 }
 
             } catch (ResourceInitializationException e) {

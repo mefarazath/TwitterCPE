@@ -10,6 +10,7 @@ import opennlp.tools.tokenize.TokenizerME;
 import opennlp.tools.tokenize.TokenizerModel;
 import opennlp.tools.util.Span;
 import org.apache.commons.io.IOUtils;
+import org.apache.log4j.Logger;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_component.JCasAnnotator_ImplBase;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
@@ -32,6 +33,8 @@ public class LocationIdentifier extends JCasAnnotator_ImplBase {
 	private TokenizerME tokenizer;
 	private NameFinderME locationFinder;
 	private ChunkerME chunker;
+
+	private static Logger logger = Logger.getLogger(LocationIdentifier.class);
 
 	@Override
 	public void initialize(UimaContext ctx)
@@ -82,14 +85,18 @@ public class LocationIdentifier extends JCasAnnotator_ImplBase {
 				tokens[i] = tokSpans[i].getCoveredText(sentence).toString();
 			}
 
-
+			System.out.println();
 			Span locationSpans[] = locationFinder.find(tokens);
 			LocationIdentification annotation = new LocationIdentification(jcas);
 			for (Span location: locationSpans) {
 				annotation.setBegin(start + tokSpans[location.getStart()].getStart());
 				annotation.setEnd(start + tokSpans[location.getEnd() - 1].getEnd());
 				annotation.addToIndexes(jcas);
-				
+				logger.info("Location Detected : "+annotation.getCoveredText());
+			}
+
+			if(locationSpans.length == 0){
+				logger.info("Location Unable to be Detected");
 			}
 
 

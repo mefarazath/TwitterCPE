@@ -23,29 +23,37 @@ import java.util.Iterator;
 
 
 /**
- * Created by supun on 1/19/15.
+ * Created by Supun on 1/19/15.
  */
 public class HttpCasConsumer  extends CasConsumer_ImplBase {
 
     private HttpClient httpClient;
-    private JCas jCas;
-    String username;
-    String password;
-    String url;
+
+    // Config parameter names
+    private static final String PARAM_HTTP_ENDPOINT = "httpEndPoint";
+    private static final String PARAM_USERNAME = "username";
+    private static final String PARAM_PASSWORD = "password";
+
+
+    private String username;
+    private String password;
+    private String httpEndPoint;
+
     private static Logger logger = Logger.getLogger(HttpCasConsumer.class);
 
     public void  initialize() throws ResourceInitializationException {
         httpClient = new SystemDefaultHttpClient();
         KeyStoreUtil.setTrustStoreParams();
 
-        username = "admin";
-        password = "admin";
-        url = "https://localhost:9443/endpoints/HttpAdapter/TrafficUpdate";
+        username = (String)getConfigParameterValue(PARAM_USERNAME);
+        password = (String)getConfigParameterValue(PARAM_PASSWORD);
+        httpEndPoint = (String)getConfigParameterValue(PARAM_HTTP_ENDPOINT);
 
     }
     @Override
     public void processCas(CAS cas) throws ResourceProcessException {
 
+        JCas jCas;
         try {
             jCas = cas.getJCas();
         } catch (CASException e) {
@@ -58,11 +66,9 @@ public class HttpCasConsumer  extends CasConsumer_ImplBase {
         FSIndex locationIndex = jCas.getAnnotationIndex(LocationIdentification.type);
         for (Iterator<LocationIdentification> it = locationIndex.iterator(); it.hasNext();) {
             LocationIdentification annotation = it.next();
-            //    System.out.println("AN2...(" + annotation.getBegin() + "," +
-            //      annotation.getEnd() + "): " +
-            //      annotation.getCoveredText());
 
-            locationString = locationString + annotation.getCoveredText()+"|";
+            if(!locationString.contains(annotation.getCoveredText()))
+                locationString = locationString + annotation.getCoveredText()+" ";
         }
 
         String trafficLevel = "";
@@ -73,10 +79,10 @@ public class HttpCasConsumer  extends CasConsumer_ImplBase {
             trafficLevel = level.getTrafficLevel();
         }
 
-        Logger.getLogger(DataBridgeCasConsumer.class).info("Annotated Text :  "+locationString.trim());
-        Logger.getLogger(DataBridgeCasConsumer.class).info("Annotated Text :  "+trafficLevel);
+        logger.debug("Annotated Location :  " + locationString.trim());
+        logger.debug("Annotated Traffic :  " + trafficLevel);
 
-       // if (!locationString.equals("") && !trafficLevel.equals("Random") )
+       if (!locationString.equals(""))
             publish(tweetText, locationString, trafficLevel);
 
     }
@@ -87,39 +93,43 @@ public class HttpCasConsumer  extends CasConsumer_ImplBase {
         String time=new Timestamp(date.getTime()).toString();
 
         try {
-            HttpPost method = new HttpPost(url);
+            HttpPost method = new HttpPost(httpEndPoint);
 
             if (httpClient != null) {
                 String[] xmlElements = new String[]
                         {
-                      " <events>"+
-                           " <event>"+
+                      "<events>"+
+                            "<event>"+
                                 "<metaData>"+
-                                    "<TimeStamp>"+time+"</TimeStamp>"+
+                                        "<Timestamp>"+time+"</Timestamp>"+
                                 "</metaData>"+
+
                                 "<payloadData>"+
-                                    "<Location>"+locationString+"</Location>"+
-                                    "<TrafficLevel>"+trafficLevel+"</TrafficLevel>"+
-                                    "<TweetText>"+tweetText+"</TweetText>"+
-                         "</payloadData>"+
-              "</event>"+
-                "</events>"
+
+                                    "<Traffic_Location>"+locationString+"</Traffic_Location>"+
+                                    "<Traffic_Level>"+trafficLevel+"</Traffic_Level>"+
+                                    "<Twitter_Text>"+tweetText+"</Twitter_Text>"+
+
+                                "</payloadData>"+
+
+                            "</event>"+
+                        "</events>"
                         };
 
                 try {
                     for (String xmlElement : xmlElements) {
                         StringEntity entity = new StringEntity(xmlElement);
                         method.setEntity(entity);
-                        if (url.startsWith("https")) {
+                        if (httpEndPoint.startsWith("https")) {
                             processAuthentication(method, username, password);
                         }
                         httpClient.execute(method).getEntity().getContent().close();
                     }
                 } catch (Exception e) {
-                    System.out.println("Caught here");
+                    logger.error("Error While Sending Events to HTTP Endpoint");
                     e.printStackTrace();
                 }
-                System.out.println("Sending Success via HTTP ");
+                logger.info("Event Published Successfully to "+ httpEndPoint);
                 Thread.sleep(500); // We need to wait some time for the message to be sent
 
             }

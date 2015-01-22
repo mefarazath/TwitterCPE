@@ -3,6 +3,7 @@ package org.wso2.uima.collectionProccesingEngine.analysisEngines;
 import opennlp.tools.doccat.DoccatModel;
 import opennlp.tools.doccat.DocumentCategorizerME;
 import org.apache.commons.io.IOUtils;
+import org.apache.log4j.Logger;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_component.JCasAnnotator_ImplBase;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
@@ -15,6 +16,7 @@ import java.io.InputStream;
 public class TrafficLevelAnalyser extends JCasAnnotator_ImplBase {
 
     private DocumentCategorizerME documentCategorizer;
+    private static Logger logger = Logger.getLogger(TrafficLevelAnalyser.class);
 
     @Override
     public void process(JCas jcas) throws AnalysisEngineProcessException {
@@ -28,7 +30,7 @@ public class TrafficLevelAnalyser extends JCasAnnotator_ImplBase {
         TrafficLevelIdentifier annotation = new TrafficLevelIdentifier(jcas);
         annotation.addToIndexes(jcas);
         annotation.setTrafficLevel(predictedCategory);
-        //System.out.println("Annotation : "+annotation.getTrafficLevel());
+        logger.info("Traffic Level Annotated : "+annotation.getTrafficLevel()+"\n");
     }
 
     public void initialize(UimaContext ctx)

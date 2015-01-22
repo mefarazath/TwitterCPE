@@ -8,19 +8,49 @@
     <version>1.0</version>
     <vendor/>
     <configurationParameters>
+
       <configurationParameter>
-        <name>outputFile</name>
-        <description>File to which annotations should be printed</description>
+        <name>serverURL</name>
+        <description>Address of the thrift port to which the databridge connects to</description>
         <type>String</type>
         <multiValued>false</multiValued>
         <mandatory>true</mandatory>
       </configurationParameter>
+
+      <configurationParameter>
+        <name>username</name>
+        <description>Username of the tenant to connect to databridge</description>
+        <type>String</type>
+        <multiValued>false</multiValued>
+        <mandatory>true</mandatory>
+      </configurationParameter>
+
+      <configurationParameter>
+        <name>password</name>
+        <description>Password to authenticate</description>
+        <type>String</type>
+        <multiValued>false</multiValued>
+        <mandatory>true</mandatory>
+      </configurationParameter>
+
     </configurationParameters>
     <configurationParameterSettings>
       <nameValuePair>
-        <name>outputFile</name>
+        <name>serverURL</name>
         <value>
-          <string>output/results.txt</string>
+          <string>tcp://localhost:7611</string>
+        </value>
+      </nameValuePair>
+      <nameValuePair>
+        <name>username</name>
+        <value>
+          <string>admin</string>
+        </value>
+      </nameValuePair>
+      <nameValuePair>
+        <name>password</name>
+        <value>
+          <string>admin</string>
         </value>
       </nameValuePair>
     </configurationParameterSettings>
