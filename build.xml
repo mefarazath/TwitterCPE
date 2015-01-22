@@ -1,0 +1,52 @@
+<project default="run">
+    <property name="jmsUrl" value=""/>
+    <property name="queueName" value=""/>
+    <property name="lib.dir" value="lib"/>
+    <property name="class.dir" value="build/classes"/>
+
+    <target name="clean">
+        <delete dir="build" quiet="true"/>
+        <delete dir="${class.dir}" quiet="true"/>
+    </target>
+
+    <path id="jar.classpath">
+        <pathelement path="${class.dir}"/>
+        <pathelement path="lib"/>
+        <fileset dir="lib">
+            <include name="*.jar"/>
+        </fileset>
+    </path>
+
+    <target name="init">
+        <mkdir dir="${class.dir}"/>
+        <manifestclasspath property="tem.classpath" jarfile="pathing.jar">
+            <classpath refid="jar.classpath"/>
+        </manifestclasspath>
+        <jar destfile="pathing.jar" basedir="build\classes">
+            <manifest>
+                <attribute name="Class-Path" value="${tem.classpath}"/>
+            </manifest>
+        </jar>
+        <path id="javac.classpath">
+            <pathelement path="${class.dir}"/>
+            <pathelement path="pathing.jar"/>
+        </path>
+    </target>
+
+    <target name="compile" depends="init" description="Compile all Java">
+        <javac srcdir="src" destdir="${class.dir}" includeantruntime="false">
+            <classpath refid="javac.classpath"/>
+        </javac>
+    </target>
+
+    <target name="run" depends="compile">
+        <java classname="org.wso2.uima.main.CEPwithActiveMQ"
+              classpathref="javac.classpath" fork="true">
+            <sysproperty key="jmsUrl" value="${jmsUrl}"/>
+            <sysproperty key="queueName" value="${queueName}"/>
+	    <arg value="${jmsUrl}"/>
+            <arg value="${queueName}"/>
+        </java>
+    </target>
+
+</project>

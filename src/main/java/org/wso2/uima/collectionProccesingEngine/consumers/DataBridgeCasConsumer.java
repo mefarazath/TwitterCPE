@@ -120,7 +120,7 @@ public class DataBridgeCasConsumer extends CasConsumer_ImplBase{
 
         KeyStoreUtil.setTrustStoreParams();
 
-        String host = "localhost";
+        String host = "10.100.4.14";
         String port = "7611";
         String username = "admin";
         String password = "admin";

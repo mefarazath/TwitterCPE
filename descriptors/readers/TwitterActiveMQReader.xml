@@ -47,7 +47,7 @@
     <nameValuePair>
         <name>queueName</name>
         <value>
-          <string>TwitterExtractedFeed</string>
+          <string>Feed</string>
         </value>
       </nameValuePair>
       <nameValuePair>

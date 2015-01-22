@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/TwitterCPE.iml" filepath="$PROJECT_DIR$/TwitterCPE.iml" />
+      <module fileurl="file://$PROJECT_DIR$/UIMA Traffic Extractor.iml" filepath="$PROJECT_DIR$/UIMA Traffic Extractor.iml" />
       <module fileurl="file://$PROJECT_DIR$/../TweetExtractor-ActiveMQ/org.wso2.cpe.uima.twitter-extractor.iml" filepath="$PROJECT_DIR$/../TweetExtractor-ActiveMQ/org.wso2.cpe.uima.twitter-extractor.iml" />
     </modules>
   </component>

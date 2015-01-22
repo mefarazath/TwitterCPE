@@ -95,7 +95,7 @@ public class HttpCasConsumer  extends CasConsumer_ImplBase {
                       " <events>"+
                            " <event>"+
                                 "<metaData>"+
-                                    "<timeStamp>"+time+"</timeStamp>"+
+                                    "<TimeStamp>"+time+"</TimeStamp>"+
                                 "</metaData>"+
                                 "<payloadData>"+
                                     "<Location>"+locationString+"</Location>"+
