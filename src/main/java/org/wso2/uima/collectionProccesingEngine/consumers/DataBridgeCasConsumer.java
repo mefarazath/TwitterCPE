@@ -31,6 +31,8 @@ public class DataBridgeCasConsumer extends CasConsumer_ImplBase{
     public static String streamID = null;
     public static DataPublisher dataPublisher;
 
+    private static Logger logger = Logger.getLogger(DataBridgeCasConsumer.class);
+
     @Override
     public void processCas(CAS cas) throws ResourceProcessException {
 
@@ -67,15 +69,15 @@ public class DataBridgeCasConsumer extends CasConsumer_ImplBase{
         }
 
         //locationString = locationString.substring(0,locationString.length()-1);
-        Logger.getLogger(DataBridgeCasConsumer.class).info("Annotated Location :  "+locationString);
-        Logger.getLogger(DataBridgeCasConsumer.class).info("Annotated Traffic :  "+trafficLevel);
+        logger.info("Annotated Location :  " + locationString);
+        logger.info("Annotated Traffic :  " + trafficLevel);
 
 
        // locationString = "Colombo";
 
         //Publish event for a valid stream
         if (streamID != null && !locationString.equals("")) {
-            System.out.println("Stream ID: " + streamID+"  to be Published");
+         //   System.out.println("Stream ID: " + streamID+"  to be Published");
 
             try {
 
@@ -128,7 +130,7 @@ public class DataBridgeCasConsumer extends CasConsumer_ImplBase{
         try {
 
             dataPublisher = new DataPublisher(url,username,password);
-            Logger.getLogger(DataBridgeCasConsumer.class).debug("Data Publisher Created");
+            logger.debug("Data Publisher Created");
 
         } catch (MalformedURLException e1) {
             // TODO Auto-generated catch block
@@ -147,7 +149,7 @@ public class DataBridgeCasConsumer extends CasConsumer_ImplBase{
 
         try {
             streamID = dataPublisher.findStream(STREAM_NAME, VERSION);
-            Logger.getLogger( DataBridgeCasConsumer.class).debug("Stream Definition Already Exists");
+            logger.debug("Stream Definition Already Exists");
 
         } catch (NoStreamDefinitionExistException | AgentException | StreamDefinitionException e) {
             try {
@@ -174,15 +176,15 @@ public class DataBridgeCasConsumer extends CasConsumer_ImplBase{
                         " ]" +
                         "}");
 
-                Logger.getLogger(DataBridgeCasConsumer.class).info("Stream ID : "+streamID);
-                Logger.getLogger(DataBridgeCasConsumer.class).debug("Stream was not found and defined successfully");
+                logger.info("Stream ID : "+streamID);
+                logger.debug("Stream was not found and defined successfully");
 
             } catch (AgentException | MalformedStreamDefinitionException
                     | StreamDefinitionException
                     | DifferentStreamDefinitionAlreadyDefinedException e1) {
                 // TODO Auto-generated catch block
                 e1.printStackTrace();
-                Logger.getLogger(DataBridgeCasConsumer.class).debug("Stream Definition Failed");
+                logger.debug("Stream Definition Failed");
             }
 
 
@@ -212,7 +214,7 @@ public class DataBridgeCasConsumer extends CasConsumer_ImplBase{
                 meta, correlation, payload);
 
         dataPublisher.publish(statisticsEvent);
-        Logger.getLogger(DataBridgeCasConsumer.class).info("Event Published Via DataBridge Successfully");
+        logger.info("Event Published Via DataBridge Successfully");
     }
 
 }
