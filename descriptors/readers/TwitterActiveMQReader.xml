@@ -13,8 +13,7 @@
             <configurationParameter>
                 <name>JMSUrL</name>
                 <description>URL of the ActiveMQ Broker
-                    by default this is "tcp://localhost:61616"
-                </description>
+                    by default this is "tcp://localhost:61616"</description>
                 <type>String</type>
                 <multiValued>false</multiValued>
                 <mandatory>true</mandatory>
@@ -29,36 +28,51 @@
             </configurationParameter>
 
             <configurationParameter>
-                <name>maxMessagesToDequeue</name>
-                <description>Maximum Number of Messages the Reader can dequeue from the JMS Queue</description>
-                <type>Integer</type>
-                <multiValued>false</multiValued>
-                <mandatory>true</mandatory>
-            </configurationParameter>
-        </configurationParameters>
+        <name>maxMessagesToDequeue</name>
+        <description>Maximum Number of Messages the Reader can dequeue from the JMS Queue</description>
+        <type>Integer</type>
+        <multiValued>false</multiValued>
+        <mandatory>true</mandatory>
+      </configurationParameter>
+    </configurationParameters>
 
         <!--- Configuration Parameter Values -->
         <configurationParameterSettings>
-            <nameValuePair>
-                <name>maxMessagesToDequeue</name>
-                <value>
-                    <integer>10</integer>
-                </value>
-            </nameValuePair>
-            <nameValuePair>
-                <name>queueName</name>
-                <value>
-                    <string>TwitterExtractedFeed</string>
-                </value>
-            </nameValuePair>
-            <nameValuePair>
-                <name>JMSUrL</name>
-                <value>
-                    <string>tcp://localhost:61616</string>
-                </value>
-            </nameValuePair>
-        </configurationParameterSettings>
-        <typeSystemDescription/>
+       <nameValuePair>
+	        <name>maxMessagesToDequeue</name>
+	        <value>
+	          <integer>10</integer>
+	        </value>
+      </nameValuePair>
+    <nameValuePair>
+        <name>queueName</name>
+        <value>
+          <string>TwitterExtractedFeed</string>
+        </value>
+      </nameValuePair>
+      <nameValuePair>
+        <name>JMSUrL</name>
+        <value>
+          <string>tcp://localhost:61616</string>
+        </value>
+      </nameValuePair>
+    </configurationParameterSettings>
+        <typeSystemDescription>
+      <types>
+        <typeDescription>
+          <name>org.wso2.uima.types.TimeStamp</name>
+          <description/>
+          <supertypeName>uima.tcas.Annotation</supertypeName>
+          <features>
+            <featureDescription>
+              <name>TimeStamp</name>
+              <description/>
+              <rangeTypeName>uima.cas.Long</rangeTypeName>
+            </featureDescription>
+          </features>
+        </typeDescription>
+      </types>
+    </typeSystemDescription>
         <typePriorities/>
         <fsIndexCollection/>
         <capabilities>

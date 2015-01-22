@@ -29,7 +29,7 @@
         </casProcessor>
         <casProcessor deployment="integrated" name="twitterCPE_Databridge">
             <descriptor>
-                <import location="../consumers/twitterCEP_Databridge.xml"/>
+                <import location="../consumers/DataBridgeCasConsumer.xml"/>
             </descriptor>
             <deploymentParameters/>
             <errorHandling>

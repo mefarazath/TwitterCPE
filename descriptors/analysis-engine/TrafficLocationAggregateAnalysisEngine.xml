@@ -4,10 +4,10 @@
   <primitive>false</primitive>  
   <delegateAnalysisEngineSpecifiers>
     <delegateAnalysisEngine key="LocationIdentifierDescriptor">
-      <import location="LocationIdentifierDescriptor.xml"/>
+      <import location="LocationIdentifierAnalysisEngine.xml"/>
     </delegateAnalysisEngine>
     <delegateAnalysisEngine key="TrafficLevelAnalyser">
-      <import location="TrafficLevelAnalyser.xml"/>
+      <import location="TrafficLevelAnalysisEngine.xml"/>
     </delegateAnalysisEngine>
   </delegateAnalysisEngineSpecifiers>
   <analysisEngineMetaData>

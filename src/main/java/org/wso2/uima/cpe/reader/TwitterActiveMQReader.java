@@ -47,7 +47,7 @@ public class TwitterActiveMQReader extends CollectionReader_ImplBase {
         currentIndex = 0;
 
         ActiveMQConnectionFactory factory = new ActiveMQConnectionFactory(JMSUrl);
-        logger.debug("Factory created Successfull for "+JMSUrl);
+        logger.debug("Factory created Successful for "+JMSUrl);
 
         Connection connection = null;
         MessageConsumer consumer = null;

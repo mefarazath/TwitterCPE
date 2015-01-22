@@ -5,53 +5,31 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3be68e29-265e-4add-ab10-159f304e6bc0" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/descriptors/analysis-engine/HashTagDescriptor.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/road_lk.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/org/wso2/uima/cpe/ae/HashtagAnnotator.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/org/wso2/uima/cpe/ae/HashtagAnnotator.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/org/wso2/uima/cpe/ae/LocationIdentifier.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/org/wso2/uima/cpe/consumer/AnnotationPrinter.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/org/wso2/uima/cpe/consumer/DefaultTrustManager.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/org/wso2/uima/cpe/consumer/KeyStoreUtil.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/org/wso2/uima/cpe/consumer/TwitterCPE_Consumer.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/org/wso2/uima/cpe/consumer/TwitterCPE_Consumer_Printer.class" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/descriptors/analysis-engine/LocationIdentifierDescriptor.xml" afterPath="$PROJECT_DIR$/descriptors/analysis-engine/LocationIdentifierAnalysisEngine.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/descriptors/analysis-engine/TrafficLevelAnalyser.xml" afterPath="$PROJECT_DIR$/descriptors/analysis-engine/TrafficLevelAnalysisEngine.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/descriptors/analysis-engine/TrafficLocationAE.xml" afterPath="$PROJECT_DIR$/descriptors/analysis-engine/TrafficLocationAggregateAnalysisEngine.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/descriptors/consumers/twitterCEP_Databridge.xml" afterPath="$PROJECT_DIR$/descriptors/consumers/DataBridgeCasConsumer.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/descriptors/consumers/twitterCPE_consumer_Printer.xml" afterPath="$PROJECT_DIR$/descriptors/consumers/ConsolePrinterCasConsumer.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/org/wso2/uima/cpe/ae/LocationIdentifier.java" afterPath="$PROJECT_DIR$/src/main/java/org/wso2/uima/cpe/analysisEngines/LocationIdentifier.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/org/wso2/uima/cpe/ae/TrafficLevelAnalyser.java" afterPath="$PROJECT_DIR$/src/main/java/org/wso2/uima/cpe/analysisEngines/TrafficLevelAnalyser.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/org/wso2/uima/cpe/consumer/AnnotationPrinter.java" afterPath="$PROJECT_DIR$/src/main/java/org/wso2/uima/cpe/consumers/AnnotationPrinter.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/org/wso2/uima/cpe/consumer/DefaultTrustManager.java" afterPath="$PROJECT_DIR$/src/main/java/org/wso2/uima/cpe/consumers/util/DefaultTrustManager.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/org/wso2/uima/cpe/consumer/HttpCasConsumer.java" afterPath="$PROJECT_DIR$/src/main/java/org/wso2/uima/cpe/consumers/HttpCasConsumer.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/org/wso2/uima/cpe/consumer/KeyStoreUtil.java" afterPath="$PROJECT_DIR$/src/main/java/org/wso2/uima/cpe/consumers/util/KeyStoreUtil.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/org/wso2/uima/cpe/consumer/SoapConsumer.java" afterPath="$PROJECT_DIR$/src/main/java/org/wso2/uima/cpe/consumers/SoapCasConsumer.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/org/wso2/uima/cpe/consumer/TwitterCPE_Consumer.java" afterPath="$PROJECT_DIR$/src/main/java/org/wso2/uima/cpe/consumers/DataBridgeCasConsumer.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/org/wso2/uima/cpe/consumer/TwitterCPE_Consumer_Printer.java" afterPath="$PROJECT_DIR$/src/main/java/org/wso2/uima/cpe/consumers/ConsolePrinterCasConsumer.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/descriptors/readers/TwitterCollectionReader_Descriptor.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/org/wso2/uima/cpe/reader/StatusHandler.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/org/wso2/uima/cpe/reader/TwitterCollectionReader.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/org/wso2/uima/cpe/reader/TwitterStreamer.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/org/wso2/uima/cpe/reader/data/Tweet.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/org/wso2/uima/demo/DemoClient.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/org/wso2/uima/demo/StatusHandler.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/org/wso2/uima/demo/TweetExtractor.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/org/wso2/uima/demo/TwitterStreamer.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/org/wso2/uima/demo/data/Tweet.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/org/wso2/uima/main/RunCPE.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/org/wso2/uima/cpe/reader/StatusHandler.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/org/wso2/uima/cpe/reader/TwitterCollectionReader.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/org/wso2/uima/cpe/reader/TwitterStreamer.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/org/wso2/uima/cpe/reader/data/Tweet.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/org/wso2/uima/main/RunCPE.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/org/wso2/uima/main/statusCallBackCPE.class" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/org/wso2/uima/types/HashTag.class" afterPath="$PROJECT_DIR$/target/classes/org/wso2/uima/types/HashTag.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/org/wso2/uima/types/HashTag_Type$1.class" afterPath="$PROJECT_DIR$/target/classes/org/wso2/uima/types/HashTag_Type$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/org/wso2/uima/types/HashTag_Type.class" afterPath="$PROJECT_DIR$/target/classes/org/wso2/uima/types/HashTag_Type.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/org/wso2/uima/types/LocationIdentification_Type$1.class" afterPath="$PROJECT_DIR$/target/classes/org/wso2/uima/types/LocationIdentification_Type$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/org/wso2/uima/types/LocationIdentification_Type.class" afterPath="$PROJECT_DIR$/target/classes/org/wso2/uima/types/LocationIdentification_Type.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/org/wso2/uima/main/RunCPE.class" afterPath="$PROJECT_DIR$/target/classes/org/wso2/uima/main/RunCPE.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/org/wso2/uima/cpe/reader/StatusHandler.class" afterPath="$PROJECT_DIR$/target/classes/org/wso2/uima/cpe/reader/StatusHandler.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/org/wso2/uima/cpe/reader/data/Tweet.class" afterPath="$PROJECT_DIR$/target/classes/org/wso2/uima/cpe/reader/data/Tweet.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/org/wso2/uima/cpe/reader/TwitterCollectionReader.class" afterPath="$PROJECT_DIR$/target/classes/org/wso2/uima/cpe/reader/TwitterCollectionReader.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/org/wso2/uima/cpe/reader/TwitterStreamer.class" afterPath="$PROJECT_DIR$/target/classes/org/wso2/uima/cpe/reader/TwitterStreamer.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/org/wso2/uima/main/statusCallBackCPE.class" afterPath="$PROJECT_DIR$/target/classes/org/wso2/uima/main/statusCallBackCPE.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/descriptors/consumers/AnnotationPrinter.xml" afterPath="$PROJECT_DIR$/descriptors/consumers/AnnotationPrinter.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/descriptors/consumers/HTTPCasConsumer.xml" afterPath="$PROJECT_DIR$/descriptors/consumers/HTTPCasConsumer.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/wso2/uima/types/LocationIdentification.java" afterPath="$PROJECT_DIR$/src/main/java/org/wso2/uima/types/LocationIdentification.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/wso2/uima/main/RunCPE.java" afterPath="$PROJECT_DIR$/src/main/java/org/wso2/uima/main/RunCPE.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/descriptors/consumers/SOAPCasConsumer.xml" afterPath="$PROJECT_DIR$/descriptors/consumers/SOAPCasConsumer.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/wso2/uima/types/TrafficLevelIdentifier.java" afterPath="$PROJECT_DIR$/src/main/java/org/wso2/uima/types/TrafficLevelIdentifier.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/wso2/uima/demo/TweetExtractor.java" afterPath="$PROJECT_DIR$/src/main/java/org/wso2/uima/demo/TweetExtractor.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TwitterCPE.iml" afterPath="$PROJECT_DIR$/TwitterCPE.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/encodings.xml" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/descriptors/analysis-engine/TrafficLocationAggregateAnalysisEngine.xml" afterPath="$PROJECT_DIR$/descriptors/analysis-engine/TrafficLocationAggregateAnalysisEngine.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/wso2/uima/cpe/reader/TwitterActiveMQReader.java" afterPath="$PROJECT_DIR$/src/main/java/org/wso2/uima/cpe/reader/TwitterActiveMQReader.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/descriptors/readers/TwitterActiveMQReader.xml" afterPath="$PROJECT_DIR$/descriptors/readers/TwitterActiveMQReader.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/descriptors/cpe/twitterCPE.xml" afterPath="$PROJECT_DIR$/descriptors/cpe/twitterCPE.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -94,14 +72,34 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="TwitterActiveMQReader.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="TwitterActiveMQReader.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/wso2/uima/cpe/reader/TwitterActiveMQReader.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.8347107" vertical-offset="1673" max-vertical-offset="2610">
-              <caret line="121" column="0" selection-start-line="121" selection-start-column="0" selection-end-line="121" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1133" max-vertical-offset="2610">
+              <caret line="73" column="29" selection-start-line="73" selection-start-column="29" selection-end-line="73" selection-end-column="29" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="twitterCPE.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/descriptors/cpe/twitterCPE.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="217" max-vertical-offset="1404">
+              <caret line="31" column="53" selection-start-line="31" selection-start-column="53" selection-end-line="31" selection-end-column="53" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TrafficLocationAggregateAnalysisEngine.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/descriptors/analysis-engine/TrafficLocationAggregateAnalysisEngine.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="36" max-vertical-offset="864">
+              <caret line="9" column="50" selection-start-line="9" selection-start-column="50" selection-end-line="9" selection-end-column="50" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -136,16 +134,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="JCas.class" pinned="false" current-in-tab="false">
-        <entry file="jar://$MAVEN_REPOSITORY$/org/apache/uima/uimaj-core/2.6.0/uimaj-core-2.6.0.jar!/org/apache/uima/jcas/JCas.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-8.04" vertical-offset="1545" max-vertical-offset="2574">
-              <caret line="131" column="9" selection-start-line="131" selection-start-column="9" selection-end-line="131" selection-end-column="9" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="TrafficLevelAnalysisEngine.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/descriptors/analysis-engine/TrafficLevelAnalysisEngine.xml">
           <provider selected="true" editor-type-id="text-editor">
@@ -156,21 +144,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TwitterCollectionReader.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/org/wso2/uima/cpe/reader/TwitterCollectionReader.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1296">
-              <caret line="73" column="23" selection-start-line="73" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TwitterActiveMQReader.xml" pinned="false" current-in-tab="false">
+      <file leaf-file-name="TwitterActiveMQReader.xml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/descriptors/readers/TwitterActiveMQReader.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="691" max-vertical-offset="1512">
-              <caret line="42" column="42" selection-start-line="42" selection-start-column="22" selection-end-line="42" selection-end-column="42" />
+            <state vertical-scroll-proportion="0.08978328" vertical-offset="1051" max-vertical-offset="1764">
+              <caret line="60" column="11" selection-start-line="60" selection-start-column="11" selection-end-line="60" selection-end-column="11" />
               <folding />
             </state>
           </provider>
@@ -206,7 +184,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/org/wso2/uima/types/TrafficLevelIdentifier_Type.java" />
         <option value="$PROJECT_DIR$/descriptors/analysis-engine/TrafficLevelAnalyser.xml" />
         <option value="$PROJECT_DIR$/src/main/java/org/wso2/uima/cpe/ae/TrafficLevelAnalyser.java" />
         <option value="$PROJECT_DIR$/descriptors/analysis-engine/TrafficLocationAE.xml" />
@@ -250,13 +227,14 @@
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/conf/log4j.properties" />
         <option value="$PROJECT_DIR$/src/main/java/org/wso2/uima/types/TrafficLevelIdentifier.java" />
-        <option value="$PROJECT_DIR$/descriptors/cpe/twitterCPE.xml" />
         <option value="$PROJECT_DIR$/descriptors/readers/TwitterActiveMQReader.xml" />
         <option value="$PROJECT_DIR$/descriptors/analysis-engine/TrafficLevelAnalysisEngine.xml" />
         <option value="$PROJECT_DIR$/src/test/java/org/wso2/uima/cpe/reader/TwitterActiveMQReaderTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/org/wso2/uima/cpe/reader/TwitterActiveMQReader.xml" />
         <option value="$PROJECT_DIR$/src/main/java/org/wso2/uima/types/TimeStamp.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/wso2/uima/cpe/reader/TwitterActiveMQReader.java" />
+        <option value="$PROJECT_DIR$/descriptors/analysis-engine/TrafficLocationAggregateAnalysisEngine.xml" />
+        <option value="$PROJECT_DIR$/descriptors/cpe/twitterCPE.xml" />
       </list>
     </option>
   </component>
@@ -453,97 +431,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TwitterCPE" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TwitterCPE" />
+              <option name="myItemId" value="descriptors" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="uima" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TwitterCPE" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TwitterCPE" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="uima" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cpe" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="reader" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TwitterCPE" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TwitterCPE" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="uima" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cpe" />
+              <option name="myItemId" value="readers" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -558,6 +450,10 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="descriptors" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cpe" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -576,6 +472,24 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="consumers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TwitterCPE" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TwitterCPE" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="descriptors" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="analysis-engine" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1118,12 +1032,12 @@
       <workItem from="1421831286252" duration="1221000" />
       <workItem from="1421852307771" duration="25595000" />
       <workItem from="1421882307773" duration="438000" />
-      <workItem from="1421905688886" duration="7171000" />
+      <workItem from="1421905688886" duration="8851000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="139091000" />
+    <option name="totallyTimeSpent" value="140771000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -1147,7 +1061,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="51" y="-4" width="1315" height="772" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Documentation" active="false" anchor="right" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.078802206" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="151" y="208" width="1115" height="544" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1169,10 +1083,10 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3287037" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24980299" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.10638298" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.10638298" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3609141" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34567901" sideWeight="0.49960598" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3609141" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.4351852" sideWeight="0.49960598" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1272,13 +1186,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-7.72" vertical-offset="563" max-vertical-offset="1584">
           <caret line="62" column="18" selection-start-line="62" selection-start-column="18" selection-end-line="62" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/descriptors/analysis-engine/TrafficLocationAggregateAnalysisEngine.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="864">
-          <caret line="6" column="24" selection-start-line="6" selection-start-column="24" selection-end-line="6" selection-end-column="24" />
         </state>
       </provider>
     </entry>
@@ -1532,20 +1439,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/wso2/uima/demo/DemoClient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="385" max-vertical-offset="1008">
-          <caret line="28" column="49" selection-start-line="28" selection-start-column="49" selection-end-line="28" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/wso2/uima/demo/TweetExtractor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1195" max-vertical-offset="2736">
-          <caret line="94" column="9" selection-start-line="94" selection-start-column="9" selection-end-line="94" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar:///usr/lib/jvm/java-7-openjdk-amd64/jre/lib/jce.jar!/javax/crypto/AEADBadTagException.class">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.1821248" vertical-offset="0" max-vertical-offset="593">
@@ -1560,80 +1453,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/wso2/uima/demo/data/Tweet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.1553398" vertical-offset="48" max-vertical-offset="666">
-          <caret line="8" column="37" selection-start-line="8" selection-start-column="37" selection-end-line="8" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/wso2/uima/cpe/reader/TwitterStreamer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.89320385" vertical-offset="624" max-vertical-offset="1242">
-          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/wso2/uima/demo/TwitterStreamer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="336" max-vertical-offset="2016">
-          <caret line="47" column="37" selection-start-line="47" selection-start-column="37" selection-end-line="47" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/wso2/uima/demo/StatusHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="378" max-vertical-offset="1890">
-          <caret line="67" column="0" selection-start-line="67" selection-start-column="0" selection-end-line="67" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../Twitter-Extractor/src/main/resources/log4j.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="618">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/twitter4j/twitter4j-core/4.0.2/twitter4j-core-4.0.2.jar!/twitter4j/Paging.class">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="2.3948276" vertical-offset="303" max-vertical-offset="3564">
           <caret line="102" column="11" selection-start-line="102" selection-start-column="11" selection-end-line="102" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../Twitter-Extractor/src/main/java/org/wso2/cep/uima/demo/TweetExtractor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.31570247" vertical-offset="907" max-vertical-offset="3420">
-          <caret line="61" column="59" selection-start-line="60" selection-start-column="7" selection-end-line="61" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../Twitter-Extractor/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6727273" vertical-offset="367" max-vertical-offset="1062">
-          <caret line="43" column="54" selection-start-line="43" selection-start-column="54" selection-end-line="43" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../Twitter-Streamer/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.58347106" vertical-offset="547" max-vertical-offset="1152">
-          <caret line="50" column="81" selection-start-line="50" selection-start-column="81" selection-end-line="50" selection-end-column="81" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../Twitter-Streamer/src/main/java/org/wso2/cep/uima/demo/StatusHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6247934" vertical-offset="594" max-vertical-offset="1782">
-          <caret line="57" column="40" selection-start-line="56" selection-start-column="12" selection-end-line="57" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/descriptors/readers/TwitterCollectionReader_Descriptor.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="900">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -1665,13 +1488,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../Twitter-Streamer/src/main/java/org/wso2/cep/uima/demo/TwitterStreamer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.31570247" vertical-offset="439" max-vertical-offset="2448">
-          <caret line="35" column="35" selection-start-line="35" selection-start-column="35" selection-end-line="35" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="2275" max-vertical-offset="2916">
@@ -1688,42 +1504,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/wso2/uima/main/RunCPE.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="54" max-vertical-offset="2232">
-          <caret line="22" column="13" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/descriptors/cpe/twitterCPE.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="54" max-vertical-offset="1404">
-          <caret line="14" column="29" selection-start-line="14" selection-start-column="29" selection-end-line="14" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/wso2/uima/cpe/reader/TwitterCollectionReader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1296">
-          <caret line="73" column="23" selection-start-line="73" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/descriptors/analysis-engine/TrafficLevelAnalysisEngine.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1386">
           <caret line="4" column="76" selection-start-line="4" selection-start-column="76" selection-end-line="4" selection-end-column="76" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/descriptors/readers/TwitterActiveMQReader.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="691" max-vertical-offset="1512">
-          <caret line="42" column="42" selection-start-line="42" selection-start-column="22" selection-end-line="42" selection-end-column="42" />
           <folding />
         </state>
       </provider>
@@ -1788,11 +1572,35 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/wso2/uima/cpe/reader/TwitterActiveMQReader.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8347107" vertical-offset="1673" max-vertical-offset="2610">
-          <caret line="121" column="0" selection-start-line="121" selection-start-column="0" selection-end-line="121" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="1133" max-vertical-offset="2610">
+          <caret line="73" column="29" selection-start-line="73" selection-start-column="29" selection-end-line="73" selection-end-column="29" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/descriptors/analysis-engine/TrafficLocationAggregateAnalysisEngine.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="36" max-vertical-offset="864">
+          <caret line="9" column="50" selection-start-line="9" selection-start-column="50" selection-end-line="9" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/descriptors/cpe/twitterCPE.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="217" max-vertical-offset="1404">
+          <caret line="31" column="53" selection-start-line="31" selection-start-column="53" selection-end-line="31" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/descriptors/readers/TwitterActiveMQReader.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.08978328" vertical-offset="1051" max-vertical-offset="1764">
+          <caret line="60" column="11" selection-start-line="60" selection-start-column="11" selection-end-line="60" selection-end-column="11" />
+          <folding />
         </state>
       </provider>
     </entry>
