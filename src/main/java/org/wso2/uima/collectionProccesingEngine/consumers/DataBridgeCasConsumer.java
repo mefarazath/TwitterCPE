@@ -1,5 +1,6 @@
-package org.wso2.uima.cpe.consumers;
+package org.wso2.uima.collectionProccesingEngine.consumers;
 
+import org.apache.log4j.Logger;
 import org.apache.uima.cas.CAS;
 import org.apache.uima.cas.CASException;
 import org.apache.uima.cas.FSIndex;
@@ -12,10 +13,9 @@ import org.wso2.carbon.databridge.agent.thrift.exception.AgentException;
 import org.wso2.carbon.databridge.commons.Event;
 import org.wso2.carbon.databridge.commons.StreamDefinition;
 import org.wso2.carbon.databridge.commons.exception.*;
-import org.wso2.uima.cpe.consumers.util.KeyStoreUtil;
+import org.wso2.uima.collectionProccesingEngine.consumers.util.KeyStoreUtil;
 import org.wso2.uima.types.LocationIdentification;
 import org.wso2.uima.types.TrafficLevelIdentifier;
-import twitter4j.Logger;
 
 import java.net.MalformedURLException;
 import java.sql.Timestamp;
@@ -128,7 +128,7 @@ public class DataBridgeCasConsumer extends CasConsumer_ImplBase{
         try {
 
             dataPublisher = new DataPublisher(url,username,password);
-            twitter4j.Logger.getLogger(DataBridgeCasConsumer.class).debug("Data Publisher Created");
+            Logger.getLogger(DataBridgeCasConsumer.class).debug("Data Publisher Created");
 
         } catch (MalformedURLException e1) {
             // TODO Auto-generated catch block
@@ -147,7 +147,7 @@ public class DataBridgeCasConsumer extends CasConsumer_ImplBase{
 
         try {
             streamID = dataPublisher.findStream(STREAM_NAME, VERSION);
-            twitter4j.Logger.getLogger( DataBridgeCasConsumer.class).debug("Stream Definition Already Exists");
+            Logger.getLogger( DataBridgeCasConsumer.class).debug("Stream Definition Already Exists");
 
         } catch (NoStreamDefinitionExistException | AgentException | StreamDefinitionException e) {
             try {
@@ -174,15 +174,15 @@ public class DataBridgeCasConsumer extends CasConsumer_ImplBase{
                         " ]" +
                         "}");
 
-                twitter4j.Logger.getLogger(DataBridgeCasConsumer.class).info("Stream ID : "+streamID);
-                twitter4j.Logger.getLogger(DataBridgeCasConsumer.class).debug("Stream was not found and defined successfully");
+                Logger.getLogger(DataBridgeCasConsumer.class).info("Stream ID : "+streamID);
+                Logger.getLogger(DataBridgeCasConsumer.class).debug("Stream was not found and defined successfully");
 
             } catch (AgentException | MalformedStreamDefinitionException
                     | StreamDefinitionException
                     | DifferentStreamDefinitionAlreadyDefinedException e1) {
                 // TODO Auto-generated catch block
                 e1.printStackTrace();
-                twitter4j.Logger.getLogger(DataBridgeCasConsumer.class).debug("Stream Definition Failed");
+                Logger.getLogger(DataBridgeCasConsumer.class).debug("Stream Definition Failed");
             }
 
 
@@ -212,7 +212,7 @@ public class DataBridgeCasConsumer extends CasConsumer_ImplBase{
                 meta, correlation, payload);
 
         dataPublisher.publish(statisticsEvent);
-        twitter4j.Logger.getLogger(DataBridgeCasConsumer.class).info("Event Published Via DataBridge Successfully");
+        Logger.getLogger(DataBridgeCasConsumer.class).info("Event Published Via DataBridge Successfully");
     }
 
 }

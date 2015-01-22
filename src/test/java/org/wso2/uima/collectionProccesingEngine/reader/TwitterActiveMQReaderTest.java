@@ -1,4 +1,4 @@
-package org.wso2.uima.cpe.reader;
+package org.wso2.uima.collectionProccesingEngine.reader;
 
 import junit.framework.TestCase;
 import org.apache.uima.UIMAFramework;
@@ -14,7 +14,7 @@ public class TwitterActiveMQReaderTest extends TestCase {
      * @throws Exception
      */
     public void testInitialize() throws Exception {
-        XMLInputSource in = new XMLInputSource("src/test/java/org/wso2/uima/cpe/reader/TwitterActiveMQReader.xml");
+        XMLInputSource in = new XMLInputSource("src/test/java/org/wso2/uima/collectionProccesingEngine/reader/TwitterActiveMQReader.xml");
         CollectionReaderDescription desc = UIMAFramework.getXMLParser().parseCollectionReaderDescription(in);
         reader = (TwitterActiveMQReader)UIMAFramework.produceCollectionReader(desc);
         assertNotNull(reader);

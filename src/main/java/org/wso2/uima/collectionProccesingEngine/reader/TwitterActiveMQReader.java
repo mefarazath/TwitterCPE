@@ -1,6 +1,7 @@
-package org.wso2.uima.cpe.reader;
+package org.wso2.uima.collectionProccesingEngine.reader;
 
 import org.apache.activemq.ActiveMQConnectionFactory;
+import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 import org.apache.uima.cas.CAS;
 import org.apache.uima.cas.CASException;
@@ -11,7 +12,6 @@ import org.apache.uima.resource.ResourceInitializationException;
 import org.apache.uima.util.Progress;
 import org.apache.uima.util.ProgressImpl;
 import org.wso2.uima.types.TimeStamp;
-import twitter4j.Logger;
 
 import javax.jms.*;
 import java.io.IOException;

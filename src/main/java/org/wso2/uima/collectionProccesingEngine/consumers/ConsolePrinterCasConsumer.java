@@ -1,4 +1,4 @@
-package org.wso2.uima.cpe.consumers;
+package org.wso2.uima.collectionProccesingEngine.consumers;
 
 import org.apache.uima.cas.CAS;
 import org.apache.uima.cas.CASException;

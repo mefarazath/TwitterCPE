@@ -1,4 +1,4 @@
-package org.wso2.uima.cpe.analysisEngines;
+package org.wso2.uima.collectionProccesingEngine.analysisEngines;
 
 import opennlp.tools.doccat.DoccatModel;
 import opennlp.tools.doccat.DocumentCategorizerME;

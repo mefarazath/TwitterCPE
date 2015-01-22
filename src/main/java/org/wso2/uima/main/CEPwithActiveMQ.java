@@ -13,22 +13,24 @@ import org.apache.uima.util.XMLInputSource;
 
 import java.io.IOException;
 
+import static org.apache.log4j.Logger.*;
+
 /**
  * Created by farazath on 1/22/15.
  */
 public class CEPwithActiveMQ {
-    private static Logger logger = Logger.getLogger(CEPwithActiveMQ.class);
+    private static Logger logger = getLogger(CEPwithActiveMQ.class);
 
     public static void main(String[] args) throws IOException, InvalidXMLException, InterruptedException {
 
         org.apache.log4j.PropertyConfigurator.configure("conf/log4j.properties");
 
-        XMLInputSource in = new XMLInputSource("descriptors/cpe/twitterCPE.xml");
+        XMLInputSource in = new XMLInputSource("descriptors/collection-processing-engine/twitterCPE.xml");
         CpeDescription cpe_desc = UIMAFramework.getXMLParser().parseCpeDescription(in);
 
         CollectionProcessingEngine cpe = null;
 
-        logger.info("Application Intiated");
+        logger.info("Application Initiated");
         Thread.sleep(5000);
 
         while(true){
@@ -37,9 +39,15 @@ public class CEPwithActiveMQ {
 
                 cpe = UIMAFramework.produceCollectionProcessingEngine(cpe_desc);
                 cpe.process();
+
                 Thread.sleep(60000);
 
-                System.out.println(cpe.getPerformanceReport().toString());
+                if(!cpe.isProcessing()) {
+                    logger.info("******** Performance Report *********\n"+cpe.getPerformanceReport().toString());
+                }else{
+                    while (cpe.isProcessing())
+                        Thread.sleep(500);
+                }
 
             } catch (ResourceInitializationException e) {
                 e.printStackTrace();
@@ -54,10 +62,14 @@ public class CEPwithActiveMQ {
 
 class StatusCallBackCPE implements StatusCallbackListener {
 
+    public StatusCallBackCPE(){
+        org.apache.log4j.PropertyConfigurator.configure("conf/log4j.properties");
+
+    }
     @Override
     public void aborted() {
         // TODO Auto-generated method stub
-        Logger.getLogger(CEPwithActiveMQ.class).info("CPE aborted");
+        getLogger(CEPwithActiveMQ.class).info("CPE aborted");
         System.exit(1);
     }
 
@@ -70,13 +82,14 @@ class StatusCallBackCPE implements StatusCallbackListener {
     @Override
     public void collectionProcessComplete() {
         // TODO Auto-generated method stub
-        Logger.getLogger(CEPwithActiveMQ.class).info("CPE Processing Completed");
+        getLogger(CEPwithActiveMQ.class).info("CPE Processing Completed");
+
     }
 
     @Override
     public void initializationComplete() {
         // TODO Auto-generated method stub
-        Logger.getLogger(CEPwithActiveMQ.class).info("CPE Initialization Completed");
+        getLogger(CEPwithActiveMQ.class).info("CPE Initialization Completed");
     }
 
     @Override

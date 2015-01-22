@@ -17,7 +17,7 @@
  * under the License.
  */
 
-package org.wso2.uima.cpe.consumers;
+package org.wso2.uima.collectionProccesingEngine.consumers;
 
 import org.apache.uima.cas.CAS;
 import org.apache.uima.cas.CASException;
@@ -29,8 +29,7 @@ import org.apache.uima.resource.ResourceInitializationException;
 import org.apache.uima.resource.ResourceProcessException;
 import org.apache.uima.util.ProcessTrace;
 import org.wso2.uima.types.HashTag;
-import twitter4j.Logger;
-
+import org.apache.log4j.Logger;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;

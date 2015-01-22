@@ -1,10 +1,11 @@
-package org.wso2.uima.cpe.consumers;
+package org.wso2.uima.collectionProccesingEngine.consumers;
 
 import org.apache.axiom.om.util.Base64;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.SystemDefaultHttpClient;
+import org.apache.log4j.Logger;
 import org.apache.uima.cas.CAS;
 import org.apache.uima.cas.CASException;
 import org.apache.uima.cas.FSIndex;
@@ -12,10 +13,10 @@ import org.apache.uima.collection.CasConsumer_ImplBase;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.resource.ResourceInitializationException;
 import org.apache.uima.resource.ResourceProcessException;
-import org.wso2.uima.cpe.consumers.util.KeyStoreUtil;
+import org.wso2.uima.collectionProccesingEngine.consumers.util.KeyStoreUtil;
 import org.wso2.uima.types.LocationIdentification;
 import org.wso2.uima.types.TrafficLevelIdentifier;
-import twitter4j.Logger;
+
 import java.sql.Timestamp;
 import java.util.Date;
 import java.util.Iterator;
@@ -31,6 +32,7 @@ public class HttpCasConsumer  extends CasConsumer_ImplBase {
     String username;
     String password;
     String url;
+    private static Logger logger = Logger.getLogger(HttpCasConsumer.class);
 
     public void  initialize() throws ResourceInitializationException {
         httpClient = new SystemDefaultHttpClient();

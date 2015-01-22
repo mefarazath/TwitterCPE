@@ -23,6 +23,7 @@
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
         <module name="CEP Consumer" />
+        <module name="org.wso2.cpe.uima.twitter-extractor" />
         <module name="Twitter Extractor" />
         <module name="TwitterCPE" />
       </profile>

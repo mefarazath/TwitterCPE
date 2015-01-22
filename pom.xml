@@ -6,23 +6,7 @@
   <artifactId>org.wso2.cpe.uima.twitter-cpe</artifactId>
   <packaging>jar</packaging>
   <version>1.0</version>
-
   <dependencies>
-    <dependency>
-      <groupId>org.twitter4j</groupId>
-      <artifactId>twitter4j-core</artifactId>
-      <version>4.0.2</version>
-    </dependency>
-    <dependency>
-      <groupId>org.twitter4j</groupId>
-      <artifactId>twitter4j-stream</artifactId>
-      <version>4.0.2</version>
-    </dependency>
-    <dependency>
-      <groupId>org.twitter4j</groupId>
-      <artifactId>twitter4j-async</artifactId>
-      <version>4.0.2</version>
-    </dependency>
     <dependency>
       <groupId>org.apache.uima</groupId>
       <artifactId>uimaj-core</artifactId>
@@ -124,9 +108,6 @@
         </executions>
         <configuration>
           <mainClass>org.wso2.uima.main.CEPwithActiveMQ</mainClass>
-          <arguments>
-            <argument>demo</argument>
-          </arguments>
         </configuration>
 
         <dependencies>

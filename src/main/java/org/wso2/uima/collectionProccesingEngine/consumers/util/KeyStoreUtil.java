@@ -15,7 +15,7 @@
 * specific language governing permissions and limitations
 * under the License.
 */
-package org.wso2.uima.cpe.consumers.util;
+package org.wso2.uima.collectionProccesingEngine.consumers.util;
 
 import java.io.File;
 import java.security.KeyManagementException;

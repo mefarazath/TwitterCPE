@@ -1,4 +1,4 @@
-package org.wso2.uima.cpe.consumers;
+package org.wso2.uima.collectionProccesingEngine.consumers;
 
 /**
  * Created by vidura on 1/19/15.
@@ -6,6 +6,7 @@ package org.wso2.uima.cpe.consumers;
 
 import org.apache.http.client.HttpClient;
 import org.apache.http.impl.client.SystemDefaultHttpClient;
+import org.apache.log4j.Logger;
 import org.apache.uima.cas.CAS;
 import org.apache.uima.cas.CASException;
 import org.apache.uima.cas.FSIndex;
@@ -13,18 +14,18 @@ import org.apache.uima.collection.CasConsumer_ImplBase;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.resource.ResourceInitializationException;
 import org.apache.uima.resource.ResourceProcessException;
-import org.wso2.uima.cpe.consumers.util.KeyStoreUtil;
+import org.wso2.uima.collectionProccesingEngine.consumers.util.KeyStoreUtil;
 import org.wso2.uima.types.LocationIdentification;
 import org.wso2.uima.types.TrafficLevelIdentifier;
-import twitter4j.Logger;
 
 import javax.xml.soap.*;
 import java.sql.Timestamp;
 import java.util.Date;
 import java.util.Iterator;
 
-class SoapCasConsumer extends CasConsumer_ImplBase{
+class SoapCasConsumer extends CasConsumer_ImplBase {
 
+    private static Logger logger = Logger.getLogger(SoapCasConsumer.class);
     private String xmlElement;
     private HttpClient httpClient;
     private String username;
@@ -92,7 +93,7 @@ class SoapCasConsumer extends CasConsumer_ImplBase{
 
             this.publish(soapMessage);
 
-        } catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -154,7 +155,7 @@ class SoapCasConsumer extends CasConsumer_ImplBase{
     }
 
 
-    public void publish(SOAPMessage soapMessage){
+    public void publish(SOAPMessage soapMessage) {
         try {
 
             // Create SOAP Connection
