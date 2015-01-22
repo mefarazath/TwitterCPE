@@ -1,4 +1,4 @@
-package org.wso2.uima.cpe.consumer;
+package org.wso2.uima.cpe.consumers;
 
 import org.apache.uima.cas.CAS;
 import org.apache.uima.cas.CASException;
@@ -12,6 +12,7 @@ import org.wso2.carbon.databridge.agent.thrift.exception.AgentException;
 import org.wso2.carbon.databridge.commons.Event;
 import org.wso2.carbon.databridge.commons.StreamDefinition;
 import org.wso2.carbon.databridge.commons.exception.*;
+import org.wso2.uima.cpe.consumers.util.KeyStoreUtil;
 import org.wso2.uima.types.LocationIdentification;
 import org.wso2.uima.types.TrafficLevelIdentifier;
 import twitter4j.Logger;
@@ -21,7 +22,7 @@ import java.sql.Timestamp;
 import java.util.Date;
 import java.util.Iterator;
 
-public class TwitterCPE_Consumer extends CasConsumer_ImplBase{
+public class DataBridgeCasConsumer extends CasConsumer_ImplBase{
 
     public static int twittercounter= 0;
 
@@ -66,8 +67,8 @@ public class TwitterCPE_Consumer extends CasConsumer_ImplBase{
         }
 
         //locationString = locationString.substring(0,locationString.length()-1);
-        Logger.getLogger(TwitterCPE_Consumer.class).info("Annotated Location :  "+locationString);
-        Logger.getLogger(TwitterCPE_Consumer.class).info("Annotated Traffic :  "+trafficLevel);
+        Logger.getLogger(DataBridgeCasConsumer.class).info("Annotated Location :  "+locationString);
+        Logger.getLogger(DataBridgeCasConsumer.class).info("Annotated Traffic :  "+trafficLevel);
 
 
        // locationString = "Colombo";
@@ -117,7 +118,7 @@ public class TwitterCPE_Consumer extends CasConsumer_ImplBase{
 
         KeyStoreUtil.setTrustStoreParams();
 
-        String host = "10.100.4.39";
+        String host = "localhost";
         String port = "7611";
         String username = "admin";
         String password = "admin";
@@ -127,7 +128,7 @@ public class TwitterCPE_Consumer extends CasConsumer_ImplBase{
         try {
 
             dataPublisher = new DataPublisher(url,username,password);
-            twitter4j.Logger.getLogger(TwitterCPE_Consumer.class).debug("Data Publisher Created");
+            twitter4j.Logger.getLogger(DataBridgeCasConsumer.class).debug("Data Publisher Created");
 
         } catch (MalformedURLException e1) {
             // TODO Auto-generated catch block
@@ -146,7 +147,7 @@ public class TwitterCPE_Consumer extends CasConsumer_ImplBase{
 
         try {
             streamID = dataPublisher.findStream(STREAM_NAME, VERSION);
-            twitter4j.Logger.getLogger( TwitterCPE_Consumer.class).debug("Stream Definition Already Exists");
+            twitter4j.Logger.getLogger( DataBridgeCasConsumer.class).debug("Stream Definition Already Exists");
 
         } catch (NoStreamDefinitionExistException | AgentException | StreamDefinitionException e) {
             try {
@@ -173,22 +174,22 @@ public class TwitterCPE_Consumer extends CasConsumer_ImplBase{
                         " ]" +
                         "}");
 
-                twitter4j.Logger.getLogger(TwitterCPE_Consumer.class).info("Stream ID : "+streamID);
-                twitter4j.Logger.getLogger(TwitterCPE_Consumer.class).debug("Stream was not found and defined successfully");
+                twitter4j.Logger.getLogger(DataBridgeCasConsumer.class).info("Stream ID : "+streamID);
+                twitter4j.Logger.getLogger(DataBridgeCasConsumer.class).debug("Stream was not found and defined successfully");
 
             } catch (AgentException | MalformedStreamDefinitionException
                     | StreamDefinitionException
                     | DifferentStreamDefinitionAlreadyDefinedException e1) {
                 // TODO Auto-generated catch block
                 e1.printStackTrace();
-                twitter4j.Logger.getLogger(TwitterCPE_Consumer.class).debug("Stream Definition Failed");
+                twitter4j.Logger.getLogger(DataBridgeCasConsumer.class).debug("Stream Definition Failed");
             }
 
 
         }
 
 //      /  System.out.println("/////////////////   " + streamId1);
-        super.initialize();
+      //  super.initialize();
 
     }
 
@@ -211,7 +212,7 @@ public class TwitterCPE_Consumer extends CasConsumer_ImplBase{
                 meta, correlation, payload);
 
         dataPublisher.publish(statisticsEvent);
-        twitter4j.Logger.getLogger(TwitterCPE_Consumer.class).info("Event Published Via DataBridge Successfully");
+        twitter4j.Logger.getLogger(DataBridgeCasConsumer.class).info("Event Published Via DataBridge Successfully");
     }
 
 }

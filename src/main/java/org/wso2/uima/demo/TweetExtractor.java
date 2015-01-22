@@ -92,8 +92,8 @@ public class TweetExtractor {
             }
         }
 
-        String filename =  "road_lk.txt";
-        BufferedWriter writer = new BufferedWriter(new FileWriter(filename));
+       // String filename =  "road_lk.txt";
+        //BufferedWriter writer = new BufferedWriter(new FileWriter(filename));
 
 
         JSONArray array = new JSONArray();

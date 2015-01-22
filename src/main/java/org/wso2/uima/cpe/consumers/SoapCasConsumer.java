@@ -1,12 +1,10 @@
-package org.wso2.uima.cpe.consumer;
+package org.wso2.uima.cpe.consumers;
 
 /**
  * Created by vidura on 1/19/15.
  */
 
 import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.SystemDefaultHttpClient;
 import org.apache.uima.cas.CAS;
 import org.apache.uima.cas.CASException;
@@ -15,22 +13,23 @@ import org.apache.uima.collection.CasConsumer_ImplBase;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.resource.ResourceInitializationException;
 import org.apache.uima.resource.ResourceProcessException;
-import org.eclipse.osgi.internal.signedcontent.Base64;
+import org.wso2.uima.cpe.consumers.util.KeyStoreUtil;
 import org.wso2.uima.types.LocationIdentification;
 import org.wso2.uima.types.TrafficLevelIdentifier;
 import twitter4j.Logger;
 
+import javax.xml.soap.*;
 import java.sql.Timestamp;
 import java.util.Date;
 import java.util.Iterator;
 
-class SoapConsumer extends CasConsumer_ImplBase{
+class SoapCasConsumer extends CasConsumer_ImplBase{
 
     private String xmlElement;
     private HttpClient httpClient;
-    String username;
-    String password;
-    String url;
+    private String username;
+    private String password;
+    private String url;
 
     @Override
     public void processCas(CAS cas) throws ResourceProcessException {
@@ -64,9 +63,40 @@ class SoapConsumer extends CasConsumer_ImplBase{
             trafficLevel = level.getTrafficLevel();
         }
 
-        Logger.getLogger(TwitterCPE_Consumer.class).info("Annotated Text :  " + locationString.trim());
-        Logger.getLogger(TwitterCPE_Consumer.class).info("Annotated Text :  " + trafficLevel);
+        Logger.getLogger(SoapCasConsumer.class).info("Annotated Text :  " + locationString.trim());
+        Logger.getLogger(SoapCasConsumer.class).info("Annotated Text :  " + trafficLevel);
 
+        //creating soap message
+        try {
+            MessageFactory messageFactory = MessageFactory.newInstance();
+            SOAPMessage soapMessage = messageFactory.createMessage();
+            SOAPPart soapPart = soapMessage.getSOAPPart();
+
+            // SOAP Envelope
+            SOAPEnvelope envelope = soapPart.getEnvelope();
+
+            // SOAP Body
+            SOAPBody soapBody = envelope.getBody();
+            SOAPElement eventsElement = soapBody.addChildElement("events");
+            SOAPElement eventElement = eventsElement.addChildElement("event");
+            SOAPElement metaDataElement = eventElement.addChildElement("metaData");
+            SOAPElement timeStampElement = metaDataElement.addChildElement("timeStamp");
+            timeStampElement.addTextNode(time);
+            SOAPElement payloadDataElement = eventElement.addChildElement("payloadData");
+            SOAPElement locationElement = payloadDataElement.addChildElement("Location");
+            locationElement.addTextNode(locationString);
+            SOAPElement trafficLevelElement = payloadDataElement.addChildElement("TrafficLevel");
+            trafficLevelElement.addTextNode(trafficLevel);
+            SOAPElement tweetTextElement = payloadDataElement.addChildElement("TweetText");
+            tweetTextElement.addTextNode(tweetText);
+
+            this.publish(soapMessage);
+
+        } catch(Exception e){
+            e.printStackTrace();
+        }
+
+        /*
         xmlElement = "<events>" +
                 " <event>" +
                 " <metaData>" +
@@ -79,6 +109,7 @@ class SoapConsumer extends CasConsumer_ImplBase{
                 " </payloadData>" +
                 " </event>" +
                 " </events>";
+
 
         try {
             HttpPost method = new HttpPost(url);
@@ -96,7 +127,7 @@ class SoapConsumer extends CasConsumer_ImplBase{
             t.printStackTrace();
         }
 
-        /*
+
         xmlElement = "<httpConsumer:org.wso2.uima.TwitterExtractedFeed xmlns:httpConsumer=\"http://samples.wso2.org/\">\n" +
                     " <httpConsumer:trafficUpdate>" +
                     " <httpConsumer:meta_timeStamp>" + time + "</httpConsumer:meta_timeStamp>\n" +
@@ -123,11 +154,33 @@ class SoapConsumer extends CasConsumer_ImplBase{
     }
 
 
+    public void publish(SOAPMessage soapMessage){
+        try {
+
+            // Create SOAP Connection
+            SOAPConnectionFactory soapConnectionFactory = SOAPConnectionFactory.newInstance();
+            SOAPConnection soapConnection = soapConnectionFactory.createConnection();
+
+            // Send SOAP Message to SOAP Server
+            SOAPMessage soapResponse = soapConnection.call(soapMessage, url);
+
+            // close soap connection
+            soapConnection.close();
+
+        } catch (Exception e) {
+            System.err.println("Error occurred while sending SOAP Request to Server");
+            e.printStackTrace();
+        }
+    }
+
+/*
     private static void processAuthentication(HttpPost method, String username, String password) {
         if (username != null && username.trim().length() > 0) {
             method.setHeader("Authorization", "Basic " + Base64.encode(
                     (username + ":" + password).getBytes()));
         }
     }
+*/
+
 
 }

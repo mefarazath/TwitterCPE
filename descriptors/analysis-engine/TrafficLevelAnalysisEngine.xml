@@ -2,10 +2,13 @@
 <analysisEngineDescription xmlns="http://uima.apache.org/resourceSpecifier">
   <frameworkImplementation>org.apache.uima.java</frameworkImplementation>
   <primitive>true</primitive>
-  <annotatorImplementationName>org.wso2.uima.cpe.ae.TrafficLevelAnalyser</annotatorImplementationName>
+  <annotatorImplementationName>org.wso2.uima.cpe.analysisEngines.TrafficLevelAnalyser</annotatorImplementationName>
   <analysisEngineMetaData>
-    <name>TrafficLevelAnalyser</name>
-    <description/>
+    <name>TrafficLevelAnalysisEngine</name>
+    <description>
+          Analysis Engine that categorizes the Tweet Text Describing the traffic into levels
+          High,Medium,Low,Random using Apache OpenNLP libraries
+    </description>
     <version>1.0</version>
     <vendor/>
     <configurationParameters/>

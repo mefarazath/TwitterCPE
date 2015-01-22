@@ -1,6 +1,6 @@
 
 
-/* First created by JCasGen Wed Jan 07 09:20:13 IST 2015 */
+/* First created by JCasGen Thu Jan 22 13:35:59 IST 2015 */
 package org.wso2.uima.types;
 
 import org.apache.uima.jcas.JCas; 
@@ -11,15 +11,15 @@ import org.apache.uima.jcas.tcas.Annotation;
 
 
 /** 
- * Updated by JCasGen Wed Jan 07 09:20:13 IST 2015
- * XML source: /home/achintha/workspace/TwitterFeedExtractor/desc/LocationIdentifierAnalysisEngine.xml
+ * Updated by JCasGen Thu Jan 22 13:43:30 IST 2015
+ * XML source: /home/farazath/IdeaProjects/TwitterCPE/descriptors/readers/TwitterActiveMQReader.xml
  * @generated */
-public class LocationIdentification extends Annotation {
+public class TimeStamp extends Annotation {
   /** @generated
    * @ordered 
    */
   @SuppressWarnings ("hiding")
-  public final static int typeIndexID = JCasRegistry.register(LocationIdentification.class);
+  public final static int typeIndexID = JCasRegistry.register(TimeStamp.class);
   /** @generated
    * @ordered 
    */
@@ -33,14 +33,14 @@ public class LocationIdentification extends Annotation {
  
   /** Never called.  Disable default constructor
    * @generated */
-  protected LocationIdentification() {/* intentionally empty block */}
+  protected TimeStamp() {/* intentionally empty block */}
     
   /** Internal - constructor used by generator 
    * @generated
    * @param addr low level Feature Structure reference
    * @param type the type of this Feature Structure 
    */
-  public LocationIdentification(int addr, TOP_Type type) {
+  public TimeStamp(int addr, TOP_Type type) {
     super(addr, type);
     readObject();
   }
@@ -48,7 +48,7 @@ public class LocationIdentification extends Annotation {
   /** @generated
    * @param jcas JCas to which this Feature Structure belongs 
    */
-  public LocationIdentification(JCas jcas) {
+  public TimeStamp(JCas jcas) {
     super(jcas);
     readObject();   
   } 
@@ -58,7 +58,7 @@ public class LocationIdentification extends Annotation {
    * @param begin offset to the begin spot in the SofA
    * @param end offset to the end spot in the SofA 
   */  
-  public LocationIdentification(JCas jcas, int begin, int end) {
+  public TimeStamp(JCas jcas, int begin, int end) {
     super(jcas);
     setBegin(begin);
     setEnd(end);
@@ -74,6 +74,28 @@ public class LocationIdentification extends Annotation {
    */
   private void readObject() {/*default - does nothing empty block */}
      
-}
+ 
+    
+  //*--------------*
+  //* Feature: TimeStamp
+
+  /** getter for TimeStamp - gets 
+   * @generated
+   * @return value of the feature 
+   */
+  public long getTimeStamp() {
+    if (TimeStamp_Type.featOkTst && ((TimeStamp_Type)jcasType).casFeat_TimeStamp == null)
+      jcasType.jcas.throwFeatMissing("TimeStamp", "org.wso2.uima.types.TimeStamp");
+    return jcasType.ll_cas.ll_getLongValue(addr, ((TimeStamp_Type)jcasType).casFeatCode_TimeStamp);}
+    
+  /** setter for TimeStamp - sets  
+   * @generated
+   * @param v value to set into the feature 
+   */
+  public void setTimeStamp(long v) {
+    if (TimeStamp_Type.featOkTst && ((TimeStamp_Type)jcasType).casFeat_TimeStamp == null)
+      jcasType.jcas.throwFeatMissing("TimeStamp", "org.wso2.uima.types.TimeStamp");
+    jcasType.ll_cas.ll_setLongValue(addr, ((TimeStamp_Type)jcasType).casFeatCode_TimeStamp, v);}    
+  }
 
     

@@ -1,4 +1,4 @@
-package org.wso2.uima.cpe.consumer;
+package org.wso2.uima.cpe.consumers.util;
 
 
 import java.security.cert.CertificateException;

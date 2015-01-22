@@ -1,4 +1,4 @@
-package org.wso2.uima.cpe.consumer;
+package org.wso2.uima.cpe.consumers;
 
 import org.apache.axiom.om.util.Base64;
 import org.apache.http.client.HttpClient;
@@ -12,6 +12,7 @@ import org.apache.uima.collection.CasConsumer_ImplBase;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.resource.ResourceInitializationException;
 import org.apache.uima.resource.ResourceProcessException;
+import org.wso2.uima.cpe.consumers.util.KeyStoreUtil;
 import org.wso2.uima.types.LocationIdentification;
 import org.wso2.uima.types.TrafficLevelIdentifier;
 import twitter4j.Logger;
@@ -70,8 +71,8 @@ public class HttpCasConsumer  extends CasConsumer_ImplBase {
             trafficLevel = level.getTrafficLevel();
         }
 
-        Logger.getLogger(TwitterCPE_Consumer.class).info("Annotated Text :  "+locationString.trim());
-        Logger.getLogger(TwitterCPE_Consumer.class).info("Annotated Text :  "+trafficLevel);
+        Logger.getLogger(DataBridgeCasConsumer.class).info("Annotated Text :  "+locationString.trim());
+        Logger.getLogger(DataBridgeCasConsumer.class).info("Annotated Text :  "+trafficLevel);
 
        // if (!locationString.equals("") && !trafficLevel.equals("Random") )
             publish(tweetText, locationString, trafficLevel);

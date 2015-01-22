@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<collectionReaderDescription xmlns="http://uima.apache.org/resourceSpecifier">
+    <frameworkImplementation>org.apache.uima.java</frameworkImplementation>
+    <implementationName>org.wso2.uima.cpe.reader.TwitterActiveMQReader</implementationName>
+    <processingResourceMetaData>
+        <name>TwitterCollectionReader_Descriptor</name>
+        <description>Collection Reader For the Twitter Streaming API</description>
+        <version>1.0</version>
+        <vendor/>
+
+        <!--- Configuration Paramters to be used are declared here-->
+        <configurationParameters>
+            <configurationParameter>
+                <name>JMSUrL</name>
+                <description>URL of the ActiveMQ Broker
+                    by default this is "tcp://localhost:61616"
+                </description>
+                <type>String</type>
+                <multiValued>false</multiValued>
+                <mandatory>true</mandatory>
+            </configurationParameter>
+
+            <configurationParameter>
+                <name>queueName</name>
+                <description>JMS Queue from which the Reader fetches messages</description>
+                <type>String</type>
+                <multiValued>false</multiValued>
+                <mandatory>true</mandatory>
+            </configurationParameter>
+
+            <configurationParameter>
+                <name>maxMessagesToDequeue</name>
+                <description>Maximum Number of Messages the Reader can dequeue from the JMS Queue</description>
+                <type>Integer</type>
+                <multiValued>false</multiValued>
+                <mandatory>true</mandatory>
+            </configurationParameter>
+        </configurationParameters>
+
+        <!--- Configuration Parameter Values -->
+        <configurationParameterSettings>
+            <nameValuePair>
+                <name>maxMessagesToDequeue</name>
+                <value>
+                    <integer>10</integer>
+                </value>
+            </nameValuePair>
+            <nameValuePair>
+                <name>queueName</name>
+                <value>
+                    <string>TwitterExtractedFeed</string>
+                </value>
+            </nameValuePair>
+            <nameValuePair>
+                <name>JMSUrL</name>
+                <value>
+                    <string>tcp://localhost:61616</string>
+                </value>
+            </nameValuePair>
+        </configurationParameterSettings>
+        <typeSystemDescription/>
+        <typePriorities/>
+        <fsIndexCollection/>
+        <capabilities>
+            <capability>
+                <inputs/>
+                <outputs/>
+                <languagesSupported/>
+            </capability>
+        </capabilities>
+        <operationalProperties>
+            <modifiesCas>true</modifiesCas>
+            <multipleDeploymentAllowed>false</multipleDeploymentAllowed>
+            <outputsNewCASes>true</outputsNewCASes>
+        </operationalProperties>
+    </processingResourceMetaData>
+    <resourceManagerConfiguration/>
+</collectionReaderDescription>

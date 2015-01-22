@@ -12,7 +12,7 @@ import org.apache.uima.jcas.tcas.Annotation;
 
 /** 
  * Updated by JCasGen Sun Jan 18 00:11:37 IST 2015
- * XML source: /home/achintha/workspace/UIMAAnnotatorTest/desc/TrafficLevelAnalyser.xml
+ * XML source: /home/achintha/workspace/UIMAAnnotatorTest/desc/TrafficLevelAnalysisEngine.xml
  * @generated */
 public class TrafficLevelIdentifier extends Annotation {
   /** @generated

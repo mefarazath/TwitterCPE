@@ -1,16 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <cpeDescription xmlns="http://uima.apache.org/resourceSpecifier">
-    <collectionReader>
+   <!-- <collectionReader>
         <collectionIterator>
             <descriptor>
                 <import location="../readers/TwitterCollectionReader_Descriptor.xml"/>
+            </descriptor>
+        </collectionIterator>
+    </collectionReader> -->
+    <collectionReader>
+        <collectionIterator>
+            <descriptor>
+                <import location="../readers/TwitterActiveMQReader.xml"/>
             </descriptor>
         </collectionIterator>
     </collectionReader>
     <casProcessors casPoolSize="3" processingUnitThreadCount="1">
         <casProcessor deployment="integrated" name="TrafficLocationAE">
             <descriptor>
-                <import location="../analysis-engine/TrafficLocationAE.xml"/>
+                <import location="../analysis-engine/TrafficLocationAggregateAnalysisEngine.xml"/>
             </descriptor>
             <deploymentParameters/>
             <errorHandling>

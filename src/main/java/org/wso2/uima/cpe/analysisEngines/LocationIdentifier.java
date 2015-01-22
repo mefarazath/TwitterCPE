@@ -1,4 +1,4 @@
-package org.wso2.uima.cpe.ae;
+package org.wso2.uima.cpe.analysisEngines;
 
 import opennlp.tools.chunker.ChunkerME;
 import opennlp.tools.chunker.ChunkerModel;

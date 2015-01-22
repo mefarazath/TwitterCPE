@@ -21,7 +21,7 @@
    -->
 <casConsumerDescription xmlns="http://uima.apache.org/resourceSpecifier">
     <frameworkImplementation>org.apache.uima.java</frameworkImplementation>
-    <implementationName>org.wso2.uima.cpe.consumer.AnnotationPrinter</implementationName>
+    <implementationName>org.wso2.uima.cpe.consumers.AnnotationPrinter</implementationName>
 	<processingResourceMetaData>
 		<name>Annotation Printer</name>
 		<description>Prints annotations.</description>

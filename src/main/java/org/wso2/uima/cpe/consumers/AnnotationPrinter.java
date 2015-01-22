@@ -17,7 +17,7 @@
  * under the License.
  */
 
-package org.wso2.uima.cpe.consumer;
+package org.wso2.uima.cpe.consumers;
 
 import org.apache.uima.cas.CAS;
 import org.apache.uima.cas.CASException;

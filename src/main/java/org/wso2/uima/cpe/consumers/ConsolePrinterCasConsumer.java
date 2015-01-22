@@ -1,4 +1,4 @@
-package org.wso2.uima.cpe.consumer;
+package org.wso2.uima.cpe.consumers;
 
 import org.apache.uima.cas.CAS;
 import org.apache.uima.cas.CASException;
@@ -9,7 +9,7 @@ import org.wso2.uima.types.LocationIdentification;
 
 import java.util.Iterator;
 
-public class TwitterCPE_Consumer_Printer extends CasConsumer_ImplBase{
+public class ConsolePrinterCasConsumer extends CasConsumer_ImplBase{
 
 
 	@Override

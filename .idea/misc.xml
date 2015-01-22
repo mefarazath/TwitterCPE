@@ -35,6 +35,8 @@
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/../Twitter Extractor/pom.xml" />
+        <option value="$PROJECT_DIR$/../Twitter Streamer/pom.xml" />
       </list>
     </option>
   </component>

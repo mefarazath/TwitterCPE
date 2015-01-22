@@ -10,6 +10,8 @@ import org.apache.uima.collection.metadata.CpeDescription;
 import org.apache.uima.resource.ResourceInitializationException;
 import org.apache.uima.util.InvalidXMLException;
 import org.apache.uima.util.XMLInputSource;
+import org.wso2.uima.cpe.reader.StatusHandler;
+import org.wso2.uima.cpe.reader.TwitterStreamer;
 import org.wso2.uima.cpe.reader.data.Tweet;
 import org.wso2.uima.demo.DemoClient;
 
@@ -21,8 +23,9 @@ import java.util.ArrayList;
 public class RunCPE {
 
 	public static ArrayList<Tweet> sharedList;	
-	private final Logger logger = Logger.getLogger(RunCPE.class);
-	public static DemoClient client;
+	private static Logger logger = Logger.getLogger(RunCPE.class);
+	public static DemoClient client = null;
+	private boolean DemoMode;
 
 
 	public static void main(String[] args)
@@ -38,31 +41,32 @@ public class RunCPE {
 
 		long[] follow = new long[] { 711930980, 808888003, 4366881, 2984541727l };
 
-		//TwitterStreamer streamer = new TwitterStreamer(follow);
-		//StatusHandler handler = new StatusHandler(sharedList);
-		//System.out.println("Application Started");
+		// check command line arg to see whether to run in demo mode
+		if("demo".equals(args[0].toLowerCase())) {
+			logger.info("Program Started in Demo Mode");
+			client = new DemoClient(sharedList, "road_lk");
+		}
+		else{
+			logger.info("Program Started in Streaming Mode");
+			TwitterStreamer streamer = new TwitterStreamer(follow);
+			StatusHandler handler = new StatusHandler(sharedList);
+			streamer.startStream(handler);
+		}
 
-		//streamer.startStream(handler);
 		Thread.sleep(10000);
-		Logger.getLogger(RunCPE.class).info("Streaming Tweets Started");
-		
-
-		//runs the demo client which streams past tweets from road.lk
-		// comment if you want to work only real time tweets
-		client = new DemoClient(sharedList, "road_lk");
-		//client.fetchNext(100);
 
 		while (true) {
 
 			System.out.println("\n*******************1 Minute Window Expired*********************");
 			// fetch next {amount} of demo tweets
-			client.fetchNext(100);
+			if(client != null)
+				client.fetchNext(6);
 
-			Logger.getLogger(RunCPE.class).info(
+			logger.info(
 					"Tweets Recieved : " + sharedList.size());
 
 			for (Tweet t : sharedList) {
-				Logger.getLogger(RunCPE.class).debug(
+				logger.debug(
 						"Recieved : " + t.toString());
 			}
 
@@ -83,7 +87,7 @@ class statusCallBackCPE implements StatusCallbackListener{
 	public void aborted() {
 		// TODO Auto-generated method stub
 		System.out.println("CPE aborted");
-		  System.exit(1);
+		System.exit(1);
 	}
 
 	@Override
