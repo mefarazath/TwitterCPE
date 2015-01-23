@@ -24,8 +24,6 @@ import java.util.Iterator;
 
 public class DataBridgeCasConsumer extends CasConsumer_ImplBase{
 
-    private static int twittercounter= 0;
-
     private static final String STREAM_NAME = "org.wso2.uima.TwitterExtractedFeed";
     private static final String VERSION = "1.0.0";
 
@@ -35,6 +33,9 @@ public class DataBridgeCasConsumer extends CasConsumer_ImplBase{
 
     private static String streamID = null;
     private static DataPublisher dataPublisher;
+    private String url;
+    private String username;
+    private String password;
 
     private static Logger logger = Logger.getLogger(DataBridgeCasConsumer.class);
 
@@ -56,9 +57,6 @@ public class DataBridgeCasConsumer extends CasConsumer_ImplBase{
         FSIndex locationIndex = output.getAnnotationIndex(LocationIdentification.type);
         for (Iterator<LocationIdentification> it = locationIndex.iterator(); it.hasNext();) {
             LocationIdentification annotation = it.next();
-            //    System.out.println("AN2...(" + annotation.getBegin() + "," +
-            //      annotation.getEnd() + "): " +
-            //      annotation.getCoveredText());
             if(!locationString.contains(annotation.getCoveredText()))
                 locationString = locationString + annotation.getCoveredText()+" ";
         }
@@ -78,17 +76,13 @@ public class DataBridgeCasConsumer extends CasConsumer_ImplBase{
         logger.debug("Annotated Traffic :  " + trafficLevel);
 
 
-       // locationString = "Colombo";
-
         //Publish event for a valid stream
         if (streamID != null && !locationString.equals("")) {
          //   System.out.println("Stream ID: " + streamID+"  to be Published");
 
             try {
 
-                twittercounter++;
-
-             //   String[] locations = locationString.substring(0,locationString.length()-1).split(",");
+                //   String[] locations = locationString.substring(0,locationString.length()-1).split(",");
            //     System.out.println("LOCATIONS DETECTED  : "+locations.length);
              //   for(String location : locations){
                     publishEvents(
@@ -106,13 +100,6 @@ public class DataBridgeCasConsumer extends CasConsumer_ImplBase{
                 e1.printStackTrace();
             }
 
-         /*   try {
-                Thread.sleep(3000);
-            } catch (InterruptedException e) {
-                //ignore
-            }
-*/
-
         }
 
     }
@@ -126,9 +113,9 @@ public class DataBridgeCasConsumer extends CasConsumer_ImplBase{
         KeyStoreUtil.setTrustStoreParams();
 
        // get the configuration parameters from the descriptor file
-       String url = (String)getConfigParameterValue(PARAM_SERVER_URL);
-       String username = (String)getConfigParameterValue(PARAM_USERNAME);
-       String password = (String)getConfigParameterValue(PARAM_PASSWORD);
+       url = (String)getConfigParameterValue(PARAM_SERVER_URL);
+       username = (String)getConfigParameterValue(PARAM_USERNAME);
+       password = (String)getConfigParameterValue(PARAM_PASSWORD);
 
         try {
 
@@ -198,7 +185,7 @@ public class DataBridgeCasConsumer extends CasConsumer_ImplBase{
 
     }
 
-    private static void publishEvents(DataPublisher dataPublisher, String streamId, String ... payloadArgs)
+    private void publishEvents(DataPublisher dataPublisher, String streamId, String ... payloadArgs)
             throws AgentException {
 
         Date date= new Date();
@@ -211,13 +198,14 @@ public class DataBridgeCasConsumer extends CasConsumer_ImplBase{
 
         Object[] payload = payloadArgs;
 
+        // TODO ADD NULL
         Object[] correlation = new Object[]{};
 
         Event statisticsEvent = new Event(streamId, System.currentTimeMillis(),
                 meta, correlation, payload);
 
         dataPublisher.publish(statisticsEvent);
-        logger.info("Event Published Via DataBridge Successfully");
+        logger.info("Event Published Via DataBridge Successfully to "+url);
     }
 
 }

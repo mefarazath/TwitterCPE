@@ -61,7 +61,7 @@ public class TwitterActiveMQReader extends CollectionReader_ImplBase {
             logger.debug("Consumer Created Successfully");
             consumer = session.createConsumer(queue);
 
-            Message message = null;
+            Message message;
             int count = 1;
 
             while (((message = consumer.receive(1000)) != null) && (message instanceof TextMessage) ){
@@ -69,30 +69,36 @@ public class TwitterActiveMQReader extends CollectionReader_ImplBase {
                 TextMessage txtMsg = (TextMessage)message;
 
                 tweets.add(txtMsg);
-                logger.debug("Message Dequeued #" + (count++) + ": " + txtMsg.getText());
+                logger.debug("Message Dequeued #" + (count++) + ": " + txtMsg.getText()+" from "+JMSUrl);
 
                if(count > maxCount)
                     break;
 
             }
             logger.info(TwitterActiveMQReader.class.getSimpleName()+" initilialized Successfully");
-            logger.info("Number of Messages Dequeued by Reader : " + tweets.size());
+            logger.info("Number of Messages Dequeued by Reader : " + tweets.size()+" from "+JMSUrl);
 
         } catch (JMSException e) {
-            e.printStackTrace();
+            //e.printStackTrace();
+            // TODO add an error log here
             System.exit(0);
         }finally {
-            if (connection != null) {
+
                 try {
-                    consumer.close();
-                    connection.close();
+                    if (connection != null) {
+                        connection.close();
+                    }
+                    if(consumer != null){
+                        consumer.close();
+                    }
                 } catch (JMSException e) {
                     e.printStackTrace();
+                    // TODO log message
                 }
             }
         }
 
-    }
+
 
     @Override
     public void getNext(CAS aCAS) throws IOException, CollectionException {
@@ -114,8 +120,9 @@ public class TwitterActiveMQReader extends CollectionReader_ImplBase {
             timeStamp.setTimeStamp(textMsg.getJMSTimestamp());
 
         } catch (JMSException e) {
-            e.printStackTrace();
-            logger.error("Error when retrieving text from JMS Text Message");
+           // e.printStackTrace();
+            // TODO log context
+            logger.error("Error when retrieving text from JMS Text Message ",e);
         }
 
         logger.debug("CAS DocText: "+jcas.getDocumentText());

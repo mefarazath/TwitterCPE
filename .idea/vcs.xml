@@ -3,5 +3,6 @@
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$/../TweetExtractor-ActiveMQ" vcs="Git" />
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../TwitterStreamer-ActiveMQ" vcs="Git" />
   </component>
 </project>

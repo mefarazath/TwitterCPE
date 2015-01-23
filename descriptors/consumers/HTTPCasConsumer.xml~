@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<casConsumerDescription xmlns="http://uima.apache.org/resourceSpecifier">
+    <frameworkImplementation>org.apache.uima.java</frameworkImplementation>
+    <implementationName>org.wso2.uima.collectionProccesingEngine.consumers.HttpCasConsumer</implementationName>
+    <processingResourceMetaData>
+        <name>httpCasConsumer</name>
+        <description/>
+        <version>1.0</version>
+        <vendor/>
+        <configurationParameters>
+
+            <configurationParameter>
+                <name>httpEndPoint</name>
+                <description>HTTP EndPoint to which the CasConsumer publishes events to</description>
+                <type>String</type>
+                <multiValued>false</multiValued>
+                <mandatory>true</mandatory>
+            </configurationParameter>
+
+            <configurationParameter>
+                <name>username</name>
+                <description>Username of the tenant to connect to databridge</description>
+                <type>String</type>
+                <multiValued>false</multiValued>
+                <mandatory>true</mandatory>
+            </configurationParameter>
+
+            <configurationParameter>
+                <name>password</name>
+                <description>Password to authenticate</description>
+                <type>String</type>
+                <multiValued>false</multiValued>
+                <mandatory>true</mandatory>
+            </configurationParameter>
+        </configurationParameters>
+
+        <configurationParameterSettings>
+
+            <nameValuePair>
+                <name>httpEndPoint</name>
+                <value>
+                    <string>https://10.100.4.40:9443/endpoints/HttpAdapter/TrafficUpdate</string>
+                </value>
+            </nameValuePair>
+            <nameValuePair>
+                <name>username</name>
+                <value>
+                    <string>admin</string>
+                </value>
+            </nameValuePair>
+            <nameValuePair>
+                <name>password</name>
+                <value>
+                    <string>admin</string>
+                </value>
+            </nameValuePair>
+
+        </configurationParameterSettings>
+        <typeSystemDescription/>
+        <typePriorities/>
+        <fsIndexCollection/>
+        <capabilities>
+            <capability>
+                <inputs/>
+                <outputs/>
+                <languagesSupported/>
+            </capability>
+        </capabilities>
+        <operationalProperties>
+            <modifiesCas>false</modifiesCas>
+            <multipleDeploymentAllowed>true</multipleDeploymentAllowed>
+            <outputsNewCASes>false</outputsNewCASes>
+        </operationalProperties>
+    </processingResourceMetaData>
+    <resourceManagerConfiguration/>
+</casConsumerDescription>

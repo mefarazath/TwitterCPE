@@ -76,6 +76,7 @@ public class LocationIdentifier extends JCasAnnotator_ImplBase {
 		String text = jcas.getDocumentText();
 		Span[] sentSpans = sentenceDetector.sentPosDetect(jcas
 				.getDocumentText());
+
 		for (Span sentSpan : sentSpans) {
 			String sentence = sentSpan.getCoveredText(text).toString();
 			int start = sentSpan.getStart();
@@ -85,7 +86,8 @@ public class LocationIdentifier extends JCasAnnotator_ImplBase {
 				tokens[i] = tokSpans[i].getCoveredText(sentence).toString();
 			}
 
-			System.out.println();
+			//System.out.println();
+			logger.info("Tweet Text: "+jcas.getDocumentText());
 			Span locationSpans[] = locationFinder.find(tokens);
 			LocationIdentification annotation = new LocationIdentification(jcas);
 			for (Span location: locationSpans) {

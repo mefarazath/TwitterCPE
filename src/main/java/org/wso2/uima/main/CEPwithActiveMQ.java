@@ -38,6 +38,7 @@ public class CEPwithActiveMQ {
             try {
 
                 cpe = UIMAFramework.produceCollectionProcessingEngine(cpe_desc);
+                cpe.addStatusCallbackListener(new StatusCallBackCPE());
                 cpe.process();
 
                 Thread.sleep(60000);
@@ -47,6 +48,7 @@ public class CEPwithActiveMQ {
                 }
 
             } catch (ResourceInitializationException e) {
+                //TODO
                 e.printStackTrace();
                 break;
             }

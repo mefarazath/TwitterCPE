@@ -3,6 +3,8 @@ package org.wso2.uima.collectionProccesingEngine.consumers;
 import org.apache.axiom.om.util.Base64;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.conn.scheme.Scheme;
+import org.apache.http.conn.ssl.SSLSocketFactory;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.SystemDefaultHttpClient;
 import org.apache.log4j.Logger;
@@ -17,6 +19,8 @@ import org.wso2.uima.collectionProccesingEngine.consumers.util.KeyStoreUtil;
 import org.wso2.uima.types.LocationIdentification;
 import org.wso2.uima.types.TrafficLevelIdentifier;
 
+import javax.net.ssl.SSLContext;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Timestamp;
 import java.util.Date;
 import java.util.Iterator;
@@ -42,7 +46,19 @@ public class HttpCasConsumer  extends CasConsumer_ImplBase {
     private static Logger logger = Logger.getLogger(HttpCasConsumer.class);
 
     public void  initialize() throws ResourceInitializationException {
+        SSLSocketFactory sf = null;
+        try {
+            sf = new SSLSocketFactory(
+                    SSLContext.getDefault(),
+                    SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER);
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+        Scheme sch = new Scheme("https", 443, sf);
         httpClient = new SystemDefaultHttpClient();
+        httpClient.getConnectionManager().getSchemeRegistry().register(sch);
+
+
         KeyStoreUtil.setTrustStoreParams();
 
         username = (String)getConfigParameterValue(PARAM_USERNAME);
@@ -84,7 +100,7 @@ public class HttpCasConsumer  extends CasConsumer_ImplBase {
 
        if (!locationString.equals(""))
             publish(tweetText, locationString, trafficLevel);
-
+        //TODO write a Util class
     }
 
     public void publish(String tweetText, String locationString, String trafficLevel){
@@ -124,17 +140,20 @@ public class HttpCasConsumer  extends CasConsumer_ImplBase {
                             processAuthentication(method, username, password);
                         }
                         httpClient.execute(method).getEntity().getContent().close();
+                        logger.info("Event Published Successfully to "+ httpEndPoint+"\n");
                     }
                 } catch (Exception e) {
-                    logger.error("Error While Sending Events to HTTP Endpoint");
-                    e.printStackTrace();
+                    logger.error("Error While Sending Events to HTTP Endpoint : Connection Refused");
+                   // e.printStackTrace();
                 }
-                logger.info("Event Published Successfully to "+ httpEndPoint);
+
                 Thread.sleep(500); // We need to wait some time for the message to be sent
 
             }
         } catch (Throwable t) {
-            t.printStackTrace();
+            logger.error("Unable to Connect to HTTP endpoint");
+            //TODO remove print stacktrace with logger,e
+            //t.printStackTrace();
         }
     }
 

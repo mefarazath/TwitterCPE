@@ -31,6 +31,7 @@ public class TrafficLevelAnalyser extends JCasAnnotator_ImplBase {
         annotation.addToIndexes(jcas);
         annotation.setTrafficLevel(predictedCategory);
         logger.info("Traffic Level Annotated : "+annotation.getTrafficLevel()+"\n");
+
     }
 
     public void initialize(UimaContext ctx)
