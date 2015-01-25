@@ -39,7 +39,7 @@
             </errorHandling>
             <checkpoint batch="10000" time="1000ms"/>
         </casProcessor>
-       <casProcessor deployment="integrated" name="httpCasConsumer">
+   <!--    <casProcessor deployment="integrated" name="httpCasConsumer">
             <descriptor>
                 <import location="../consumers/HTTPCasConsumer.xml"/>
             </descriptor>
@@ -50,7 +50,7 @@
                 <timeout max="100000" default="-1"/>
             </errorHandling>
             <checkpoint batch="10000" time="1000ms"/>
-        </casProcessor> <!--
+        </casProcessor> --><!--
         <casProcessor deployment="integrated" name="SoapCasConsumer">
             <descriptor>
                 <import location="../consumers/SOAPCasConsumer.xml"/>

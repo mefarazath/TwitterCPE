@@ -41,7 +41,7 @@ public class TwitterActiveMQReader extends CollectionReader_ImplBase {
 
         JMSUrl = (String)getConfigParameterValue(PARAM_JMS_URL);
         queueName = (String)getConfigParameterValue(PARAM_JMS_QUEUE_NAME);
-        maxCount = (int)getConfigParameterValue(PARAM_MAX_DEQUEUE_VALUE);
+        maxCount = (Integer)getConfigParameterValue(PARAM_MAX_DEQUEUE_VALUE);
 
         tweets = new ArrayList<>();
         currentIndex = 0;
@@ -81,7 +81,7 @@ public class TwitterActiveMQReader extends CollectionReader_ImplBase {
         } catch (JMSException e) {
             //e.printStackTrace();
             // TODO add an error log here
-            System.exit(0);
+
         }finally {
 
                 try {

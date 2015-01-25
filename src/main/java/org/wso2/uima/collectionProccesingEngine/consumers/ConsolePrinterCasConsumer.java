@@ -11,7 +11,7 @@ import java.util.Iterator;
 
 public class ConsolePrinterCasConsumer extends CasConsumer_ImplBase{
 
-
+	// TODO remove this class
 	@Override
 	public void processCas(CAS cas) throws ResourceProcessException {
 		JCas jcas = null;
@@ -20,14 +20,17 @@ public class ConsolePrinterCasConsumer extends CasConsumer_ImplBase{
 			jcas = cas.getJCas();
 		} catch (CASException e) {
 			e.printStackTrace();
+			throw new NullPointerException();
 		}
-
-		Iterator iterator = jcas.getAnnotationIndex(LocationIdentification.type).iterator();
-
-		System.out.println("\nTweet : "+jcas.getDocumentText());
-		while(iterator.hasNext()){
-			LocationIdentification tag = (LocationIdentification)iterator.next();
-			System.out.println("\nAnnotation : "+tag.getCoveredText());
-		}
+		
+		Iterator iterator = jcas.getAnnotationIndex(
+					LocationIdentification.type).iterator();
+			System.out.println("\nTweet : " + jcas.getDocumentText());
+			while (iterator.hasNext()) {
+				LocationIdentification tag = (LocationIdentification) iterator
+						.next();
+				System.out.println("\nAnnotation : " + tag.getCoveredText());
+			}
+		
 	}
 }

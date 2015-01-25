@@ -26,9 +26,12 @@ import javax.net.ssl.KeyManager;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.TrustManager;
 
+import org.apache.log4j.Logger;
+
 public class KeyStoreUtil {
 
     static  File filePath = new File("conf/security");
+    private static Logger log = Logger.getLogger(KeyStoreUtil.class);
 
     public static void setTrustStoreParams() {
         String trustStore = filePath.getAbsolutePath();
@@ -39,9 +42,10 @@ public class KeyStoreUtil {
 		try {
 			ctx = SSLContext.getInstance("TLS");
 		} catch (NoSuchAlgorithmException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			// TODO Handle the exception with a log message
+			throw new NullPointerException("No Algorithm 'TLS' found for SSLContext object");
 		}
+		
         try {
 			ctx.init(new KeyManager[0], new TrustManager[] {new DefaultTrustManager()}, new SecureRandom());
 		} catch (KeyManagementException e) {

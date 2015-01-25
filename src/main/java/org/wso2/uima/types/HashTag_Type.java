@@ -21,7 +21,9 @@ public class HashTag_Type extends Annotation_Type {
    * @return the generator for this type
    */
   @Override
-  protected FSGenerator getFSGenerator() {return fsGenerator;}
+  protected FSGenerator getFSGenerator() {
+	  return fsGenerator;
+  }
   /** @generated */
   private final FSGenerator fsGenerator = 
     new FSGenerator() {

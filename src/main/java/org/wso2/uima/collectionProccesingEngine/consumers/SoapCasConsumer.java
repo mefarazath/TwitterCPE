@@ -19,6 +19,7 @@ import org.wso2.uima.types.LocationIdentification;
 import org.wso2.uima.types.TrafficLevelIdentifier;
 
 import javax.xml.soap.*;
+
 import java.sql.Timestamp;
 import java.util.Date;
 import java.util.Iterator;
@@ -35,30 +36,30 @@ class SoapCasConsumer extends CasConsumer_ImplBase {
     @Override
     public void processCas(CAS cas) throws ResourceProcessException {
         // run the sample document through the pipeline
-        JCas output = null;
+        JCas jcas = null;
         try {
-            output = cas.getJCas();
+            jcas = cas.getJCas();
         } catch (CASException e2) {
-            // TODO Auto-generated catch block
-            e2.printStackTrace();
+           logger.error("CAS passed in did not contain a JCas ",e2);
+           throw new NullPointerException("Cas passed in to processCas() did not contain a JCas");
         }
 
         //properties
-        String tweetText = "\n" + output.getDocumentText();
+        String tweetText = "\n" + jcas.getDocumentText();
         String locationString = "\n";
         String trafficLevel = "";
 
         Date date = new Date();
         String time = new Timestamp(date.getTime()).toString();
 
-        FSIndex locationIndex = output.getAnnotationIndex(LocationIdentification.type);
+        FSIndex locationIndex = jcas.getAnnotationIndex(LocationIdentification.type);
         for (Iterator<LocationIdentification> it = locationIndex.iterator(); it.hasNext(); ) {
             LocationIdentification annotation = it.next();
             locationString = locationString + annotation.getCoveredText() + "|";
         }
 
         FSIndex trafficLevelIndex =
-                output.getAnnotationIndex(TrafficLevelIdentifier.type);
+                jcas.getAnnotationIndex(TrafficLevelIdentifier.type);
         for (Iterator<TrafficLevelIdentifier> it = trafficLevelIndex.iterator(); it.hasNext(); ) {
             TrafficLevelIdentifier level = it.next();
             trafficLevel = level.getTrafficLevel();

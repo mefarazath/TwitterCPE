@@ -7,7 +7,7 @@ import org.apache.uima.util.XMLInputSource;
 
 public class TwitterActiveMQReaderTest extends TestCase {
     private static int index = 0;
-    private static TwitterActiveMQReader reader;
+    private TwitterActiveMQReader reader;
 
     /***
      * Test for the TwitterActiveMQReader#initialize()

@@ -3,8 +3,6 @@ package org.wso2.uima.collectionProccesingEngine.consumers;
 import org.apache.axiom.om.util.Base64;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
-import org.apache.http.conn.scheme.Scheme;
-import org.apache.http.conn.ssl.SSLSocketFactory;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.SystemDefaultHttpClient;
 import org.apache.log4j.Logger;
@@ -19,8 +17,6 @@ import org.wso2.uima.collectionProccesingEngine.consumers.util.KeyStoreUtil;
 import org.wso2.uima.types.LocationIdentification;
 import org.wso2.uima.types.TrafficLevelIdentifier;
 
-import javax.net.ssl.SSLContext;
-import java.security.NoSuchAlgorithmException;
 import java.sql.Timestamp;
 import java.util.Date;
 import java.util.Iterator;
@@ -46,7 +42,7 @@ public class HttpCasConsumer  extends CasConsumer_ImplBase {
     private static Logger logger = Logger.getLogger(HttpCasConsumer.class);
 
     public void  initialize() throws ResourceInitializationException {
-        SSLSocketFactory sf = null;
+    /*    SSLSocketFactory sf = null;
         try {
             sf = new SSLSocketFactory(
                     SSLContext.getDefault(),
@@ -54,9 +50,9 @@ public class HttpCasConsumer  extends CasConsumer_ImplBase {
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
         }
-        Scheme sch = new Scheme("https", 443, sf);
+        Scheme sch = new Scheme("https", 443, sf);*/
         httpClient = new SystemDefaultHttpClient();
-        httpClient.getConnectionManager().getSchemeRegistry().register(sch);
+      //  httpClient.getConnectionManager().getSchemeRegistry().register(sch);
 
 
         KeyStoreUtil.setTrustStoreParams();

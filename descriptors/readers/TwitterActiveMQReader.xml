@@ -41,7 +41,7 @@
        <nameValuePair>
 	        <name>maxMessagesToDequeue</name>
 	        <value>
-	          <integer>10</integer>
+	          <integer>3</integer>
 	        </value>
       </nameValuePair>
     <nameValuePair>

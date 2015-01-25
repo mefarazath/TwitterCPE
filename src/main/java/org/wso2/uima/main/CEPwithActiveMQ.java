@@ -65,11 +65,12 @@ class StatusCallBackCPE implements StatusCallbackListener {
         org.apache.log4j.PropertyConfigurator.configure("conf/log4j.properties");
 
     }
+
     @Override
     public void aborted() {
         // TODO Auto-generated method stub
         getLogger(CEPwithActiveMQ.class).info("CPE aborted");
-        System.exit(1);
+        throw new RuntimeException("CPE Aborted Abruptly");
     }
 
     @Override

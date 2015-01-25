@@ -33,6 +33,23 @@
         <mandatory>true</mandatory>
       </configurationParameter>
 
+      <configurationParameter>
+        <name>streamName</name>
+        <description>Stream to which to send the extracted data as events to</description>
+        <type>String</type>
+        <multiValued>false</multiValued>
+        <mandatory>true</mandatory>
+      </configurationParameter>
+
+      <configurationParameter>
+        <name>streamVersion</name>
+        <description>Version of the stream to which events are sent</description>
+        <type>String</type>
+        <multiValued>false</multiValued>
+        <mandatory>true</mandatory>
+      </configurationParameter>
+
+
     </configurationParameters>
     <configurationParameterSettings>
       <nameValuePair>
@@ -53,7 +70,21 @@
           <string>admin</string>
         </value>
       </nameValuePair>
+      <nameValuePair>
+        <name>streamName</name>
+        <value>
+          <string>org.wso2.uima.TwitterExtractedInputFeed</string>
+        </value>
+      </nameValuePair>
+      <nameValuePair>
+        <name>streamVersion</name>
+        <value>
+          <string>1.0.0</string>
+        </value>
+      </nameValuePair>
+
     </configurationParameterSettings>
+
     <typeSystemDescription/>
     <typePriorities/>
     <fsIndexCollection/>
