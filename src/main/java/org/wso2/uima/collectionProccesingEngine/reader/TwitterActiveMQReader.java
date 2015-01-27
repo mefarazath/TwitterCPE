@@ -83,30 +83,10 @@ public class TwitterActiveMQReader extends CollectionReader_ImplBase {
             consumer = session.createDurableSubscriber(topic,clientID);
 
         } catch (JMSException e) {
-<<<<<<< HEAD
              logger.error("Error Intializing the Subscriber for ActiveMQReader",e);
 
         }
-=======
-            //TODO enter the correct log
-            //logger.error();
-
-        }finally {
-
-                try {
-                    if (connection != null) {
-                        connection.close();
-                    }
-                    if(consumer != null){
-                        consumer.close();
-                    }
-                } catch (JMSException e) {
-                    //TODO enter the correct log
-                    //logger.error();
-                }
-            }
->>>>>>> 8d5d11d92d1300d4b9fcd559c8bf2a56694058ed
-        }
+    }
 
 
 
@@ -132,7 +112,7 @@ public class TwitterActiveMQReader extends CollectionReader_ImplBase {
                     break;
                 }
 
-<<<<<<< HEAD
+
             } catch (JMSException e) {
                 logger.error("Error when receiveing message from the topic: " + topicName + " from url: " + jmsURL,e);
               //  throw new RuntimeException("Unable to receieve messages from topic: "+topicName);
@@ -141,14 +121,8 @@ public class TwitterActiveMQReader extends CollectionReader_ImplBase {
             }
         }
 
-=======
-        } catch (JMSException e) {
-            logger.error("Error when retrieving text from JMS Text Message ",e);
         }
-
-        logger.debug("CAS DocText: "+jcas.getDocumentText());
->>>>>>> 8d5d11d92d1300d4b9fcd559c8bf2a56694058ed
-    }
+    
 
     @Override
     public boolean hasNext() throws IOException, CollectionException {
