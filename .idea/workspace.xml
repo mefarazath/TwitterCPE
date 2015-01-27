@@ -6,15 +6,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3be68e29-265e-4add-ab10-159f304e6bc0" name="Default" comment="refactored TwitterConfigBuilder&#10;&#10;">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/wso2/uima/collectionProccesingEngine/consumers/AnnotationPrinter.java" afterPath="$PROJECT_DIR$/src/main/java/org/wso2/uima/collectionProccesingEngine/consumers/AnnotationPrinter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/wso2/uima/main/CEPwithActiveMQ.java" afterPath="$PROJECT_DIR$/src/main/java/org/wso2/uima/main/CEPwithActiveMQ.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/wso2/uima/collectionProccesingEngine/consumers/ConsolePrinterCasConsumer.java" afterPath="$PROJECT_DIR$/src/main/java/org/wso2/uima/collectionProccesingEngine/consumers/ConsolePrinterCasConsumer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/wso2/uima/collectionProccesingEngine/consumers/DataBridgeCasConsumer.java" afterPath="$PROJECT_DIR$/src/main/java/org/wso2/uima/collectionProccesingEngine/consumers/DataBridgeCasConsumer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/wso2/uima/collectionProccesingEngine/consumers/HttpCasConsumer.java" afterPath="$PROJECT_DIR$/src/main/java/org/wso2/uima/collectionProccesingEngine/consumers/HttpCasConsumer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/wso2/uima/collectionProccesingEngine/analysisEngines/LocationIdentifier.java" afterPath="$PROJECT_DIR$/src/main/java/org/wso2/uima/collectionProccesingEngine/analysisEngines/LocationIdentifier.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/wso2/uima/collectionProccesingEngine/consumers/SoapCasConsumer.java" afterPath="$PROJECT_DIR$/src/main/java/org/wso2/uima/collectionProccesingEngine/consumers/SoapCasConsumer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/wso2/uima/collectionProccesingEngine/analysisEngines/TrafficLevelAnalyser.java" afterPath="$PROJECT_DIR$/src/main/java/org/wso2/uima/collectionProccesingEngine/analysisEngines/TrafficLevelAnalyser.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/wso2/uima/collectionProccesingEngine/reader/TwitterActiveMQReader.java" afterPath="$PROJECT_DIR$/src/main/java/org/wso2/uima/collectionProccesingEngine/reader/TwitterActiveMQReader.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="TwitterCPE.iws" />
@@ -62,8 +53,8 @@
       <file leaf-file-name="TwitterActiveMQReader.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/wso2/uima/collectionProccesingEngine/reader/TwitterActiveMQReader.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.91067" vertical-offset="947" max-vertical-offset="2466">
-              <caret line="106" column="0" selection-start-line="106" selection-start-column="0" selection-end-line="106" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.91067" vertical-offset="1991" max-vertical-offset="2466">
+              <caret line="164" column="0" selection-start-line="164" selection-start-column="0" selection-end-line="164" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -1089,7 +1080,7 @@
       <workItem from="1422188467043" duration="17089000" />
       <workItem from="1422214044490" duration="1100000" />
       <workItem from="1422262316574" duration="6083000" />
-      <workItem from="1422339000668" duration="11453000" />
+      <workItem from="1422339000668" duration="12349000" />
     </task>
     <task id="LOCAL-00001" summary="refactored TwitterConfigBuilder&#10;&#10;">
       <created>1422030870085</created>
@@ -1113,7 +1104,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="223928000" />
+    <option name="totallyTimeSpent" value="224824000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -1137,13 +1128,13 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="-4" width="1301" height="772" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3287037" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3117284" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3117284" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24980299" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1747,8 +1738,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/wso2/uima/collectionProccesingEngine/reader/TwitterActiveMQReader.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.91067" vertical-offset="947" max-vertical-offset="2466">
-          <caret line="106" column="0" selection-start-line="106" selection-start-column="0" selection-end-line="106" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.91067" vertical-offset="1991" max-vertical-offset="2466">
+          <caret line="164" column="0" selection-start-line="164" selection-start-column="0" selection-end-line="164" selection-end-column="0" />
           <folding />
         </state>
       </provider>
