@@ -66,6 +66,7 @@ public class TrafficLevelAnalyser extends JCasAnnotator_ImplBase {
             dmis.close();
 
         } catch (Exception e) {
+            logger.error("Error occurs when initializing resources");
             throw new ResourceInitializationException(e);
         } finally {
             IOUtils.closeQuietly(dmis);

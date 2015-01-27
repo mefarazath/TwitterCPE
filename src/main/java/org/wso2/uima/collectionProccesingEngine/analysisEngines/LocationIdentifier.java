@@ -82,6 +82,7 @@ public class LocationIdentifier extends JCasAnnotator_ImplBase {
 			chunker = new ChunkerME(cmodel);
 			cmis.close();
 		} catch (Exception e) {
+			logger.error("Error occurs when initializing resources");
 			throw new ResourceInitializationException(e);
 		} finally {
 			IOUtils.closeQuietly(cmis);
@@ -106,7 +107,6 @@ public class LocationIdentifier extends JCasAnnotator_ImplBase {
 				tokens[i] = tokSpans[i].getCoveredText(sentence).toString();
 			}
 
-			//System.out.println();
 			logger.info("Tweet Text: "+jcas.getDocumentText());
 			Span locationSpans[] = locationFinder.find(tokens);
 			LocationIdentification annotation = new LocationIdentification(jcas);

@@ -20,6 +20,7 @@
 
 package org.wso2.uima.collectionProccesingEngine.consumers;
 
+import org.apache.log4j.Logger;
 import org.apache.uima.cas.CAS;
 import org.apache.uima.cas.CASException;
 import org.apache.uima.collection.CasConsumer_ImplBase;
@@ -31,6 +32,7 @@ import java.util.Iterator;
 
 public class ConsolePrinterCasConsumer extends CasConsumer_ImplBase{
 
+	private static Logger logger = Logger.getLogger(ConsolePrinterCasConsumer.class);
 	// TODO remove this class
 	@Override
 	public void processCas(CAS cas) throws ResourceProcessException {
@@ -39,8 +41,7 @@ public class ConsolePrinterCasConsumer extends CasConsumer_ImplBase{
 		try {
 			jcas = cas.getJCas();
 		} catch (CASException e) {
-			e.printStackTrace();
-			throw new NullPointerException();
+			logger.error("Unable to get the JCas from the cas when trying to process Cas", e);
 		}
 		
 		Iterator iterator = jcas.getAnnotationIndex(

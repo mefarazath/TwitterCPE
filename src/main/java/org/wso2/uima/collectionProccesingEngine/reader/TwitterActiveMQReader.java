@@ -99,8 +99,8 @@ public class TwitterActiveMQReader extends CollectionReader_ImplBase {
             logger.info("Number of Messages Dequeued by Reader : " + tweets.size()+" from "+JMSUrl);
 
         } catch (JMSException e) {
-            //e.printStackTrace();
-            // TODO add an error log here
+            //TODO enter the correct log
+            //logger.error();
 
         }finally {
 
@@ -112,8 +112,8 @@ public class TwitterActiveMQReader extends CollectionReader_ImplBase {
                         consumer.close();
                     }
                 } catch (JMSException e) {
-                    e.printStackTrace();
-                    // TODO log message
+                    //TODO enter the correct log
+                    //logger.error();
                 }
             }
         }
@@ -126,6 +126,7 @@ public class TwitterActiveMQReader extends CollectionReader_ImplBase {
         try {
             jcas = aCAS.getJCas();
         } catch (CASException e) {
+            logger.error("CAS passed in did not contain a JCas ", e);
             throw new CollectionException(e);
         }
 
@@ -140,13 +141,10 @@ public class TwitterActiveMQReader extends CollectionReader_ImplBase {
             timeStamp.setTimeStamp(textMsg.getJMSTimestamp());
 
         } catch (JMSException e) {
-           // e.printStackTrace();
-            // TODO log context
             logger.error("Error when retrieving text from JMS Text Message ",e);
         }
 
         logger.debug("CAS DocText: "+jcas.getDocumentText());
-
     }
 
     @Override

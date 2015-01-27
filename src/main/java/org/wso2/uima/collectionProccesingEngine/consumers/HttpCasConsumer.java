@@ -89,6 +89,7 @@ public class HttpCasConsumer  extends CasConsumer_ImplBase {
         try {
             jCas = cas.getJCas();
         } catch (CASException e) {
+            logger.error("Unable to get the JCas from the cas when trying to process Cas", e);
             throw new ResourceProcessException(e);
         }
 
@@ -160,7 +161,6 @@ public class HttpCasConsumer  extends CasConsumer_ImplBase {
                     }
                 } catch (Exception e) {
                     logger.error("Error While Sending Events to HTTP Endpoint : Connection Refused");
-                   // e.printStackTrace();
                 }
 
                 Thread.sleep(500); // We need to wait some time for the message to be sent
@@ -168,8 +168,6 @@ public class HttpCasConsumer  extends CasConsumer_ImplBase {
             }
         } catch (Throwable t) {
             logger.error("Unable to Connect to HTTP endpoint");
-            //TODO remove print stacktrace with logger,e
-            //t.printStackTrace();
         }
     }
 
