@@ -115,8 +115,6 @@ class AnnotationPrinter extends CasConsumer_ImplBase implements CasObjectProcess
 
 
     // iterate and print annotations
-   // Iterator annotationIter = jcas.getAnnotationIndex().iterator();
-    
     Iterator nameAnnotIter = jcas.getAnnotationIndex(HashTag.type).iterator();
     while (nameAnnotIter.hasNext()) {
       HashTag tag = (HashTag) nameAnnotIter.next();
@@ -125,15 +123,15 @@ class AnnotationPrinter extends CasConsumer_ImplBase implements CasObjectProcess
       String aText = tag.getCoveredText();
       aText = aText.replace('\n', ' ');
       aText = aText.replace('\r', ' ');
-      // System.out.println( annot.getType().getName() + " "+aText);
+
       try {
         fileWriter.append(tag.getType().getName() + " " + aText + "\n");
         fileWriter.flush();
         Logger.getLogger(AnnotationPrinter.class).info(tag.getType().getName() + " " + aText);
       } catch (IOException e) {
         throw new ResourceProcessException(e);
+        }
       }
-    }
     }
   
 
@@ -151,7 +149,7 @@ class AnnotationPrinter extends CasConsumer_ImplBase implements CasObjectProcess
    */
   public void batchProcessComplete(ProcessTrace aTrace) throws ResourceProcessException,
           IOException {
-    // nothing to do in this case as AnnotationPrinter doesnot do
+    // nothing to do in this case as AnnotationPrinter does not do
     // anything cumulatively
   }
 
@@ -203,6 +201,7 @@ class AnnotationPrinter extends CasConsumer_ImplBase implements CasObjectProcess
         }
         fileWriter = new FileWriter(oFile);
       } catch (IOException e) {
+        // TODO add a logger if necessary
         throw new ResourceConfigurationException();
       }
     }

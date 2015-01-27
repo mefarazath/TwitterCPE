@@ -62,6 +62,7 @@ public class HttpCasConsumer  extends CasConsumer_ImplBase {
     private static Logger logger = Logger.getLogger(HttpCasConsumer.class);
 
     public void  initialize() throws ResourceInitializationException {
+        //TODO remove the comment section
     /*    SSLSocketFactory sf = null;
         try {
             sf = new SSLSocketFactory(
@@ -90,6 +91,7 @@ public class HttpCasConsumer  extends CasConsumer_ImplBase {
             jCas = cas.getJCas();
         } catch (CASException e) {
             logger.error("Unable to get the JCas from the cas when trying to process Cas", e);
+            // TODO throw in a consumer class
             throw new ResourceProcessException(e);
         }
 

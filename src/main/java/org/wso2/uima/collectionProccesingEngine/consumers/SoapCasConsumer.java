@@ -60,6 +60,7 @@ class SoapCasConsumer extends CasConsumer_ImplBase {
             jcas = cas.getJCas();
         } catch (CASException e) {
            logger.error("CAS passed in did not contain a JCas ", e);
+            // TODO throw in a consumer class
            throw new NullPointerException("Cas passed in to processCas() did not contain a JCas");
         }
 

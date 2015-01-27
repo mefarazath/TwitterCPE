@@ -95,7 +95,7 @@ public class TwitterActiveMQReader extends CollectionReader_ImplBase {
                     break;
 
             }
-            logger.info(TwitterActiveMQReader.class.getSimpleName()+" initilialized Successfully");
+            logger.info(TwitterActiveMQReader.class.getSimpleName()+" initialized Successfully");
             logger.info("Number of Messages Dequeued by Reader : " + tweets.size()+" from "+JMSUrl);
 
         } catch (JMSException e) {

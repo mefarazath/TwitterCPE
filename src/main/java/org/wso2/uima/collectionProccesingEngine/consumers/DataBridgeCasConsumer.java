@@ -53,7 +53,7 @@ public class DataBridgeCasConsumer extends CasConsumer_ImplBase {
     private String password;
     @Override
     public void processCas(CAS cas) throws ResourceProcessException {
-// run the sample document through the pipeline
+    // run the sample document through the pipeline
         JCas output = null;
         try {
             output = cas.getJCas();

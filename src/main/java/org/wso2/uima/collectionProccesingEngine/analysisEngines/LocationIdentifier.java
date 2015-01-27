@@ -52,7 +52,7 @@ public class LocationIdentifier extends JCasAnnotator_ImplBase {
 	private SentenceDetectorME sentenceDetector;
 	private TokenizerME tokenizer;
 	private NameFinderME locationFinder;
-	private ChunkerME chunker;
+	private ChunkerME chunker;  // TODO no use of this variable
 
 	private static Logger logger = Logger.getLogger(LocationIdentifier.class);
 

@@ -82,7 +82,6 @@ class StatusCallBackCPE implements StatusCallbackListener {
 
     public StatusCallBackCPE(){
         org.apache.log4j.PropertyConfigurator.configure("conf/log4j.properties");
-
     }
 
     @Override
@@ -99,7 +98,6 @@ class StatusCallBackCPE implements StatusCallbackListener {
     @Override
     public void collectionProcessComplete() {
         getLogger(CEPwithActiveMQ.class).info("CPE Processing Completed");
-
     }
 
     @Override
