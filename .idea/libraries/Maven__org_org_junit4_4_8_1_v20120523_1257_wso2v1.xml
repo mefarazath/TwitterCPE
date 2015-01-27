@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: org:org.junit4:4.8.1.v20120523-1257-wso2v1">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/org.junit4/4.8.1.v20120523-1257-wso2v1/org.junit4-4.8.1.v20120523-1257-wso2v1.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/org/org.junit4/4.8.1.v20120523-1257-wso2v1/org.junit4-4.8.1.v20120523-1257-wso2v1-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/org.junit4/4.8.1.v20120523-1257-wso2v1/org.junit4-4.8.1.v20120523-1257-wso2v1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

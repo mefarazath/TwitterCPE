@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="VcsDirectoryMappings">
-    <mapping directory="$PROJECT_DIR$/../TweetClient-ActiveMQ" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../TweetExtractor-ActiveMQ" vcs="Git" />
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../TwitterClient-ActiveMQ" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../TwitterStreamer-ActiveMQ" vcs="Git" />
   </component>
 </project>
