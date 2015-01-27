@@ -20,8 +20,6 @@
 
 package org.wso2.uima.collectionProccesingEngine.analysisEngines;
 
-import opennlp.tools.chunker.ChunkerME;
-import opennlp.tools.chunker.ChunkerModel;
 import opennlp.tools.namefind.NameFinderME;
 import opennlp.tools.namefind.TokenNameFinderModel;
 import opennlp.tools.sentdetect.SentenceDetectorME;
@@ -49,64 +47,56 @@ import java.io.InputStream;
  */
 public class LocationIdentifier extends JCasAnnotator_ImplBase {
 
-	private SentenceDetectorME sentenceDetector;
-	private TokenizerME tokenizer;
-	private NameFinderME locationFinder;
-	private ChunkerME chunker;
+    private SentenceDetectorME sentenceDetector;
+    private TokenizerME tokenizer;
+    private NameFinderME locationFinder;
+    private static Logger logger = Logger.getLogger(LocationIdentifier.class);
 
-	private static Logger logger = Logger.getLogger(LocationIdentifier.class);
+    @Override
+    public void initialize(UimaContext ctx)
+            throws ResourceInitializationException {
+        super.initialize(ctx);
+        InputStream sentenceStream = null;
+        InputStream tokenizerStream = null;
+        InputStream nameFinderStream = null;
+        try {
+            sentenceStream = getContext().getResourceAsStream("SentenceModel");
+            SentenceModel sentenceModel = new SentenceModel(sentenceStream);
+            sentenceDetector = new SentenceDetectorME(sentenceModel);
+            sentenceStream.close();
+            tokenizerStream = getContext().getResourceAsStream("TokenizerModel");
+            TokenizerModel tokenModel = new TokenizerModel(tokenizerStream);
+            tokenizer = new TokenizerME(tokenModel);
+            tokenizerStream.close();
+            nameFinderStream = getContext().getResourceAsStream("TokenNameFinderModel");
+            TokenNameFinderModel nameFinderModel = new TokenNameFinderModel(nameFinderStream);
+            locationFinder = new NameFinderME(nameFinderModel);
+            nameFinderStream.close();
+        } catch (Exception e) {
+            throw new ResourceInitializationException(e);
+        } finally {
+            IOUtils.closeQuietly(nameFinderStream);
+            IOUtils.closeQuietly(tokenizerStream);
+            IOUtils.closeQuietly(sentenceStream);
+        }
+    }
 
-	@Override
-	public void initialize(UimaContext ctx)
-			throws ResourceInitializationException {
-		super.initialize(ctx);
-		InputStream smis = null;
-		InputStream tmis = null;
-		InputStream pmis = null;
-		InputStream cmis = null;
-		try {
-			smis = getContext().getResourceAsStream("SentenceModel");
-			SentenceModel smodel = new SentenceModel(smis);
-			sentenceDetector = new SentenceDetectorME(smodel);
-			smis.close();
-			tmis = getContext().getResourceAsStream("TokenizerModel");
-			TokenizerModel tmodel = new TokenizerModel(tmis);
-			tokenizer = new TokenizerME(tmodel);
-			tmis.close();
-			pmis = getContext().getResourceAsStream("TokenNameFinderModel");
-			TokenNameFinderModel pmodel = new TokenNameFinderModel(pmis);
-			locationFinder = new NameFinderME(pmodel);
-			pmis.close();
-			cmis = getContext().getResourceAsStream("ChunkerModel");
-			ChunkerModel cmodel = new ChunkerModel(cmis);
-			chunker = new ChunkerME(cmodel);
-			cmis.close();
-		} catch (Exception e) {
-			logger.error("Error occurs when initializing resources");
-			throw new ResourceInitializationException(e);
-		} finally {
-			IOUtils.closeQuietly(cmis);
-			IOUtils.closeQuietly(pmis);
-			IOUtils.closeQuietly(tmis);
-			IOUtils.closeQuietly(smis);
-		}
-	}
 
-	@Override
-	public void process(JCas jcas) throws AnalysisEngineProcessException {
-		String text = jcas.getDocumentText();
-		Span[] sentSpans = sentenceDetector.sentPosDetect(jcas
-				.getDocumentText());
+    @Override
+    public void process(JCas jcas) throws AnalysisEngineProcessException {
+        String text = jcas.getDocumentText();
+        Span[] sentSpans = sentenceDetector.sentPosDetect(jcas
+                .getDocumentText());
 
-		for (Span sentSpan : sentSpans) {
-			String sentence = sentSpan.getCoveredText(text).toString();
-			int start = sentSpan.getStart();
-			Span[] tokSpans = tokenizer.tokenizePos(sentence);
-			String[] tokens = new String[tokSpans.length];
-			for (int i = 0; i < tokens.length; i++) {
-				tokens[i] = tokSpans[i].getCoveredText(sentence).toString();
-			}
-
+        for (Span sentSpan : sentSpans) {
+            String sentence = sentSpan.getCoveredText(text).toString();
+            int start = sentSpan.getStart();
+            Span[] tokSpans = tokenizer.tokenizePos(sentence);
+            String[] tokens = new String[tokSpans.length];
+            for (int i = 0; i < tokens.length; i++) {
+                tokens[i] = tokSpans[i].getCoveredText(sentence).toString();
+            }
+            
 			logger.info("Tweet Text: "+jcas.getDocumentText());
 			Span locationSpans[] = locationFinder.find(tokens);
 			LocationIdentification annotation = new LocationIdentification(jcas);
@@ -117,11 +107,12 @@ public class LocationIdentifier extends JCasAnnotator_ImplBase {
 				logger.info("Location Detected : "+annotation.getCoveredText());
 			}
 
-			if(locationSpans.length == 0){
-				logger.info("Location Unable to be Detected");
-			}
+
+            if (locationSpans.length == 0) {
+                logger.info("Location Unable to be Detected");
+            }
 
 
-		}
-	}
+        }
+    }
 }

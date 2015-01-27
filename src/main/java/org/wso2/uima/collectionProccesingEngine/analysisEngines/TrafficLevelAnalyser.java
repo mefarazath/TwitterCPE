@@ -50,26 +50,27 @@ public class TrafficLevelAnalyser extends JCasAnnotator_ImplBase {
         TrafficLevelIdentifier annotation = new TrafficLevelIdentifier(jcas);
         annotation.addToIndexes(jcas);
         annotation.setTrafficLevel(predictedCategory);
-        logger.info("Traffic Level Annotated : "+annotation.getTrafficLevel()+"\n");
+        logger.info("Traffic Level Annotated : " + annotation.getTrafficLevel() + "\n");
 
     }
 
+    @Override
     public void initialize(UimaContext ctx)
             throws ResourceInitializationException {
         super.initialize(ctx);
-        InputStream dmis = null;
+        InputStream docStream = null;
         try {
 
-            dmis = getContext().getResourceAsStream("DoccatModel");
-            DoccatModel dmodel = new DoccatModel(dmis);
-            documentCategorizer = new DocumentCategorizerME(dmodel);
-            dmis.close();
+            docStream = getContext().getResourceAsStream("DoccatModel");
+            DoccatModel doccatModel = new DoccatModel(docStream);
+            documentCategorizer = new DocumentCategorizerME(doccatModel);
+            docStream.close();
 
         } catch (Exception e) {
             logger.error("Error occurs when initializing resources");
             throw new ResourceInitializationException(e);
         } finally {
-            IOUtils.closeQuietly(dmis);
+            IOUtils.closeQuietly(docStream);
         }
     }
 
