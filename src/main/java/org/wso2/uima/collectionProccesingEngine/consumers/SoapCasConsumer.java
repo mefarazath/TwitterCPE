@@ -28,21 +28,14 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.impl.client.SystemDefaultHttpClient;
 import org.apache.log4j.Logger;
 import org.apache.uima.cas.CAS;
-import org.apache.uima.cas.CASException;
-import org.apache.uima.cas.FSIndex;
 import org.apache.uima.collection.CasConsumer_ImplBase;
-import org.apache.uima.jcas.JCas;
 import org.apache.uima.resource.ResourceInitializationException;
 import org.apache.uima.resource.ResourceProcessException;
 import org.wso2.uima.collectionProccesingEngine.consumers.util.KeyStoreUtil;
-import org.wso2.uima.types.LocationIdentification;
-import org.wso2.uima.types.TrafficLevelIdentifier;
-
+import org.wso2.uima.collectionProccesingEngine.consumers.util.TweetScanner;
 import javax.xml.soap.*;
-
 import java.sql.Timestamp;
 import java.util.Date;
-import java.util.Iterator;
 
 class SoapCasConsumer extends CasConsumer_ImplBase {
 
@@ -55,40 +48,17 @@ class SoapCasConsumer extends CasConsumer_ImplBase {
 
     @Override
     public void processCas(CAS cas) throws ResourceProcessException {
-        // run the sample document through the pipeline
-        JCas jcas = null;
-        try {
-            jcas = cas.getJCas();
-        } catch (CASException e2) {
-           logger.error("CAS passed in did not contain a JCas ",e2);
-           throw new NullPointerException("Cas passed in to processCas() did not contain a JCas");
-        }
-
         //properties
-        String tweetText = "\n" + jcas.getDocumentText();
-        String locationString = "\n";
-        String trafficLevel = "";
-
-        Date date = new Date();
-        String time = new Timestamp(date.getTime()).toString();
-
-        FSIndex locationIndex = jcas.getAnnotationIndex(LocationIdentification.type);
-        for (Iterator<LocationIdentification> it = locationIndex.iterator(); it.hasNext(); ) {
-            LocationIdentification annotation = it.next();
-            locationString = locationString + annotation.getCoveredText() + "|";
-        }
-
-        FSIndex trafficLevelIndex =
-                jcas.getAnnotationIndex(TrafficLevelIdentifier.type);
-        for (Iterator<TrafficLevelIdentifier> it = trafficLevelIndex.iterator(); it.hasNext(); ) {
-            TrafficLevelIdentifier level = it.next();
-            trafficLevel = level.getTrafficLevel();
-        }
+        String tweetText = TweetScanner.getTweetText(cas);
+        String locationString = TweetScanner.getLocationString(cas);
+        String trafficLevel = TweetScanner.getLocationString(cas);
 
         Logger.getLogger(SoapCasConsumer.class).info("Annotated Text :  " + locationString.trim());
         Logger.getLogger(SoapCasConsumer.class).info("Annotated Text :  " + trafficLevel);
 
         //creating soap message
+        Date date = new Date();
+        String time = new Timestamp(date.getTime()).toString();
         try {
             MessageFactory messageFactory = MessageFactory.newInstance();
             SOAPMessage soapMessage = messageFactory.createMessage();

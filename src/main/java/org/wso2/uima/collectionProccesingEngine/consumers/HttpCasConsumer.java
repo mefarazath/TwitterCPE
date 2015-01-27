@@ -34,6 +34,7 @@ import org.apache.uima.jcas.JCas;
 import org.apache.uima.resource.ResourceInitializationException;
 import org.apache.uima.resource.ResourceProcessException;
 import org.wso2.uima.collectionProccesingEngine.consumers.util.KeyStoreUtil;
+import org.wso2.uima.collectionProccesingEngine.consumers.util.TweetScanner;
 import org.wso2.uima.types.LocationIdentification;
 import org.wso2.uima.types.TrafficLevelIdentifier;
 
@@ -85,31 +86,9 @@ public class HttpCasConsumer  extends CasConsumer_ImplBase {
     @Override
     public void processCas(CAS cas) throws ResourceProcessException {
 
-        JCas jCas;
-        try {
-            jCas = cas.getJCas();
-        } catch (CASException e) {
-            throw new ResourceProcessException(e);
-        }
-
-        String tweetText = jCas.getDocumentText();
-        String locationString="";
-
-        FSIndex locationIndex = jCas.getAnnotationIndex(LocationIdentification.type);
-        for (Iterator<LocationIdentification> it = locationIndex.iterator(); it.hasNext();) {
-            LocationIdentification annotation = it.next();
-
-            if(!locationString.contains(annotation.getCoveredText()))
-                locationString = locationString + annotation.getCoveredText()+" ";
-        }
-
-        String trafficLevel = "";
-        FSIndex trafficLevelIndex =
-                jCas.getAnnotationIndex(TrafficLevelIdentifier.type);
-        for(Iterator<TrafficLevelIdentifier> it = trafficLevelIndex.iterator(); it.hasNext();){
-            TrafficLevelIdentifier level = it.next();
-            trafficLevel = level.getTrafficLevel();
-        }
+        String tweetText = TweetScanner.getTweetText(cas);
+        String locationString = TweetScanner.getLocationString(cas);
+        String trafficLevel = TweetScanner.getTrafficLevel(cas);
 
         logger.debug("Annotated Location :  " + locationString.trim());
         logger.debug("Annotated Traffic :  " + trafficLevel);
