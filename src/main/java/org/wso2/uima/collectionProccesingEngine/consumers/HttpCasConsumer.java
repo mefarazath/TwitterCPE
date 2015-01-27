@@ -36,10 +36,6 @@ import org.wso2.uima.collectionProccesingEngine.consumers.util.TweetScanner;
 import java.sql.Timestamp;
 import java.util.Date;
 
-
-/**
- * Created by Supun on 1/19/15.
- */
 public class HttpCasConsumer  extends CasConsumer_ImplBase {
 
     private HttpClient httpClient;
