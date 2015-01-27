@@ -63,6 +63,16 @@ public class CEPwithActiveMQ {
 
             while(!scanner.nextLine().equals("exit")){
 
+<<<<<<< HEAD
+=======
+                if(!cpe.isProcessing()) {
+                    logger.info("\n******** Performance Report *********\n"+cpe.getPerformanceReport().toString());
+                }
+
+            } catch (ResourceInitializationException e) {
+                logger.error("Error occurs when producing collection processing engine ",e);
+                break;
+>>>>>>> 8d5d11d92d1300d4b9fcd559c8bf2a56694058ed
             }
             System.out.println(cpe.getPerformanceReport().toString());
             System.exit(0);
@@ -87,45 +97,37 @@ class StatusCallBackCPE implements StatusCallbackListener {
 
     @Override
     public void aborted() {
-        // TODO Auto-generated method stub
         getLogger(CEPwithActiveMQ.class).info("CPE aborted");
         throw new RuntimeException("CPE Aborted Abruptly");
     }
 
     @Override
     public void batchProcessComplete() {
-        // TODO Auto-generated method stub
 
     }
 
     @Override
     public void collectionProcessComplete() {
-        // TODO Auto-generated method stub
         getLogger(CEPwithActiveMQ.class).info("CPE Processing Completed");
 
     }
 
     @Override
     public void initializationComplete() {
-        // TODO Auto-generated method stub
         getLogger(CEPwithActiveMQ.class).info("CPE Initialization Completed");
     }
 
     @Override
     public void paused() {
-        // TODO Auto-generated method stub
         System.out.println("CPE is paused");
     }
 
     @Override
     public void resumed() {
-        // TODO Auto-generated method stub
         System.out.println("CPE is resumed");
     }
 
     @Override
     public void entityProcessComplete(CAS arg0, EntityProcessStatus arg1) {
-        // TODO Auto-generated method stub
-
     }
 }

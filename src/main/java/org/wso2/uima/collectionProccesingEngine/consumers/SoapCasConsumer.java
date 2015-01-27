@@ -47,7 +47,6 @@ import java.util.Iterator;
 class SoapCasConsumer extends CasConsumer_ImplBase {
 
     private static Logger logger = Logger.getLogger(SoapCasConsumer.class);
-    private String xmlElement;
     private HttpClient httpClient;
     private String username;
     private String password;
@@ -59,8 +58,8 @@ class SoapCasConsumer extends CasConsumer_ImplBase {
         JCas jcas = null;
         try {
             jcas = cas.getJCas();
-        } catch (CASException e2) {
-           logger.error("CAS passed in did not contain a JCas ",e2);
+        } catch (CASException e) {
+           logger.error("CAS passed in did not contain a JCas ", e);
            throw new NullPointerException("Cas passed in to processCas() did not contain a JCas");
         }
 
@@ -115,50 +114,8 @@ class SoapCasConsumer extends CasConsumer_ImplBase {
             this.publish(soapMessage);
 
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error("Error occurs when creating the SOAP message",e);
         }
-
-        /*
-        xmlElement = "<events>" +
-                " <event>" +
-                " <metaData>" +
-                " <timeStamp>" + time + "</timeStamp>" +
-                " </metaData>" +
-                " <payloadData>" +
-                " <Location>" + locationString + "</Location>" +
-                " <TrafficLevel>" + trafficLevel + "</TrafficLevel>" +
-                " <TweetText>" + tweetText + "</TweetText>" +
-                " </payloadData>" +
-                " </event>" +
-                " </events>";
-
-
-        try {
-            HttpPost method = new HttpPost(url);
-
-            StringEntity entity = new StringEntity(xmlElement);
-            method.setEntity(entity);
-            if (url.startsWith("https")) {
-                processAuthentication(method, username, password);
-            }
-            httpClient.execute(method).getEntity().getContent().close();
-
-            Thread.sleep(500); // We need to wait some time for the message to be sent
-
-        } catch (Throwable t) {
-            t.printStackTrace();
-        }
-
-
-        xmlElement = "<httpConsumer:org.wso2.uima.TwitterExtractedFeed xmlns:httpConsumer=\"http://samples.wso2.org/\">\n" +
-                    " <httpConsumer:trafficUpdate>" +
-                    " <httpConsumer:meta_timeStamp>" + time + "</httpConsumer:meta_timeStamp>\n" +
-                    " <httpConsumer:Location>" + locationString + "</httpConsumer:Location>\n" +
-                    " <httpConsumer:TrafficLevel>" + trafficLevel + "</httpConsumer:TrafficLevel>\n" +
-                    " <httpConsumer:TweetText>" + tweetText + "</httpConsumer:TweetText>\n" +
-                    " </httpConsumer:trafficUpdate>\n" +
-                    " </httpConsumer:org.wso2.uima.TwitterExtractedFeed>";
-        */
     }
 
 
@@ -190,19 +147,7 @@ class SoapCasConsumer extends CasConsumer_ImplBase {
             soapConnection.close();
 
         } catch (Exception e) {
-            System.err.println("Error occurred while sending SOAP Request to Server");
-            e.printStackTrace();
+            logger.error("Error occurred while sending SOAP Request to Server",e);
         }
     }
-
-/*
-    private static void processAuthentication(HttpPost method, String username, String password) {
-        if (username != null && username.trim().length() > 0) {
-            method.setHeader("Authorization", "Basic " + Base64.encode(
-                    (username + ":" + password).getBytes()));
-        }
-    }
-*/
-
-
 }
