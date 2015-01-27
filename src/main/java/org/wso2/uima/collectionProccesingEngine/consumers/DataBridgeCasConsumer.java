@@ -19,10 +19,7 @@
 package org.wso2.uima.collectionProccesingEngine.consumers;
 import org.apache.log4j.Logger;
 import org.apache.uima.cas.CAS;
-import org.apache.uima.cas.CASException;
-import org.apache.uima.cas.FSIndex;
 import org.apache.uima.collection.CasConsumer_ImplBase;
-import org.apache.uima.jcas.JCas;
 import org.apache.uima.resource.ResourceInitializationException;
 import org.apache.uima.resource.ResourceProcessException;
 import org.wso2.carbon.databridge.agent.thrift.DataPublisher;
@@ -32,13 +29,10 @@ import org.wso2.carbon.databridge.commons.StreamDefinition;
 import org.wso2.carbon.databridge.commons.exception.*;
 import org.wso2.uima.collectionProccesingEngine.consumers.util.KeyStoreUtil;
 import org.wso2.uima.collectionProccesingEngine.consumers.util.TweetScanner;
-import org.wso2.uima.types.LocationIdentification;
-import org.wso2.uima.types.TrafficLevelIdentifier;
 
 import java.net.MalformedURLException;
 import java.sql.Timestamp;
 import java.util.Date;
-import java.util.Iterator;
 
 public class DataBridgeCasConsumer extends CasConsumer_ImplBase {
     private static final String STREAM_NAME = "org.wso2.uima.TwitterExtractedInputFeed";
@@ -58,6 +52,10 @@ public class DataBridgeCasConsumer extends CasConsumer_ImplBase {
         String tweetText = TweetScanner.getTweetText(cas);
         String locationString = TweetScanner.getLocationString(cas);
         String trafficLevel = TweetScanner.getTrafficLevel(cas);
+
+        if(locationString.isEmpty()){
+            return;
+        }
 
         logger.info("Annotated Location : " + locationString.trim());
         logger.info("Annotated Traffic : " + trafficLevel);

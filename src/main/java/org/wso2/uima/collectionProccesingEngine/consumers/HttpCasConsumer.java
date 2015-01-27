@@ -84,6 +84,10 @@ public class HttpCasConsumer  extends CasConsumer_ImplBase {
         String locationString = TweetScanner.getLocationString(cas);
         String trafficLevel = TweetScanner.getTrafficLevel(cas);
 
+        if(locationString.isEmpty()){
+            return;
+        }
+
         logger.debug("Annotated Location :  " + locationString.trim());
         logger.debug("Annotated Traffic :  " + trafficLevel);
 

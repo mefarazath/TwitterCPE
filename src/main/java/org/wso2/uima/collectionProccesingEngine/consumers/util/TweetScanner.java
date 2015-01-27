@@ -57,9 +57,8 @@ public class TweetScanner {
                 builder.append(annotation.getCoveredText() + " ");
             }
         }
-        String locationString = builder.toString();
 
-        return locationString;
+        return builder.toString().trim();
 
     }
 

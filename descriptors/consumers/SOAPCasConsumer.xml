@@ -3,26 +3,58 @@
     <frameworkImplementation>org.apache.uima.java</frameworkImplementation>
     <implementationName>org.wso2.uima.collectionProccesingEngine.consumers.SoapCasConsumer</implementationName>
     <processingResourceMetaData>
-        <name>SoapCasConsumer</name>
+        <name>SOAPCasConsumer</name>
         <description/>
         <version>1.0</version>
         <vendor/>
         <configurationParameters>
+
             <configurationParameter>
-                <name>outputFile</name>
-                <description>File to which annotations should be printed</description>
+                <name>SOAPEndPoint</name>
+                <description>SOAP EndPoint to which the CasConsumer publishes events to</description>
+                <type>String</type>
+                <multiValued>false</multiValued>
+                <mandatory>true</mandatory>
+            </configurationParameter>
+
+            <configurationParameter>
+                <name>username</name>
+                <description>Username of the tenant to connect to databridge</description>
+                <type>String</type>
+                <multiValued>false</multiValued>
+                <mandatory>true</mandatory>
+            </configurationParameter>
+
+            <configurationParameter>
+                <name>password</name>
+                <description>Password to authenticate</description>
                 <type>String</type>
                 <multiValued>false</multiValued>
                 <mandatory>true</mandatory>
             </configurationParameter>
         </configurationParameters>
+
         <configurationParameterSettings>
+
             <nameValuePair>
-                <name>outputFile</name>
+                <name>SOAPEndPoint</name>
                 <value>
-                    <string>""</string>
+                    <string>http://10.100.4.12:9763/services/org.wso2.uima.SoapEventInputAdaptor.org.wso2.uima.SoapEventInputAdaptorHttpSoap12Endpoint/trafficUpdate</string>
                 </value>
             </nameValuePair>
+            <nameValuePair>
+                <name>username</name>
+                <value>
+                    <string>admin</string>
+                </value>
+            </nameValuePair>
+            <nameValuePair>
+                <name>password</name>
+                <value>
+                    <string>admin</string>
+                </value>
+            </nameValuePair>
+
         </configurationParameterSettings>
         <typeSystemDescription/>
         <typePriorities/>
