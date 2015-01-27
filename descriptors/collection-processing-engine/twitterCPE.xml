@@ -41,7 +41,6 @@
             </errorHandling>
             <checkpoint batch="10000" time="1000ms"/>
         </casProcessor>
-        
   <!--  Uncomment to activate httpCasConsumer
      <casProcessor deployment="integrated" name="httpCasConsumer">
             <descriptor>
@@ -57,7 +56,7 @@
         </casProcessor>
 -->
 
-<!--        uncomment to activate SoapCas consumer
+        <!-- uncomment to activate cas consumer
         <casProcessor deployment="integrated" name="SoapCasConsumer">
             <descriptor>
                 <import location="../consumers/SOAPCasConsumer.xml"/>

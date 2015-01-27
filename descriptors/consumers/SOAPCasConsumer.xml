@@ -39,7 +39,7 @@
             <nameValuePair>
                 <name>SOAPEndPoint</name>
                 <value>
-                    <string>http://10.100.4.12:9763/services/org.wso2.uima.SoapEventInputAdaptor.org.wso2.uima.SoapEventInputAdaptorHttpSoap12Endpoint/trafficUpdate</string>
+                    <string>http://localhost:9763/services/org.wso2.uima.SoapEventInputAdaptor.org.wso2.uima.SoapEventInputAdaptorHttpSoap12Endpoint/trafficUpdate</string>
                 </value>
             </nameValuePair>
             <nameValuePair>
