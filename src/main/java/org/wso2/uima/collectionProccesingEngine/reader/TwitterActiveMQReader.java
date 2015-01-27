@@ -115,14 +115,13 @@ public class TwitterActiveMQReader extends CollectionReader_ImplBase {
 
             } catch (JMSException e) {
                 logger.error("Error when receiveing message from the topic: " + topicName + " from url: " + jmsURL,e);
-              //  throw new RuntimeException("Unable to receieve messages from topic: "+topicName);
                 System.exit(0);
-                //TODO check whether to throw or not
+
             }
         }
 
         }
-    
+
 
     @Override
     public boolean hasNext() throws IOException, CollectionException {
