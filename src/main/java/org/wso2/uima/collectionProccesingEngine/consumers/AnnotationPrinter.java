@@ -54,6 +54,7 @@ class AnnotationPrinter extends CasConsumer_ImplBase implements CasObjectProcess
   File outFile;
 
   FileWriter fileWriter;
+  private static Logger logger = Logger.getLogger(AnnotationPrinter.class);
 
   public AnnotationPrinter() {
   }
@@ -85,6 +86,7 @@ class AnnotationPrinter extends CasConsumer_ImplBase implements CasObjectProcess
     try {
       fileWriter = new FileWriter(outFile);
     } catch (IOException e) {
+      logger.error("Unable to initialize file writer");
       throw new ResourceInitializationException(e);
     }
   }
@@ -107,6 +109,7 @@ class AnnotationPrinter extends CasConsumer_ImplBase implements CasObjectProcess
     try {
       jcas = aCAS.getJCas();
     } catch (CASException e) {
+      logger.error("Unable to get the JCas from the cas when trying to process Cas");
       throw new ResourceProcessException(e);
     }
 

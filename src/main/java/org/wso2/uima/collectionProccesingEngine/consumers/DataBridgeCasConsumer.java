@@ -87,8 +87,6 @@ public class DataBridgeCasConsumer extends CasConsumer_ImplBase {
                         tweetText
                 );
             } catch (AgentException e) {
-// TODO Auto-generated catch block
-                //e1.printStackTrace();
                 logger.error("Unable to publish events due to errors in the data bridge", e);
             }
         }
@@ -103,20 +101,12 @@ public class DataBridgeCasConsumer extends CasConsumer_ImplBase {
             dataPublisher = new DataPublisher(url, username, password);
             logger.debug("Data Publisher Created");
         } catch (MalformedURLException e) {
-// TODO Auto-generated catch block
-            //e1.printStackTrace();
             logger.error("Unable to create the data publisher ", e);
         } catch (AgentException e) {
-// TODO Auto-generated catch block
-            //e1.printStackTrace();
             logger.error("Unable to create the data publisher ", e);
         } catch (AuthenticationException e) {
-// TODO Auto-generated catch block
-            //e1.printStackTrace();
             logger.error("Unable to create the data publisher ", e);
         } catch (TransportException e) {
-// TODO Auto-generated catch block
-            //e1.printStackTrace();
             logger.error("Unable to create the data publisher ", e);
         }
         try {
@@ -149,14 +139,12 @@ public class DataBridgeCasConsumer extends CasConsumer_ImplBase {
             } catch (AgentException | MalformedStreamDefinitionException
                     | StreamDefinitionException
                     | DifferentStreamDefinitionAlreadyDefinedException e1) {
-// TODO Auto-generated catch block
-                //e1.printStackTrace();
+
                 logger.debug("Stream Definition Failed");
             }
         }
-// / System.out.println("///////////////// " + streamId1);
-// super.initialize();
     }
+
     private void publishEvents(DataPublisher dataPublisher, String streamId, String... payloadArgs)
             throws AgentException {
         Date date = new Date();
