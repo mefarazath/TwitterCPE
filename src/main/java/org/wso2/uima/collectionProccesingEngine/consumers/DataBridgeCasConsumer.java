@@ -57,9 +57,8 @@ public class DataBridgeCasConsumer extends CasConsumer_ImplBase {
         JCas output = null;
         try {
             output = cas.getJCas();
-        } catch (CASException e2) {
-// TODO Auto-generated catch block
-            e2.printStackTrace();
+        } catch (CASException e) {
+            logger.error("Unable to get the JCas from the cas when trying to process Cas", e);
         }
         String tweetText = "\n" + output.getDocumentText();
         String locationString = "";
@@ -87,9 +86,10 @@ public class DataBridgeCasConsumer extends CasConsumer_ImplBase {
                         trafficLevel,
                         tweetText
                 );
-            } catch (AgentException e1) {
+            } catch (AgentException e) {
 // TODO Auto-generated catch block
-                e1.printStackTrace();
+                //e1.printStackTrace();
+                logger.error("Unable to publish events due to errors in the data bridge", e);
             }
         }
     }
@@ -102,18 +102,22 @@ public class DataBridgeCasConsumer extends CasConsumer_ImplBase {
         try {
             dataPublisher = new DataPublisher(url, username, password);
             logger.debug("Data Publisher Created");
-        } catch (MalformedURLException e1) {
+        } catch (MalformedURLException e) {
 // TODO Auto-generated catch block
-            e1.printStackTrace();
-        } catch (AgentException e1) {
+            //e1.printStackTrace();
+            logger.error("Unable to create the data publisher ", e);
+        } catch (AgentException e) {
 // TODO Auto-generated catch block
-            e1.printStackTrace();
-        } catch (AuthenticationException e1) {
+            //e1.printStackTrace();
+            logger.error("Unable to create the data publisher ", e);
+        } catch (AuthenticationException e) {
 // TODO Auto-generated catch block
-            e1.printStackTrace();
-        } catch (TransportException e1) {
+            //e1.printStackTrace();
+            logger.error("Unable to create the data publisher ", e);
+        } catch (TransportException e) {
 // TODO Auto-generated catch block
-            e1.printStackTrace();
+            //e1.printStackTrace();
+            logger.error("Unable to create the data publisher ", e);
         }
         try {
             streamID = dataPublisher.findStream(STREAM_NAME, VERSION);
@@ -146,7 +150,7 @@ public class DataBridgeCasConsumer extends CasConsumer_ImplBase {
                     | StreamDefinitionException
                     | DifferentStreamDefinitionAlreadyDefinedException e1) {
 // TODO Auto-generated catch block
-                e1.printStackTrace();
+                //e1.printStackTrace();
                 logger.debug("Stream Definition Failed");
             }
         }
