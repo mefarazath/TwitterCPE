@@ -32,8 +32,9 @@ import org.apache.uima.util.InvalidXMLException;
 import org.apache.uima.util.XMLInputSource;
 
 import java.io.IOException;
+import java.util.Scanner;
 
-import static org.apache.log4j.Logger.*;
+import static org.apache.log4j.Logger.getLogger;
 
 /**
  * Created by farazath on 1/22/15.
@@ -51,33 +52,31 @@ public class CEPwithActiveMQ {
         CollectionProcessingEngine cpe = null;
 
         logger.info("Application Initiated");
-        Thread.sleep(5000);
 
-        while(true){
 
-            try {
+        try {
+            cpe = UIMAFramework.produceCollectionProcessingEngine(cpe_desc);
+            cpe.addStatusCallbackListener(new StatusCallBackCPE());
+            cpe.process();
 
-                cpe = UIMAFramework.produceCollectionProcessingEngine(cpe_desc);
-                cpe.addStatusCallbackListener(new StatusCallBackCPE());
-                cpe.process();
+            Scanner scanner = new Scanner(System.in);
 
-                Thread.sleep(60000);
+            while(!scanner.nextLine().equals("exit")){
 
-                if(!cpe.isProcessing()) {
-                    logger.info("\n******** Performance Report *********\n"+cpe.getPerformanceReport().toString());
-                }
-
-            } catch (ResourceInitializationException e) {
-                //TODO
-                e.printStackTrace();
-                break;
             }
+            System.out.println(cpe.getPerformanceReport().toString());
+            System.exit(0);
+        } catch (ResourceInitializationException e) {
+            logger.error("Error Initializing the CPE",e);
+        }
+
+
 
         }
 
     }
 
-}
+
 
 class StatusCallBackCPE implements StatusCallbackListener {
 

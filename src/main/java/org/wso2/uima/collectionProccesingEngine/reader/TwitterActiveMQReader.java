@@ -31,7 +31,6 @@ import org.apache.uima.jcas.JCas;
 import org.apache.uima.resource.ResourceInitializationException;
 import org.apache.uima.util.Progress;
 import org.apache.uima.util.ProgressImpl;
-import org.wso2.uima.types.TimeStamp;
 
 import javax.jms.*;
 import java.io.IOException;
@@ -47,111 +46,84 @@ public class TwitterActiveMQReader extends CollectionReader_ImplBase {
 
 
     private static final String PARAM_JMS_URL = "JMSUrL";
-    private static final String PARAM_JMS_QUEUE_NAME = "queueName";
-    private static final String PARAM_MAX_DEQUEUE_VALUE = "maxMessagesToDequeue";
+    private static final String PARAM_JMS_TOPIC_NAME = "topicName";
 
-    private String JMSUrl;
-    private String queueName;
-    private int maxCount;
+    private String jmsURL;
+    private String topicName;
     private int currentIndex;
+    private MessageConsumer consumer;
+    int count=0;
 
     @Override
     public void initialize() throws ResourceInitializationException{
         PropertyConfigurator.configure("conf/log4j.properties");
 
-        JMSUrl = (String)getConfigParameterValue(PARAM_JMS_URL);
-        queueName = (String)getConfigParameterValue(PARAM_JMS_QUEUE_NAME);
-        maxCount = (Integer)getConfigParameterValue(PARAM_MAX_DEQUEUE_VALUE);
+        jmsURL = (String)getConfigParameterValue(PARAM_JMS_URL);
+        topicName = (String)getConfigParameterValue(PARAM_JMS_TOPIC_NAME);
 
         tweets = new ArrayList<>();
         currentIndex = 0;
 
-        ActiveMQConnectionFactory factory = new ActiveMQConnectionFactory(JMSUrl);
-        logger.debug("Factory created Successful for "+JMSUrl);
+        ActiveMQConnectionFactory factory = new ActiveMQConnectionFactory(jmsURL);
+        logger.debug("Factory created Successful for "+ jmsURL);
 
         Connection connection = null;
-        MessageConsumer consumer = null;
+        consumer = null;
         try {
             connection = factory.createQueueConnection();
+
+            String clientID = getClientID();
+            connection.setClientID(clientID);
             connection.start();
 
             Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
-            Queue queue = session.createQueue(queueName);
+            Topic topic = session.createTopic(topicName);
 
-            logger.debug("Consumer Created Successfully");
-            consumer = session.createConsumer(queue);
-
-            Message message;
-            int count = 1;
-
-            while (((message = consumer.receive(1000)) != null) && (message instanceof TextMessage) ){
-
-                TextMessage txtMsg = (TextMessage)message;
-
-                tweets.add(txtMsg);
-                logger.debug("Message Dequeued #" + (count++) + ": " + txtMsg.getText()+" from "+JMSUrl);
-
-               if(count > maxCount)
-                    break;
-
-            }
-            logger.info(TwitterActiveMQReader.class.getSimpleName()+" initilialized Successfully");
-            logger.info("Number of Messages Dequeued by Reader : " + tweets.size()+" from "+JMSUrl);
+            logger.info("Consumer Created Successfully");
+            consumer = session.createDurableSubscriber(topic,clientID);
 
         } catch (JMSException e) {
-            //e.printStackTrace();
-            // TODO add an error log here
+             logger.error("Error Intializing the Subscriber for ActiveMQReader",e);
 
-        }finally {
-
-                try {
-                    if (connection != null) {
-                        connection.close();
-                    }
-                    if(consumer != null){
-                        consumer.close();
-                    }
-                } catch (JMSException e) {
-                    e.printStackTrace();
-                    // TODO log message
-                }
-            }
+        }
         }
 
 
 
     @Override
-    public void getNext(CAS aCAS) throws IOException, CollectionException {
-        JCas jcas;
+    public void getNext(CAS cas) throws IOException, CollectionException {
+        JCas jCas;
         try {
-            jcas = aCAS.getJCas();
+            jCas = cas.getJCas();
         } catch (CASException e) {
             throw new CollectionException(e);
         }
 
-        // get the tweet text of the currentIndex
-        TextMessage textMsg = null;
-        try {
-            textMsg = tweets.get(currentIndex++);
-            // set the documentation text
-            jcas.setDocumentText(textMsg.getText());
+        Message message;
+        while(true) {
+            try {
+                message = consumer.receive();
 
-            TimeStamp timeStamp = new TimeStamp(jcas);
-            timeStamp.setTimeStamp(textMsg.getJMSTimestamp());
+                if (!(message == null) && message instanceof TextMessage) {
+                    count++;
+                    jCas.setDocumentText(((TextMessage) message).getText());
+                    logger.info("Tweet Recieved to Reader: " + jCas.getDocumentText()+"  "+count++);
+                    break;
+                }
 
-        } catch (JMSException e) {
-           // e.printStackTrace();
-            // TODO log context
-            logger.error("Error when retrieving text from JMS Text Message ",e);
+            } catch (JMSException e) {
+                logger.error("Error when receiveing message from the topic: " + topicName + " from url: " + jmsURL,e);
+              //  throw new RuntimeException("Unable to receieve messages from topic: "+topicName);
+                System.exit(0);
+                //TODO check whether to throw or not
+            }
         }
-
-        logger.debug("CAS DocText: "+jcas.getDocumentText());
 
     }
 
     @Override
     public boolean hasNext() throws IOException, CollectionException {
-        return currentIndex < tweets.size();
+        return true;
     }
 
     @Override
@@ -162,5 +134,9 @@ public class TwitterActiveMQReader extends CollectionReader_ImplBase {
     @Override
     public void close() throws IOException {
 
+    }
+
+    public String getClientID(){
+        return this.hashCode()+"";
     }
 }

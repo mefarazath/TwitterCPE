@@ -150,8 +150,7 @@ public class DataBridgeCasConsumer extends CasConsumer_ImplBase {
                 logger.debug("Stream Definition Failed");
             }
         }
-// / System.out.println("///////////////// " + streamId1);
-// super.initialize();
+
     }
     private void publishEvents(DataPublisher dataPublisher, String streamId, String... payloadArgs)
             throws AgentException {

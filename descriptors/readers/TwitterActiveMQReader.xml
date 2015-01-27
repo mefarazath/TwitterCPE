@@ -20,32 +20,19 @@
             </configurationParameter>
 
             <configurationParameter>
-                <name>queueName</name>
-                <description>JMS Queue from which the Reader fetches messages</description>
+                <name>topicName</name>
+                <description>JMS topic to which the Reader subscribes to</description>
                 <type>String</type>
                 <multiValued>false</multiValued>
                 <mandatory>true</mandatory>
             </configurationParameter>
 
-            <configurationParameter>
-        <name>maxMessagesToDequeue</name>
-        <description>Maximum Number of Messages the Reader can dequeue from the JMS Queue</description>
-        <type>Integer</type>
-        <multiValued>false</multiValued>
-        <mandatory>true</mandatory>
-      </configurationParameter>
     </configurationParameters>
 
         <!--- Configuration Parameter Values -->
         <configurationParameterSettings>
-       <nameValuePair>
-	        <name>maxMessagesToDequeue</name>
-	        <value>
-	          <integer>3</integer>
-	        </value>
-      </nameValuePair>
     <nameValuePair>
-        <name>queueName</name>
+        <name>topicName</name>
         <value>
           <string>Feed</string>
         </value>
