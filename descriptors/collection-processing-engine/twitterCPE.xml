@@ -28,7 +28,7 @@
             </errorHandling>
             <checkpoint batch="10000" time="1000ms"/>
         </casProcessor>
-        <!--
+
      <casProcessor deployment="integrated" name="twitterCPE_Databridge">
             <descriptor>
                 <import location="../consumers/DataBridgeCasConsumer.xml"/>
@@ -41,6 +41,8 @@
             </errorHandling>
             <checkpoint batch="10000" time="1000ms"/>
         </casProcessor>
+        
+  <!--  Uncomment to activate httpCasConsumer
      <casProcessor deployment="integrated" name="httpCasConsumer">
             <descriptor>
                 <import location="../consumers/HTTPCasConsumer.xml"/>
@@ -54,6 +56,8 @@
             <checkpoint batch="10000" time="1000ms"/>
         </casProcessor>
 -->
+
+<!--        uncomment to activate SoapCas consumer
         <casProcessor deployment="integrated" name="SoapCasConsumer">
             <descriptor>
                 <import location="../consumers/SOAPCasConsumer.xml"/>
@@ -66,6 +70,7 @@
             </errorHandling>
             <checkpoint batch="10000" time="1000ms"/>
         </casProcessor>
+        -->
     </casProcessors>
     <cpeConfig>
         <numToProcess>-1</numToProcess>
