@@ -1,5 +1,22 @@
-package org.wso2.uima.collectionProccesingEngine.consumers;
+/*
+*Copyright (c) 2005-2010, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+*
+*WSO2 Inc. licenses this file to you under the Apache License,
+*Version 2.0 (the "License"); you may not use this file except
+*in compliance with the License.
+*You may obtain a copy of the License at
+*
+*http://www.apache.org/licenses/LICENSE-2.0
+*
+*Unless required by applicable law or agreed to in writing,
+*software distributed under the License is distributed on an
+*"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+*KIND, either express or implied. See the License for the
+*specific language governing permissions and limitations
+*under the License.
+*/
 
+package org.wso2.uima.collectionProccesingEngine.consumers;
 import org.apache.log4j.Logger;
 import org.apache.uima.cas.CAS;
 import org.apache.uima.cas.CASException;
@@ -8,7 +25,6 @@ import org.apache.uima.collection.CasConsumer_ImplBase;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.resource.ResourceInitializationException;
 import org.apache.uima.resource.ResourceProcessException;
-import org.wso2.carbon.databridge.agent.thrift.Agent;
 import org.wso2.carbon.databridge.agent.thrift.DataPublisher;
 import org.wso2.carbon.databridge.agent.thrift.exception.AgentException;
 import org.wso2.carbon.databridge.commons.Event;
@@ -35,7 +51,6 @@ public class DataBridgeCasConsumer extends CasConsumer_ImplBase {
     private String url;
     private String username;
     private String password;
-
     @Override
     public void processCas(CAS cas) throws ResourceProcessException {
 // run the sample document through the pipeline
@@ -61,10 +76,8 @@ public class DataBridgeCasConsumer extends CasConsumer_ImplBase {
             TrafficLevelIdentifier level = it.next();
             trafficLevel = level.getTrafficLevel();
         }
-
         logger.info("Annotated Location : " + locationString.trim());
         logger.info("Annotated Traffic : " + trafficLevel);
-
         if (streamID != null && !locationString.equals("")) {
             try {
                 publishEvents(
@@ -74,43 +87,37 @@ public class DataBridgeCasConsumer extends CasConsumer_ImplBase {
                         trafficLevel,
                         tweetText
                 );
-
             } catch (AgentException e1) {
-                // TODO Auto-generated catch block
+// TODO Auto-generated catch block
                 e1.printStackTrace();
             }
         }
     }
-
     @Override
     public void initialize() throws ResourceInitializationException {
-        Agent agent= new Agent();
         KeyStoreUtil.setTrustStoreParams();
-
         url = (String) getConfigParameterValue(PARAM_SERVER_URL);
         username = (String) getConfigParameterValue(PARAM_USERNAME);
         password = (String) getConfigParameterValue(PARAM_PASSWORD);
-
         try {
-            dataPublisher = new DataPublisher(url, username, password,agent);
+            dataPublisher = new DataPublisher(url, username, password);
             logger.debug("Data Publisher Created");
         } catch (MalformedURLException e1) {
-            // TODO Auto-generated catch block
+// TODO Auto-generated catch block
             e1.printStackTrace();
         } catch (AgentException e1) {
-            // TODO Auto-generated catch block
+// TODO Auto-generated catch block
             e1.printStackTrace();
         } catch (AuthenticationException e1) {
-            // TODO Auto-generated catch block
+// TODO Auto-generated catch block
             e1.printStackTrace();
         } catch (TransportException e1) {
-            // TODO Auto-generated catch block
+// TODO Auto-generated catch block
             e1.printStackTrace();
         }
         try {
             streamID = dataPublisher.findStream(STREAM_NAME, VERSION);
             logger.info("Stream Definition Already Exists");
-
         } catch (NoStreamDefinitionExistException | AgentException | StreamDefinitionException e) {
             try {
                 StreamDefinition streamDef = new StreamDefinition(VERSION);
@@ -146,7 +153,6 @@ public class DataBridgeCasConsumer extends CasConsumer_ImplBase {
 // / System.out.println("///////////////// " + streamId1);
 // super.initialize();
     }
-
     private void publishEvents(DataPublisher dataPublisher, String streamId, String... payloadArgs)
             throws AgentException {
         Date date = new Date();

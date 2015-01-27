@@ -24,6 +24,7 @@
         <processorPath useClasspath="true" />
         <module name="CEP Consumer" />
         <module name="org.wso2.cpe.uima.twitter-extractor" />
+        <module name="org.wso2.cpe.uima.twitter-extractor (1)" />
         <module name="org.wso2.cpe.uima.twitter-streamer" />
         <module name="Twitter Extractor" />
         <module name="TwitterCPE" />
@@ -32,6 +33,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="org.wso2.cpe.uima.twitter-extractor" target="1.7" />
+      <module name="org.wso2.cpe.uima.twitter-extractor (1)" target="1.7" />
       <module name="org.wso2.cpe.uima.twitter-streamer" target="1.7" />
       <module name="Twitter Extractor" target="1.7" />
       <module name="Twitter Streamer" target="1.7" />

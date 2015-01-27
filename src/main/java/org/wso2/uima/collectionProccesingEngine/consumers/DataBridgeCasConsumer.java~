@@ -1,0 +1,176 @@
+package org.wso2.uima.collectionProccesingEngine.consumers;
+
+import org.apache.log4j.Logger;
+import org.apache.uima.cas.CAS;
+import org.apache.uima.cas.CASException;
+import org.apache.uima.cas.FSIndex;
+import org.apache.uima.collection.CasConsumer_ImplBase;
+import org.apache.uima.jcas.JCas;
+import org.apache.uima.resource.ResourceInitializationException;
+import org.apache.uima.resource.ResourceProcessException;
+import org.wso2.carbon.databridge.agent.thrift.DataPublisher;
+import org.wso2.carbon.databridge.agent.thrift.exception.AgentException;
+import org.wso2.carbon.databridge.commons.Event;
+import org.wso2.carbon.databridge.commons.StreamDefinition;
+import org.wso2.carbon.databridge.commons.exception.*;
+import org.wso2.uima.collectionProccesingEngine.consumers.util.KeyStoreUtil;
+import org.wso2.uima.types.LocationIdentification;
+import org.wso2.uima.types.TrafficLevelIdentifier;
+
+import java.net.MalformedURLException;
+import java.sql.Timestamp;
+import java.util.Date;
+import java.util.Iterator;
+
+public class DataBridgeCasConsumer extends CasConsumer_ImplBase {
+
+    private String url;
+    private String username;
+    private String password;
+
+    private DataPublisher dataPublisher;
+    private String streamName;
+    private String streamVersion;
+    private String streamID;
+
+    private static String PARAM_URL = "serverURL";
+    private static String PARAM_USERNAME = "username";
+    private static String PARAM_PASSWORD = "password";
+    private static String PARAM_STREAM_NAME = "streamName";
+    private static String PARAM_STREAM_VERSION = "streamVersion";
+
+    private static Logger logger = Logger.getLogger(DataBridgeCasConsumer.class);
+
+
+    @Override
+    public void initialize() throws ResourceInitializationException {
+
+        url = (String)getConfigParameterValue(PARAM_URL);
+        username = (String)getConfigParameterValue(PARAM_USERNAME);
+        password = (String)getConfigParameterValue(PARAM_PASSWORD);
+
+        streamName = (String)getConfigParameterValue(PARAM_STREAM_NAME);
+        streamVersion = (String)getConfigParameterValue(PARAM_STREAM_VERSION);
+
+
+
+        KeyStoreUtil.setTrustStoreParams();
+
+        try {
+            dataPublisher = new DataPublisher("tcp://localhost:7611", "admin", "admin");
+            logger.debug("DataPublisher create successfully");
+        } catch (MalformedURLException e) {
+            logger.error("Malformed URL Error when trying to connect to databridge using url: "+url,e);
+            throw new RuntimeException("Malformed URL Exception");
+        } catch (AgentException | TransportException e) {
+            //TODO
+            e.printStackTrace();
+        } catch (AuthenticationException e) {
+            logger.error("Authentication Error when trying to connect to databridge using username:" +username
+            +" password:"+password
+            );
+            e.printStackTrace();
+        }
+
+       /* System.out.println(url);
+        System.out.println(username);
+        System.out.println(password);
+        System.out.println(streamName);
+        System.out.println(streamVersion);*/
+
+        StreamDefinition definition = createStreamDefinition(streamName, streamVersion);
+
+
+            streamID  = "org.wso2.uima.TwitterExtractedInputFeed:1.0.0";
+            System.out.println("Defined a stream :P "+streamID);
+
+
+    }
+
+
+
+    @Override
+    public void processCas(CAS cas) throws ResourceProcessException {
+        JCas jCas = null;
+
+        try {
+            jCas = cas.getJCas();
+        } catch (CASException e) {
+            logger.error("Exception when access JCas within the Cas" ,e);
+            throw new NullPointerException("JCas not found within Cas");
+        }
+
+        String tweetText = jCas.getDocumentText();
+        StringBuilder builder = new StringBuilder();
+
+        FSIndex locationIndex = jCas.getAnnotationIndex(LocationIdentification.type);
+        for (Iterator<LocationIdentification> it = locationIndex.iterator(); it.hasNext();) {
+            LocationIdentification annotation = it.next();
+            if(!builder.toString().contains(annotation.getCoveredText())) {
+                builder.append(annotation.getCoveredText()+" ");
+            }
+        }
+        String trafficLocation = builder.toString().trim();
+
+        String trafficLevel = "";
+        FSIndex trafficLevelIndex =
+                jCas.getAnnotationIndex(TrafficLevelIdentifier.type);
+        for(Iterator<TrafficLevelIdentifier> it = trafficLevelIndex.iterator(); it.hasNext();){
+            TrafficLevelIdentifier level = it.next();
+            trafficLevel = level.getTrafficLevel();
+        }
+
+        if(!trafficLocation.isEmpty()){
+            System.out.println("Location String: "+trafficLocation);
+            System.out.println("Traffic Level: "+trafficLevel);
+           // publishEvent(streamID,tweetText,trafficLocation,trafficLevel);
+            try {
+                publishEvent(streamID,tweetText,trafficLocation,trafficLevel);
+            } catch (AgentException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+
+    private StreamDefinition createStreamDefinition(String streamName, String streamVersion){
+        StreamDefinition streamDefinition = null;
+      /*  try {
+            streamDefinition = new StreamDefinition(streamName,streamVersion);
+            streamDefinition.setNickName("twitter Input Stream");
+            streamDefinition.setDescription("Input stream to recieve the extracted details from the twitter feed into the CEP");
+            streamDefinition.addMetaData("Timestamp", AttributeType.STRING);
+            streamDefinition.addPayloadData("Traffic_Location",AttributeType.STRING);
+            streamDefinition.addPayloadData("Traffic_Level",AttributeType.STRING);
+            streamDefinition.addPayloadData("Twitter_Text",AttributeType.STRING);
+
+        } catch (MalformedStreamDefinitionException e) {
+            logger.error("Error when trying to create stream defintion :\n"+streamName+":"+streamVersion);
+            throw new RuntimeException("Error when trying to define stream "+streamName+":"+streamVersion);
+        }
+
+
+*/
+        return streamDefinition;
+    }
+
+
+    private void publishEvent(String streamID, String tweetText, String trafficLocation, String trafficLevel) throws AgentException {
+
+        Date date = new Date(System.currentTimeMillis());
+        String timeStamp = new Timestamp(date.getTime()).toString();
+
+        Object[] metaData = { timeStamp };
+        Object[] correlationData =null;
+        Object[] payloadData = new Object[]{trafficLocation, trafficLevel, tweetText};
+
+        Event event = new Event(streamID,System.currentTimeMillis(),metaData,correlationData,payloadData);
+
+
+            dataPublisher.publish(event);
+            System.out.println("Event Send Wage");
+
+    }
+
+
+}

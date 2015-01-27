@@ -27,7 +27,7 @@
             </errorHandling>
             <checkpoint batch="10000" time="1000ms"/>
         </casProcessor>
-     <casProcessor deployment="integrated" name="twitterCPE_Databridge">
+     <!--   <casProcessor deployment="integrated" name="twitterCPE_Databridge">
             <descriptor>
                 <import location="../consumers/DataBridgeCasConsumer.xml"/>
             </descriptor>
@@ -38,7 +38,7 @@
                 <timeout max="100000" default="-1"/>
             </errorHandling>
             <checkpoint batch="10000" time="1000ms"/>
-        </casProcessor> <!--
+        </casProcessor> -->
      <casProcessor deployment="integrated" name="httpCasConsumer">
             <descriptor>
                 <import location="../consumers/HTTPCasConsumer.xml"/>
@@ -50,9 +50,7 @@
                 <timeout max="100000" default="-1"/>
             </errorHandling>
             <checkpoint batch="10000" time="1000ms"/>
-        </casProcessor> 
--->
-<!--
+        </casProcessor> <!--
         <casProcessor deployment="integrated" name="SoapCasConsumer">
             <descriptor>
                 <import location="../consumers/SOAPCasConsumer.xml"/>

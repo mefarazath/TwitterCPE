@@ -39,6 +39,7 @@
         <option value="$PROJECT_DIR$/../Twitter Streamer/pom.xml" />
         <option value="$PROJECT_DIR$/../TweetExtractor-ActiveMQ/pom.xml" />
         <option value="$PROJECT_DIR$/../TwitterStreamer-ActiveMQ/pom.xml" />
+        <option value="$PROJECT_DIR$/../TweetClient-ActiveMQ/pom.xml" />
       </list>
     </option>
   </component>

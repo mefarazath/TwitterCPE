@@ -18,7 +18,6 @@ public class TwitterActiveMQReaderTest extends TestCase {
         CollectionReaderDescription desc = UIMAFramework.getXMLParser().parseCollectionReaderDescription(in);
         reader = (TwitterActiveMQReader)UIMAFramework.produceCollectionReader(desc);
         assertNotNull(reader);
-        assertEquals(true, reader instanceof TwitterActiveMQReader);
     }
 
     public void testGetNext() throws Exception {
