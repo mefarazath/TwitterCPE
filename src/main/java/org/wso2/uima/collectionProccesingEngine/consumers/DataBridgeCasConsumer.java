@@ -31,6 +31,7 @@ import org.wso2.carbon.databridge.commons.Event;
 import org.wso2.carbon.databridge.commons.StreamDefinition;
 import org.wso2.carbon.databridge.commons.exception.*;
 import org.wso2.uima.collectionProccesingEngine.consumers.util.KeyStoreUtil;
+import org.wso2.uima.collectionProccesingEngine.consumers.util.TweetScanner;
 import org.wso2.uima.types.LocationIdentification;
 import org.wso2.uima.types.TrafficLevelIdentifier;
 
@@ -53,28 +54,11 @@ public class DataBridgeCasConsumer extends CasConsumer_ImplBase {
     private String password;
     @Override
     public void processCas(CAS cas) throws ResourceProcessException {
-// run the sample document through the pipeline
-        JCas output = null;
-        try {
-            output = cas.getJCas();
-        } catch (CASException e) {
-            logger.error("Unable to get the JCas from the cas when trying to process Cas", e);
-        }
-        String tweetText = "\n" + output.getDocumentText();
-        String locationString = "";
-        FSIndex locationIndex = output.getAnnotationIndex(LocationIdentification.type);
-        for (Iterator<LocationIdentification> it = locationIndex.iterator(); it.hasNext(); ) {
-            LocationIdentification annotation = it.next();
-            if (!locationString.contains(annotation.getCoveredText()))
-                locationString = locationString + annotation.getCoveredText() + " ";
-        }
-        String trafficLevel = "";
-        FSIndex trafficLevelIndex =
-                output.getAnnotationIndex(TrafficLevelIdentifier.type);
-        for (Iterator<TrafficLevelIdentifier> it = trafficLevelIndex.iterator(); it.hasNext(); ) {
-            TrafficLevelIdentifier level = it.next();
-            trafficLevel = level.getTrafficLevel();
-        }
+
+        String tweetText = TweetScanner.getTweetText(cas);
+        String locationString = TweetScanner.getLocationString(cas);
+        String trafficLevel = TweetScanner.getTrafficLevel(cas);
+
         logger.info("Annotated Location : " + locationString.trim());
         logger.info("Annotated Traffic : " + trafficLevel);
         if (streamID != null && !locationString.equals("")) {
@@ -143,10 +127,7 @@ public class DataBridgeCasConsumer extends CasConsumer_ImplBase {
                 logger.debug("Stream Definition Failed");
             }
         }
-<<<<<<< HEAD
 
-=======
->>>>>>> 8d5d11d92d1300d4b9fcd559c8bf2a56694058ed
     }
 
     private void publishEvents(DataPublisher dataPublisher, String streamId, String... payloadArgs)

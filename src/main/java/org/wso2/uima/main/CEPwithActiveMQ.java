@@ -63,16 +63,6 @@ public class CEPwithActiveMQ {
 
             while(!scanner.nextLine().equals("exit")){
 
-<<<<<<< HEAD
-=======
-                if(!cpe.isProcessing()) {
-                    logger.info("\n******** Performance Report *********\n"+cpe.getPerformanceReport().toString());
-                }
-
-            } catch (ResourceInitializationException e) {
-                logger.error("Error occurs when producing collection processing engine ",e);
-                break;
->>>>>>> 8d5d11d92d1300d4b9fcd559c8bf2a56694058ed
             }
             System.out.println(cpe.getPerformanceReport().toString());
             System.exit(0);
