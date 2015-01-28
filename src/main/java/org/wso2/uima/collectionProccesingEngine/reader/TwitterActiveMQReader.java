@@ -108,7 +108,6 @@ public class TwitterActiveMQReader extends CollectionReader_ImplBase {
                 message = consumer.receive();
 
                 if (!(message == null) && message instanceof TextMessage) {
-                    count++;
                     jCas.setDocumentText(((TextMessage) message).getText());
                     logger.info("Tweet Recieved to Reader: " + jCas.getDocumentText()+"  "+count++);
                     break;
