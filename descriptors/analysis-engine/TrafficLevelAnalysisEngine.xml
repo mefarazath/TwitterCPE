@@ -1,71 +1,92 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ /*
+  ~ *Copyright (c) 2005-2015, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+  ~ *
+  ~ *WSO2 Inc. licenses this file to you under the Apache License,
+  ~ *Version 2.0 (the "License"); you may not use this file except
+  ~ *in compliance with the License.
+  ~ *You may obtain a copy of the License at
+  ~ *
+  ~ *http://www.apache.org/licenses/LICENSE-2.0
+  ~ *
+  ~ *Unless required by applicable law or agreed to in writing,
+  ~ *software distributed under the License is distributed on an
+  ~ *"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+  ~ *KIND, either express or implied. See the License for the
+  ~ *specific language governing permissions and limitations
+  ~ *under the License.
+  ~ */
+  -->
+
 <analysisEngineDescription xmlns="http://uima.apache.org/resourceSpecifier">
-  <frameworkImplementation>org.apache.uima.java</frameworkImplementation>
-  <primitive>true</primitive>
-  <annotatorImplementationName>org.wso2.uima.collectionProccesingEngine.analysisEngines.TrafficLevelAnalyser</annotatorImplementationName>
-  <analysisEngineMetaData>
-    <name>TrafficLevelAnalysisEngine</name>
-    <description>
-          Analysis Engine that categorizes the Tweet Text Describing the traffic into levels
-          High,Medium,Low,Random using Apache OpenNLP libraries
-    </description>
-    <version>1.0</version>
-    <vendor/>
-    <configurationParameters/>
-    <configurationParameterSettings/>
-    <typeSystemDescription>
-      <types>
-        <typeDescription>
-          <name>org.wso2.uima.types.TrafficLevelIdentifier</name>
-          <description/>
-          <supertypeName>uima.tcas.Annotation</supertypeName>
-        <features>
-            <featureDescription>
-              <name>TrafficLevel</name>
-              <description/>
-              <rangeTypeName>uima.cas.String</rangeTypeName>
-            </featureDescription>
-          </features>
-        </typeDescription>
-      </types>
-    </typeSystemDescription>
-    <typePriorities/>
-    <fsIndexCollection/>
-    <capabilities>
-      <capability>
-        <inputs/>
-        <outputs/>
-        <languagesSupported/>
-      </capability>
-    </capabilities>
-  <operationalProperties>
-      <modifiesCas>true</modifiesCas>
-      <multipleDeploymentAllowed>true</multipleDeploymentAllowed>
-      <outputsNewCASes>false</outputsNewCASes>
-    </operationalProperties>
-  </analysisEngineMetaData>
-  <externalResourceDependencies>
-    <externalResourceDependency>
-      <key>DoccatModel</key>
-      <description>Document Categorizer Model</description>
-      <optional>false</optional>
-    </externalResourceDependency>
-  </externalResourceDependencies>
-  <resourceManagerConfiguration>
-    <externalResources>
-      <externalResource>
-        <name>DocumentCategorizerModeFile</name>
-        <description/>
-        <fileResourceSpecifier>
-          <fileUrl>resources/models/en-doccat.bin</fileUrl>
-        </fileResourceSpecifier>
-      </externalResource>
-    </externalResources>
-    <externalResourceBindings>
-      <externalResourceBinding>
-        <key>DoccatModel</key>
-        <resourceName>DocumentCategorizerModeFile</resourceName>
-      </externalResourceBinding>
-    </externalResourceBindings>
-  </resourceManagerConfiguration>
+    <frameworkImplementation>org.apache.uima.java</frameworkImplementation>
+    <primitive>true</primitive>
+    <annotatorImplementationName>org.wso2.uima.collectionProccesingEngine.analysisEngines.TrafficLevelAnalyser
+    </annotatorImplementationName>
+    <analysisEngineMetaData>
+        <name>TrafficLevelAnalysisEngine</name>
+        <description>
+            Analysis Engine that categorizes the Tweet Text Describing the traffic into levels
+            High,Medium,Low,Random using Apache OpenNLP libraries
+        </description>
+        <version>1.0</version>
+        <vendor/>
+        <configurationParameters/>
+        <configurationParameterSettings/>
+        <typeSystemDescription>
+            <types>
+                <typeDescription>
+                    <name>org.wso2.uima.types.TrafficLevelIdentifier</name>
+                    <description/>
+                    <supertypeName>uima.tcas.Annotation</supertypeName>
+                    <features>
+                        <featureDescription>
+                            <name>TrafficLevel</name>
+                            <description/>
+                            <rangeTypeName>uima.cas.String</rangeTypeName>
+                        </featureDescription>
+                    </features>
+                </typeDescription>
+            </types>
+        </typeSystemDescription>
+        <typePriorities/>
+        <fsIndexCollection/>
+        <capabilities>
+            <capability>
+                <inputs/>
+                <outputs/>
+                <languagesSupported/>
+            </capability>
+        </capabilities>
+        <operationalProperties>
+            <modifiesCas>true</modifiesCas>
+            <multipleDeploymentAllowed>true</multipleDeploymentAllowed>
+            <outputsNewCASes>false</outputsNewCASes>
+        </operationalProperties>
+    </analysisEngineMetaData>
+    <externalResourceDependencies>
+        <externalResourceDependency>
+            <key>DoccatModel</key>
+            <description>Document Categorizer Model</description>
+            <optional>false</optional>
+        </externalResourceDependency>
+    </externalResourceDependencies>
+    <resourceManagerConfiguration>
+        <externalResources>
+            <externalResource>
+                <name>DocumentCategorizerModeFile</name>
+                <description/>
+                <fileResourceSpecifier>
+                    <fileUrl>resources/models/en-doccat.bin</fileUrl>
+                </fileResourceSpecifier>
+            </externalResource>
+        </externalResources>
+        <externalResourceBindings>
+            <externalResourceBinding>
+                <key>DoccatModel</key>
+                <resourceName>DocumentCategorizerModeFile</resourceName>
+            </externalResourceBinding>
+        </externalResourceBindings>
+    </resourceManagerConfiguration>
 </analysisEngineDescription>

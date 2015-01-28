@@ -1,6 +1,6 @@
 /*
  *
- * Copyright (c) 2005-2010, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ * Copyright (c) 2005-2015, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
  *
  * WSO2 Inc. licenses this file to you under the Apache License,
  * Version 2.0 (the "License"); you may not use this file except
@@ -37,10 +37,10 @@ import java.util.Scanner;
 import static org.apache.log4j.Logger.getLogger;
 
 /**
- * Created by farazath on 1/22/15.
+ *
  */
-public class CEPwithActiveMQ {
-    private static Logger logger = getLogger(CEPwithActiveMQ.class);
+public class CEPWithActiveMQ {
+    private static Logger logger = getLogger(CEPWithActiveMQ.class);
 
     public static void main(String[] args) throws IOException, InvalidXMLException, InterruptedException {
 
@@ -61,33 +61,31 @@ public class CEPwithActiveMQ {
 
             Scanner scanner = new Scanner(System.in);
 
-            while(!scanner.nextLine().equals("exit")){
+            while (!scanner.nextLine().equals("exit")) {
 
             }
             System.out.println(cpe.getPerformanceReport().toString());
             System.exit(0);
         } catch (ResourceInitializationException e) {
-            logger.error("Error Initializing the CPE",e);
+            logger.error("Error Initializing the CPE", e);
         }
 
-
-
-        }
 
     }
 
+}
 
 
 class StatusCallBackCPE implements StatusCallbackListener {
 
-    public StatusCallBackCPE(){
+    public StatusCallBackCPE() {
         org.apache.log4j.PropertyConfigurator.configure("conf/log4j.properties");
 
     }
 
     @Override
     public void aborted() {
-        getLogger(CEPwithActiveMQ.class).info("CPE aborted");
+        getLogger(CEPWithActiveMQ.class).info("CPE aborted");
         throw new RuntimeException("CPE Aborted Abruptly");
     }
 
@@ -98,13 +96,13 @@ class StatusCallBackCPE implements StatusCallbackListener {
 
     @Override
     public void collectionProcessComplete() {
-        getLogger(CEPwithActiveMQ.class).info("CPE Processing Completed");
+        getLogger(CEPWithActiveMQ.class).info("CPE Processing Completed");
 
     }
 
     @Override
     public void initializationComplete() {
-        getLogger(CEPwithActiveMQ.class).info("CPE Initialization Completed");
+        getLogger(CEPWithActiveMQ.class).info("CPE Initialization Completed");
     }
 
     @Override

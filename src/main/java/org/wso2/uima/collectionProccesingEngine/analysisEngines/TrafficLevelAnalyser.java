@@ -1,6 +1,6 @@
 /*
  *
- * Copyright (c) 2005-2010, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ * Copyright (c) 2005-2015, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
  *
  * WSO2 Inc. licenses this file to you under the Apache License,
  * Version 2.0 (the "License"); you may not use this file except
@@ -32,6 +32,11 @@ import org.apache.uima.resource.ResourceInitializationException;
 import org.wso2.uima.types.TrafficLevelIdentifier;
 
 import java.io.InputStream;
+
+/**
+ * Find and annotate the traffic indicated by sentences from within blocks of text (marked up with
+ * TextAnnotation) from either HTML or plain text documents. as high, low, regular, medium etc.
+ */
 
 public class TrafficLevelAnalyser extends JCasAnnotator_ImplBase {
 

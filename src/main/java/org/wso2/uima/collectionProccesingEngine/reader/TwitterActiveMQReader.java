@@ -1,6 +1,6 @@
 /*
  *
- * Copyright (c) 2005-2010, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ * Copyright (c) 2005-2015, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
  *
  * WSO2 Inc. licenses this file to you under the Apache License,
  * Version 2.0 (the "License"); you may not use this file except
@@ -37,7 +37,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 /**
- * Created by farazath on 1/22/15.
+ *
  */
 public class TwitterActiveMQReader extends CollectionReader_ImplBase {
 
@@ -52,22 +52,22 @@ public class TwitterActiveMQReader extends CollectionReader_ImplBase {
     private String topicName;
     private int currentIndex;
     private MessageConsumer consumer;
-    int count=0;
+    int count = 0;
 
     @Override
-    public void initialize() throws ResourceInitializationException{
+    public void initialize() throws ResourceInitializationException {
         PropertyConfigurator.configure("conf/log4j.properties");
 
-        jmsURL = (String)getConfigParameterValue(PARAM_JMS_URL);
-        topicName = (String)getConfigParameterValue(PARAM_JMS_TOPIC_NAME);
+        jmsURL = (String) getConfigParameterValue(PARAM_JMS_URL);
+        topicName = (String) getConfigParameterValue(PARAM_JMS_TOPIC_NAME);
 
         tweets = new ArrayList<>();
         currentIndex = 0;
 
         ActiveMQConnectionFactory factory = new ActiveMQConnectionFactory(jmsURL);
-        logger.debug("Factory created Successful for "+ jmsURL);
+        logger.debug("Factory created Successful for " + jmsURL);
 
-        Connection connection = null;
+        Connection connection;
         consumer = null;
         try {
             connection = factory.createQueueConnection();
@@ -85,11 +85,11 @@ public class TwitterActiveMQReader extends CollectionReader_ImplBase {
         } catch (JMSException e) {
              logger.error("Error Initializing the Subscriber for ActiveMQReader",e);
             throw new RuntimeException("Unable to initialize the CAS Reader");
+
         }
 
         logger.info("ActiveMQ Cas Reader Initialized Successfully");
     }
-
 
 
     @Override
@@ -103,25 +103,25 @@ public class TwitterActiveMQReader extends CollectionReader_ImplBase {
         }
 
         Message message;
-        while(true) {
+        while (true) {
             try {
                 message = consumer.receive();
 
                 if (!(message == null) && message instanceof TextMessage) {
                     jCas.setDocumentText(((TextMessage) message).getText());
-                    logger.info("Tweet Recieved to Reader: " + jCas.getDocumentText()+"  "+count++);
+                    logger.info("Tweet Relieved to Reader: " + jCas.getDocumentText() + "  " + count++);
                     break;
                 }
 
 
             } catch (JMSException e) {
-                logger.error("Error when receiveing message from the topic: " + topicName + " from url: " + jmsURL,e);
+                logger.error("Error when receiving message from the topic: " + topicName + " from url: " + jmsURL, e);
                 System.exit(0);
 
             }
         }
 
-        }
+    }
 
 
     @Override
@@ -131,7 +131,7 @@ public class TwitterActiveMQReader extends CollectionReader_ImplBase {
 
     @Override
     public Progress[] getProgress() {
-        return new Progress[] { new ProgressImpl( currentIndex, tweets.size(), Progress.ENTITIES) };
+        return new Progress[]{new ProgressImpl(currentIndex, tweets.size(), Progress.ENTITIES)};
     }
 
     @Override
@@ -139,7 +139,7 @@ public class TwitterActiveMQReader extends CollectionReader_ImplBase {
 
     }
 
-    public String getClientID(){
-        return this.hashCode()+"";
+    public String getClientID() {
+        return this.hashCode() + "";
     }
 }

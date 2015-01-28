@@ -1,6 +1,6 @@
 /*
  *
- * Copyright (c) 2005-2010, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ * Copyright (c) 2005-2015, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
  *
  * WSO2 Inc. licenses this file to you under the Apache License,
  * Version 2.0 (the "License"); you may not use this file except
@@ -21,19 +21,19 @@
 package org.wso2.uima.collectionProccesingEngine.consumers.util;
 
 
+import javax.net.ssl.X509TrustManager;
 import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
-
-import javax.net.ssl.X509TrustManager;
-
 
 class DefaultTrustManager implements X509TrustManager {
 
     @Override
-    public void checkClientTrusted(X509Certificate[] arg0, String arg1) throws CertificateException {}
+    public void checkClientTrusted(X509Certificate[] arg0, String arg1) throws CertificateException {
+    }
 
     @Override
-    public void checkServerTrusted(X509Certificate[] arg0, String arg1) throws CertificateException {}
+    public void checkServerTrusted(X509Certificate[] arg0, String arg1) throws CertificateException {
+    }
 
     @Override
     public X509Certificate[] getAcceptedIssuers() {

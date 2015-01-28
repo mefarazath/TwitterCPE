@@ -1,6 +1,6 @@
 /*
  *
- * Copyright (c) 2005-2010, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ * Copyright (c) 2005-2015, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
  *
  * WSO2 Inc. licenses this file to you under the Apache License,
  * Version 2.0 (the "License"); you may not use this file except
@@ -20,10 +20,6 @@
 
 package org.wso2.uima.collectionProccesingEngine.consumers;
 
-/**
- * Created by vidura on 1/19/15.
- */
-
 import org.apache.log4j.Logger;
 import org.apache.uima.cas.CAS;
 import org.apache.uima.collection.CasConsumer_ImplBase;
@@ -35,6 +31,10 @@ import org.wso2.uima.collectionProccesingEngine.consumers.util.CasConsumerUtil;
 import javax.xml.soap.*;
 import java.sql.Timestamp;
 import java.util.Date;
+
+/**
+ *Send the info extracted from CAS object and send it as a SOAP message to CEP.
+ */
 
 public class SoapCasConsumer extends CasConsumer_ImplBase {
 
@@ -51,7 +51,7 @@ public class SoapCasConsumer extends CasConsumer_ImplBase {
         String locationString = CasConsumerUtil.getLocationString(cas);
         String trafficLevel = CasConsumerUtil.getTrafficLevel(cas);
 
-        if(locationString.isEmpty()){
+        if (locationString.isEmpty()) {
             return;
         }
 
@@ -71,7 +71,7 @@ public class SoapCasConsumer extends CasConsumer_ImplBase {
             SOAPHeader header = envelope.getHeader();
 
             MimeHeaders headers = soapMessage.getMimeHeaders();
-            headers.addHeader("SOAPAction",soapEndPoint);
+            headers.addHeader("SOAPAction", soapEndPoint);
 
             // SOAP Body
             SOAPBody soapBody = envelope.getBody();
@@ -89,13 +89,13 @@ public class SoapCasConsumer extends CasConsumer_ImplBase {
             SOAPElement tweetTextElement = payloadDataElement.addChildElement("Twitter_Text");
             tweetTextElement.addTextNode(tweetText);
 
-           // System.out.println(soapMessage.getSOAPBody().toString());
+            // System.out.println(soapMessage.getSOAPBody().toString());
             this.publish(soapMessage);
             logger.info("Event Published Successfully to "+ soapEndPoint+"\n");
 
 
         } catch (Exception e) {
-            logger.error("Error occurs when creating the SOAP message",e);
+            logger.error("Error occurs when creating the SOAP message", e);
         }
     }
 
@@ -105,9 +105,9 @@ public class SoapCasConsumer extends CasConsumer_ImplBase {
 
         KeyStoreUtil.setTrustStoreParams();
 
-        username = (String)getConfigParameterValue("username");
-        password = (String)getConfigParameterValue("password");
-        soapEndPoint = (String)getConfigParameterValue("SOAPEndPoint");
+        username = (String) getConfigParameterValue("username");
+        password = (String) getConfigParameterValue("password");
+        soapEndPoint = (String) getConfigParameterValue("SOAPEndPoint");
 
         logger.info(SoapCasConsumer.class.getSimpleName()+" initialized successfully");
 
@@ -128,7 +128,7 @@ public class SoapCasConsumer extends CasConsumer_ImplBase {
             soapConnection.close();
 
         } catch (Exception e) {
-            logger.error("Error occurred while sending SOAP Request to Server",e);
+            logger.error("Error occurred while sending SOAP Request to Server", e);
         }
     }
 }
