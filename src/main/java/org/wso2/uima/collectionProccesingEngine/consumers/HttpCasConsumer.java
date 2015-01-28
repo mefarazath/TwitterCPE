@@ -72,6 +72,9 @@ public class HttpCasConsumer  extends CasConsumer_ImplBase {
         password = (String)getConfigParameterValue(PARAM_PASSWORD);
         httpEndPoint = (String)getConfigParameterValue(PARAM_HTTP_ENDPOINT);
 
+        logger.info(HttpCasConsumer.class.getSimpleName()+" initialized successfully");
+
+
     }
     @Override
     public void processCas(CAS cas) throws ResourceProcessException {

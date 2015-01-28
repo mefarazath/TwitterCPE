@@ -109,6 +109,8 @@ public class SoapCasConsumer extends CasConsumer_ImplBase {
         password = (String)getConfigParameterValue("password");
         soapEndPoint = (String)getConfigParameterValue("SOAPEndPoint");
 
+        logger.info(SoapCasConsumer.class.getSimpleName()+" initialized successfully");
+
     }
 
 

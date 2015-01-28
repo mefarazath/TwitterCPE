@@ -65,8 +65,8 @@ public class DataBridgeCasConsumer extends CasConsumer_ImplBase {
             return;
         }
 
-        logger.info("Annotated Location : " + locationString.trim());
-        logger.info("Annotated Traffic : " + trafficLevel);
+        logger.debug("Annotated Location : " + locationString.trim());
+        logger.debug("Annotated Traffic : " + trafficLevel);
         if (streamID != null && !locationString.equals("")) {
             try {
                 publishEvents(
@@ -134,6 +134,7 @@ public class DataBridgeCasConsumer extends CasConsumer_ImplBase {
 
                 logger.debug("Stream Definition Failed");
         }
+        logger.info(DataBridgeCasConsumer.class.getSimpleName()+" initialized successfully");
     }
 
 
@@ -146,7 +147,6 @@ public class DataBridgeCasConsumer extends CasConsumer_ImplBase {
                 time
         };
         Object[] payload = payloadArgs;
-// TODO ADD NULL
         Object[] correlation = new Object[]{};
         Event statisticsEvent = new Event(streamId, System.currentTimeMillis(),
                 meta, correlation, payload);
