@@ -1,22 +1,25 @@
 /*
-*Copyright (c) 2005-2010, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
-*
-*WSO2 Inc. licenses this file to you under the Apache License,
-*Version 2.0 (the "License"); you may not use this file except
-*in compliance with the License.
-*You may obtain a copy of the License at
-*
-*http://www.apache.org/licenses/LICENSE-2.0
-*
-*Unless required by applicable law or agreed to in writing,
-*software distributed under the License is distributed on an
-*"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-*KIND, either express or implied. See the License for the
-*specific language governing permissions and limitations
-*under the License.
-*/
+ *
+ * Copyright (c) 2005-2015, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ *
+ * WSO2 Inc. licenses this file to you under the Apache License,
+ * Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ * /
+ */
 
 package org.wso2.uima.collectionProccesingEngine.consumers;
+
 import org.apache.log4j.Logger;
 import org.apache.uima.cas.CAS;
 import org.apache.uima.collection.CasConsumer_ImplBase;
@@ -33,6 +36,10 @@ import org.wso2.uima.collectionProccesingEngine.consumers.util.CasConsumerUtil;
 import java.net.MalformedURLException;
 import java.sql.Timestamp;
 import java.util.Date;
+
+/**
+ * Send the info extracted from CAS object and send it to the CEP via DataBridge.
+ */
 
 public class DataBridgeCasConsumer extends CasConsumer_ImplBase {
 
@@ -54,6 +61,7 @@ public class DataBridgeCasConsumer extends CasConsumer_ImplBase {
     private String streamVersion;
 
 
+
     @Override
     public void processCas(CAS cas) throws ResourceProcessException {
 
@@ -61,7 +69,7 @@ public class DataBridgeCasConsumer extends CasConsumer_ImplBase {
         String locationString = CasConsumerUtil.getLocationString(cas);
         String trafficLevel = CasConsumerUtil.getTrafficLevel(cas);
 
-        if(locationString.isEmpty()){
+        if (locationString.isEmpty()) {
             return;
         }
 
@@ -81,6 +89,7 @@ public class DataBridgeCasConsumer extends CasConsumer_ImplBase {
             }
         }
     }
+
     @Override
     public void initialize() throws ResourceInitializationException {
         KeyStoreUtil.setTrustStoreParams();
@@ -138,7 +147,14 @@ public class DataBridgeCasConsumer extends CasConsumer_ImplBase {
     }
 
 
-
+    /***
+     *
+     * @param dataPublisher gives the data publisher specified by username, password, url that used
+     *                      to sends the data.
+     * @param streamId gives the stream id that is available with the dataPublisher.
+     * @param payloadArgs the info that needs to be sent.
+     * @throws AgentException
+     */
     private void publishEvents(DataPublisher dataPublisher, String streamId, String... payloadArgs)
             throws AgentException {
         Date date = new Date();

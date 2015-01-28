@@ -1,5 +1,5 @@
 <!--
-~ Copyright (c) 2005-2010, WSO2 Inc. (http://wso2.com) All Rights Reserved.
+~ Copyright (c) 2005-2015, WSO2 Inc. (http://wso2.com) All Rights Reserved.
 ~
 ~ WSO2 Inc. licenses this file to you under the Apache License,
 ~ Version 2.0 (the "License"); you may not use this file except
@@ -57,11 +57,11 @@
     </target>
 
     <target name="run" depends="compile">
-        <java classname="org.wso2.uima.main.CEPwithActiveMQ"
+        <java classname="org.wso2.uima.main.CEPWithActiveMQ"
               classpathref="javac.classpath" fork="true">
             <sysproperty key="jmsUrl" value="${jmsUrl}"/>
             <sysproperty key="queueName" value="${queueName}"/>
-	    <arg value="${jmsUrl}"/>
+            <arg value="${jmsUrl}"/>
             <arg value="${queueName}"/>
         </java>
     </target>
