@@ -1,6 +1,6 @@
 /*
  *
- * Copyright (c) 2005-2010, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ * Copyright (c) 2005-2015, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
  *
  * WSO2 Inc. licenses this file to you under the Apache License,
  * Version 2.0 (the "License"); you may not use this file except
@@ -96,16 +96,16 @@ public class LocationIdentifier extends JCasAnnotator_ImplBase {
             for (int i = 0; i < tokens.length; i++) {
                 tokens[i] = tokSpans[i].getCoveredText(sentence).toString();
             }
-            
-			logger.info("Tweet Text: "+jcas.getDocumentText());
-			Span locationSpans[] = locationFinder.find(tokens);
-			LocationIdentification annotation = new LocationIdentification(jcas);
-			for (Span location: locationSpans) {
-				annotation.setBegin(start + tokSpans[location.getStart()].getStart());
-				annotation.setEnd(start + tokSpans[location.getEnd() - 1].getEnd());
-				annotation.addToIndexes(jcas);
-				logger.info("Location Detected : "+annotation.getCoveredText());
-			}
+
+            logger.info("Tweet Text: " + jcas.getDocumentText());
+            Span locationSpans[] = locationFinder.find(tokens);
+            LocationIdentification annotation = new LocationIdentification(jcas);
+            for (Span location : locationSpans) {
+                annotation.setBegin(start + tokSpans[location.getStart()].getStart());
+                annotation.setEnd(start + tokSpans[location.getEnd() - 1].getEnd());
+                annotation.addToIndexes(jcas);
+                logger.info("Location Detected : " + annotation.getCoveredText());
+            }
 
 
             if (locationSpans.length == 0) {

@@ -57,7 +57,7 @@
     </target>
 
     <target name="run" depends="compile">
-        <java classname="org.wso2.uima.main.CEPwithActiveMQ"
+        <java classname="org.wso2.uima.main.CEPWithActiveMQ"
               classpathref="javac.classpath" fork="true">
             <sysproperty key="jmsUrl" value="${jmsUrl}"/>
             <sysproperty key="queueName" value="${queueName}"/>

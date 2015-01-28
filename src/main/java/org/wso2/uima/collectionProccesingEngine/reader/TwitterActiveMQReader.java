@@ -1,6 +1,6 @@
 /*
  *
- * Copyright (c) 2005-2010, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ * Copyright (c) 2005-2015, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
  *
  * WSO2 Inc. licenses this file to you under the Apache License,
  * Version 2.0 (the "License"); you may not use this file except
@@ -37,7 +37,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 /**
- * Created by farazath on 1/22/15.
+ *
  */
 public class TwitterActiveMQReader extends CollectionReader_ImplBase {
 
@@ -67,7 +67,7 @@ public class TwitterActiveMQReader extends CollectionReader_ImplBase {
         ActiveMQConnectionFactory factory = new ActiveMQConnectionFactory(jmsURL);
         logger.debug("Factory created Successful for "+ jmsURL);
 
-        Connection connection = null;
+        Connection connection;
         consumer = null;
         try {
             connection = factory.createQueueConnection();
@@ -83,7 +83,7 @@ public class TwitterActiveMQReader extends CollectionReader_ImplBase {
             consumer = session.createDurableSubscriber(topic,clientID);
 
         } catch (JMSException e) {
-             logger.error("Error Intializing the Subscriber for ActiveMQReader",e);
+             logger.error("Error Initializing the Subscriber for ActiveMQReader",e);
 
         }
     }
@@ -108,13 +108,13 @@ public class TwitterActiveMQReader extends CollectionReader_ImplBase {
                 if (!(message == null) && message instanceof TextMessage) {
                     count++;
                     jCas.setDocumentText(((TextMessage) message).getText());
-                    logger.info("Tweet Recieved to Reader: " + jCas.getDocumentText()+"  "+count++);
+                    logger.info("Tweet Relieved to Reader: " + jCas.getDocumentText()+"  "+count++);
                     break;
                 }
 
 
             } catch (JMSException e) {
-                logger.error("Error when receiveing message from the topic: " + topicName + " from url: " + jmsURL,e);
+                logger.error("Error when receiving message from the topic: " + topicName + " from url: " + jmsURL,e);
                 System.exit(0);
 
             }

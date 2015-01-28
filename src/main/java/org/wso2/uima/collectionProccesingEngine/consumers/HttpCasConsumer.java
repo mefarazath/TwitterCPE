@@ -1,6 +1,6 @@
 /*
  *
- * Copyright (c) 2005-2010, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ * Copyright (c) 2005-2015, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
  *
  * WSO2 Inc. licenses this file to you under the Apache License,
  * Version 2.0 (the "License"); you may not use this file except
@@ -36,6 +36,10 @@ import org.wso2.uima.collectionProccesingEngine.consumers.util.TweetScanner;
 import java.sql.Timestamp;
 import java.util.Date;
 
+/**
+ *Sends the info extracted from CAS object and send it as a http/https request.
+ */
+
 public class HttpCasConsumer  extends CasConsumer_ImplBase {
 
     private HttpClient httpClient;
@@ -52,20 +56,9 @@ public class HttpCasConsumer  extends CasConsumer_ImplBase {
 
     private static Logger logger = Logger.getLogger(HttpCasConsumer.class);
 
+    @Override
     public void  initialize() throws ResourceInitializationException {
-    /*    SSLSocketFactory sf = null;
-        try {
-            sf = new SSLSocketFactory(
-                    SSLContext.getDefault(),
-                    SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER);
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        }
-        Scheme sch = new Scheme("https", 443, sf);*/
         httpClient = new SystemDefaultHttpClient();
-      //  httpClient.getConnectionManager().getSchemeRegistry().register(sch);
-
-
         KeyStoreUtil.setTrustStoreParams();
 
         username = (String)getConfigParameterValue(PARAM_USERNAME);
@@ -91,6 +84,13 @@ public class HttpCasConsumer  extends CasConsumer_ImplBase {
             publish(tweetText, locationString, trafficLevel);
         //TODO write a Util class
     }
+
+    /***
+     * Send the parameter info as a http/https message to CEP.
+     * @param tweetText the exact tweet received.
+     * @param locationString the list of locations annotated from the tweet.
+     * @param trafficLevel the traffic level found as indicated by the tweet.
+     */
 
     public void publish(String tweetText, String locationString, String trafficLevel){
 
@@ -142,6 +142,13 @@ public class HttpCasConsumer  extends CasConsumer_ImplBase {
             logger.error("Unable to Connect to HTTP endpoint");
         }
     }
+
+    /***
+     * Handles request when message is https.
+     * @param method gives the method used to post with specified endpoint.
+     * @param username gives the username.
+     * @param password gives the password for authentication.
+     */
 
     private static void processAuthentication(HttpPost method, String username, String password) {
         if (username != null && username.trim().length() > 0) {

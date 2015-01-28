@@ -1,6 +1,6 @@
 /*
  *
- * Copyright (c) 2005-2010, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ * Copyright (c) 2005-2015, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
  *
  * WSO2 Inc. licenses this file to you under the Apache License,
  * Version 2.0 (the "License"); you may not use this file except
@@ -19,6 +19,7 @@
  */
 
 package org.wso2.uima.collectionProccesingEngine.consumers.util;
+
 import org.apache.uima.cas.CAS;
 import org.apache.uima.cas.CASException;
 import org.apache.uima.cas.FSIndex;
@@ -29,22 +30,26 @@ import org.wso2.uima.types.TrafficLevelIdentifier;
 import java.util.Iterator;
 
 /**
- * Created by supun on 1/27/15.
+ * Scan the CAS object given and return the locations, trafficLevel and tweetText indicated within the cas.
  */
 public class TweetScanner {
 
-    private TweetScanner(){
-
+    private TweetScanner() {
+        //Avoids the class from creating its instances.
     }
 
-    public static String getLocationString(CAS cas){
+    /**
+     * @param cas gives the document to be scanned.
+     * @return the list of locations indicated inside cas.
+     */
+    public static String getLocationString(CAS cas) {
 
         // run the sample document through the pipeline
         JCas output = null;
         try {
             output = cas.getJCas();
         } catch (CASException e2) {
-        // TODO Auto-generated catch block
+            // TODO Auto-generated catch block
             e2.printStackTrace();
         }
 
@@ -62,7 +67,11 @@ public class TweetScanner {
 
     }
 
-    public static String getTweetText(CAS cas){
+    /**
+     * @param cas gives the document to be scanned.
+     * @return the tweet text included inside cas.
+     */
+    public static String getTweetText(CAS cas) {
 
         // run the sample document through the pipeline
         JCas output = null;
@@ -78,7 +87,11 @@ public class TweetScanner {
         return tweetText;
     }
 
-    public static String getTrafficLevel(CAS cas){
+    /**
+     * @param cas gives the document to be scanned.
+     * @return the trafficLevel indicated inside cas.
+     */
+    public static String getTrafficLevel(CAS cas) {
 
         // run the sample document through the pipeline
         JCas output = null;
