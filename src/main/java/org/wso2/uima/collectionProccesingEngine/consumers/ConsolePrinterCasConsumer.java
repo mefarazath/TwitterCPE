@@ -20,39 +20,24 @@
 
 package org.wso2.uima.collectionProccesingEngine.consumers;
 
-import org.apache.log4j.Logger;
 import org.apache.uima.cas.CAS;
-import org.apache.uima.cas.CASException;
 import org.apache.uima.collection.CasConsumer_ImplBase;
-import org.apache.uima.jcas.JCas;
 import org.apache.uima.resource.ResourceProcessException;
-import org.wso2.uima.types.LocationIdentification;
+import org.wso2.uima.collectionProccesingEngine.consumers.util.CasConsumerUtil;
+public class ConsolePrinterCasConsumer extends CasConsumer_ImplBase{
 
-import java.util.Iterator;
+	@Override
+	public void processCas(CAS cas) throws ResourceProcessException {
 
-public class ConsolePrinterCasConsumer extends CasConsumer_ImplBase {
+		String locationString = CasConsumerUtil.getLocationString(cas);
+		String trafficLevel = CasConsumerUtil.getTrafficLevel(cas);
 
-    private static Logger logger = Logger.getLogger(ConsolePrinterCasConsumer.class);
+		if(locationString.isEmpty()){
+			return;
+		}
 
-    // TODO remove this class
-    @Override
-    public void processCas(CAS cas) throws ResourceProcessException {
-        JCas jcas = null;
-
-        try {
-            jcas = cas.getJCas();
-        } catch (CASException e) {
-            logger.error("Unable to get the JCas from the cas when trying to process Cas", e);
-        }
-
-        Iterator iterator = jcas.getAnnotationIndex(
-                LocationIdentification.type).iterator();
-        System.out.println("\nTweet : " + jcas.getDocumentText());
-        while (iterator.hasNext()) {
-            LocationIdentification tag = (LocationIdentification) iterator
-                    .next();
-            System.out.println("\nAnnotation : " + tag.getCoveredText());
-        }
-
-    }
+		System.out.println("Annotated Location : " + locationString);
+		System.out.println("Annotated Traffic : " + trafficLevel);
+		
+	}
 }

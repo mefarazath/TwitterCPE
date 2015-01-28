@@ -28,14 +28,14 @@ import org.wso2.uima.types.LocationIdentification;
 import org.wso2.uima.types.TrafficLevelIdentifier;
 
 import java.util.Iterator;
-
 /**
  * Scan the CAS object given and return the locations, trafficLevel and tweetText indicated within the cas.
  */
-public class TweetScanner {
 
-    private TweetScanner() {
-        //Avoids the class from creating its instances.
+public class CasConsumerUtil {
+
+    private CasConsumerUtil(){
+        //no instances.
     }
 
     /**

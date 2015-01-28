@@ -76,6 +76,7 @@ public class TrafficLevelAnalyser extends JCasAnnotator_ImplBase {
             throw new ResourceInitializationException(e);
         } finally {
             IOUtils.closeQuietly(docStream);
+            logger.info(TrafficLevelAnalyser.class.getSimpleName()+" Analysis Engine initialized successfully");
         }
     }
 

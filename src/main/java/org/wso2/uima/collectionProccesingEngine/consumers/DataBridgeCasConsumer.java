@@ -31,7 +31,7 @@ import org.wso2.carbon.databridge.commons.Event;
 import org.wso2.carbon.databridge.commons.StreamDefinition;
 import org.wso2.carbon.databridge.commons.exception.*;
 import org.wso2.uima.collectionProccesingEngine.consumers.util.KeyStoreUtil;
-import org.wso2.uima.collectionProccesingEngine.consumers.util.TweetScanner;
+import org.wso2.uima.collectionProccesingEngine.consumers.util.CasConsumerUtil;
 
 import java.net.MalformedURLException;
 import java.sql.Timestamp;
@@ -42,24 +42,30 @@ import java.util.Date;
  */
 
 public class DataBridgeCasConsumer extends CasConsumer_ImplBase {
-    private static final String STREAM_NAME = "org.wso2.uima.TwitterExtractedInputFeed";
-    private static final String VERSION = "1.0.0";
+
     private static final String PARAM_SERVER_URL = "serverURL";
     private static final String PARAM_USERNAME = "username";
     private static final String PARAM_PASSWORD = "password";
-    private static String streamID = null;
-    private static DataPublisher dataPublisher;
+    private static final String PARAM_STREAM_NAME = "streamName";
+    private static final String PARAM_STREAM_VERSION = "streamVersion";
+
+
+    private String streamID = null;
+    private DataPublisher dataPublisher;
     private static Logger logger = Logger.getLogger(DataBridgeCasConsumer.class);
+
     private String url;
     private String username;
     private String password;
+    private String streamName;
+    private String streamVersion;
 
     @Override
     public void processCas(CAS cas) throws ResourceProcessException {
 
-        String tweetText = TweetScanner.getTweetText(cas);
-        String locationString = TweetScanner.getLocationString(cas);
-        String trafficLevel = TweetScanner.getTrafficLevel(cas);
+        String tweetText = CasConsumerUtil.getTweetText(cas);
+        String locationString = CasConsumerUtil.getLocationString(cas);
+        String trafficLevel = CasConsumerUtil.getTrafficLevel(cas);
 
         if (locationString.isEmpty()) {
             return;
@@ -77,7 +83,7 @@ public class DataBridgeCasConsumer extends CasConsumer_ImplBase {
                         tweetText
                 );
             } catch (AgentException e) {
-                logger.error("Unable to publish events due to errors in the data bridge", e);
+                logger.error("Unable to publish events to the data bridge to "+url, e);
             }
         }
     }
@@ -88,53 +94,53 @@ public class DataBridgeCasConsumer extends CasConsumer_ImplBase {
         url = (String) getConfigParameterValue(PARAM_SERVER_URL);
         username = (String) getConfigParameterValue(PARAM_USERNAME);
         password = (String) getConfigParameterValue(PARAM_PASSWORD);
+        streamName = (String)getConfigParameterValue(PARAM_STREAM_NAME);
+        streamVersion = (String)getConfigParameterValue(PARAM_STREAM_VERSION);
+
         try {
             dataPublisher = new DataPublisher(url, username, password);
             logger.debug("Data Publisher Created");
         } catch (MalformedURLException e) {
-            logger.error("Unable to create the data publisher ", e);
+            logger.error("Unable to create the data publisher to url: "+url, e);
         } catch (AgentException e) {
-            logger.error("Unable to create the data publisher ", e);
+            logger.error("Unable to create the data publisher to url: "+url, e);
         } catch (AuthenticationException e) {
-            logger.error("Unable to create the data publisher ", e);
+            logger.error("Unable to create the data publisher using username: "+username+" password: "+password+" to "+url, e);
         } catch (TransportException e) {
-            logger.error("Unable to create the data publisher ", e);
+            logger.error("Unable to create the data publisher to url: "+url, e);
         }
+
         try {
-            streamID = dataPublisher.findStream(STREAM_NAME, VERSION);
-            logger.info("Stream Definition Already Exists");
-        } catch (NoStreamDefinitionExistException | AgentException | StreamDefinitionException e) {
-            try {
-                StreamDefinition streamDef = new StreamDefinition(VERSION);
+                StreamDefinition streamDef = new StreamDefinition(streamVersion);
                 streamDef.setNickName("TwitterCEP");
                 streamDef.setDescription("Extracted Data Feed from Tweets");
                 streamDef.addTag("UIMA");
                 streamDef.addTag("CEP");
+
                 streamID = dataPublisher.defineStream("{" +
-                        " 'name':'" + STREAM_NAME + "'," +
-                        " 'version':'" + VERSION + "'," +
-                        " 'nickName': 'TwitterCEP'," +
-                        " 'description': 'Some Desc'," +
+                        " 'name':'" + streamName + "'," +
+                        " 'version':'" + streamVersion + "'," +
+                        " 'nickName': 'twitter Input Stream'," +
+                        " 'description': 'Input stream to recieve the extracted details from the twitter feed into the CEP'," +
                         " 'tags':['UIMA', 'CEP']," +
                         " 'metaData':[" +
-                        " {'name':'timeStamp','type':'STRING'}" +
+                        " {'name':'Timestamp','type':'STRING'}" +
                         " ]," +
                         " 'payloadData':[" +
-                        " {'name':'Location','type':'STRING'}," +
-                        " {'name':'TrafficLevel','type':'STRING'}," +
-                        " {'name':'TweetText','type':'STRING'}" +
+                        " {'name':'Traffic_Location','type':'STRING'}," +
+                        " {'name':'Traffic_Level','type':'STRING'}," +
+                        " {'name':'Twitter_Text','type':'STRING'}" +
                         " ]" +
                         "}");
+
                 logger.debug("Stream ID : " + streamID);
                 logger.debug("Stream was not found and defined successfully");
-            } catch (AgentException | MalformedStreamDefinitionException
+        } catch (AgentException | MalformedStreamDefinitionException
                     | StreamDefinitionException
                     | DifferentStreamDefinitionAlreadyDefinedException e1) {
 
                 logger.debug("Stream Definition Failed");
-            }
         }
-
     }
 
     /***

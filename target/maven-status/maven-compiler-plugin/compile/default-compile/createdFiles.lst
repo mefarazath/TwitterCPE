@@ -1,4 +1,3 @@
-org/wso2/uima/collectionProccesingEngine/consumers/util/TweetScanner.class
 org/wso2/uima/types/LocationIdentification.class
 org/wso2/uima/collectionProccesingEngine/consumers/util/KeyStoreUtil.class
 org/wso2/uima/types/TrafficLevelIdentifier_Type$1.class
@@ -18,6 +17,7 @@ org/wso2/uima/collectionProccesingEngine/consumers/SoapCasConsumer.class
 org/wso2/uima/main/CEPWithActiveMQ.class
 org/wso2/uima/collectionProccesingEngine/analysisEngines/LocationIdentifier.class
 org/wso2/uima/collectionProccesingEngine/consumers/ConsolePrinterCasConsumer.class
+org/wso2/uima/collectionProccesingEngine/consumers/util/CasConsumerUtil.class
 org/wso2/uima/main/StatusCallBackCPE.class
 org/wso2/uima/collectionProccesingEngine/analysisEngines/TrafficLevelAnalyser.class
 org/wso2/uima/types/HashTag.class

@@ -26,7 +26,7 @@ import org.apache.uima.collection.CasConsumer_ImplBase;
 import org.apache.uima.resource.ResourceInitializationException;
 import org.apache.uima.resource.ResourceProcessException;
 import org.wso2.uima.collectionProccesingEngine.consumers.util.KeyStoreUtil;
-import org.wso2.uima.collectionProccesingEngine.consumers.util.TweetScanner;
+import org.wso2.uima.collectionProccesingEngine.consumers.util.CasConsumerUtil;
 
 import javax.xml.soap.*;
 import java.sql.Timestamp;
@@ -47,16 +47,16 @@ public class SoapCasConsumer extends CasConsumer_ImplBase {
     public void processCas(CAS cas) throws ResourceProcessException {
 
         //properties
-        String tweetText = TweetScanner.getTweetText(cas);
-        String locationString = TweetScanner.getLocationString(cas);
-        String trafficLevel = TweetScanner.getTrafficLevel(cas);
+        String tweetText = CasConsumerUtil.getTweetText(cas);
+        String locationString = CasConsumerUtil.getLocationString(cas);
+        String trafficLevel = CasConsumerUtil.getTrafficLevel(cas);
 
         if (locationString.isEmpty()) {
             return;
         }
 
-        Logger.getLogger(SoapCasConsumer.class).info("Annotated Location :  " + locationString.trim());
-        Logger.getLogger(SoapCasConsumer.class).info("Annotated Traffic Level :  " + trafficLevel);
+        Logger.getLogger(SoapCasConsumer.class).debug("Annotated Location :  " + locationString.trim());
+        Logger.getLogger(SoapCasConsumer.class).debug("Annotated Traffic Level :  " + trafficLevel);
 
         //creating soap message
         Date date = new Date();
@@ -91,6 +91,8 @@ public class SoapCasConsumer extends CasConsumer_ImplBase {
 
             // System.out.println(soapMessage.getSOAPBody().toString());
             this.publish(soapMessage);
+            logger.info("Event Published Successfully to "+ soapEndPoint+"\n");
+
 
         } catch (Exception e) {
             logger.error("Error occurs when creating the SOAP message", e);

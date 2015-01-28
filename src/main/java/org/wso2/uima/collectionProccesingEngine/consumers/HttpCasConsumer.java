@@ -31,7 +31,7 @@ import org.apache.uima.collection.CasConsumer_ImplBase;
 import org.apache.uima.resource.ResourceInitializationException;
 import org.apache.uima.resource.ResourceProcessException;
 import org.wso2.uima.collectionProccesingEngine.consumers.util.KeyStoreUtil;
-import org.wso2.uima.collectionProccesingEngine.consumers.util.TweetScanner;
+import org.wso2.uima.collectionProccesingEngine.consumers.util.CasConsumerUtil;
 
 import java.sql.Timestamp;
 import java.util.Date;
@@ -70,9 +70,9 @@ public class HttpCasConsumer extends CasConsumer_ImplBase {
     @Override
     public void processCas(CAS cas) throws ResourceProcessException {
 
-        String tweetText = TweetScanner.getTweetText(cas);
-        String locationString = TweetScanner.getLocationString(cas);
-        String trafficLevel = TweetScanner.getTrafficLevel(cas);
+        String tweetText = CasConsumerUtil.getTweetText(cas);
+        String locationString = CasConsumerUtil.getLocationString(cas);
+        String trafficLevel = CasConsumerUtil.getTrafficLevel(cas);
 
         if (locationString.isEmpty()) {
             return;
@@ -83,7 +83,7 @@ public class HttpCasConsumer extends CasConsumer_ImplBase {
 
         if (!locationString.equals(""))
             publish(tweetText, locationString, trafficLevel);
-        //TODO write a Util class
+
     }
 
     /**
