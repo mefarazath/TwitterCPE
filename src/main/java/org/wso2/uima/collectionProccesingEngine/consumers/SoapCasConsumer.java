@@ -33,7 +33,7 @@ import java.sql.Timestamp;
 import java.util.Date;
 
 /**
- *
+ *Send the info extracted from CAS object and send it as a SOAP message to CEP.
  */
 
 public class SoapCasConsumer extends CasConsumer_ImplBase {
@@ -51,7 +51,7 @@ public class SoapCasConsumer extends CasConsumer_ImplBase {
         String locationString = TweetScanner.getLocationString(cas);
         String trafficLevel = TweetScanner.getTrafficLevel(cas);
 
-        if(locationString.isEmpty()){
+        if (locationString.isEmpty()) {
             return;
         }
 
@@ -71,7 +71,7 @@ public class SoapCasConsumer extends CasConsumer_ImplBase {
             SOAPHeader header = envelope.getHeader();
 
             MimeHeaders headers = soapMessage.getMimeHeaders();
-            headers.addHeader("SOAPAction",soapEndPoint);
+            headers.addHeader("SOAPAction", soapEndPoint);
 
             // SOAP Body
             SOAPBody soapBody = envelope.getBody();
@@ -89,11 +89,11 @@ public class SoapCasConsumer extends CasConsumer_ImplBase {
             SOAPElement tweetTextElement = payloadDataElement.addChildElement("Twitter_Text");
             tweetTextElement.addTextNode(tweetText);
 
-           // System.out.println(soapMessage.getSOAPBody().toString());
+            // System.out.println(soapMessage.getSOAPBody().toString());
             this.publish(soapMessage);
 
         } catch (Exception e) {
-            logger.error("Error occurs when creating the SOAP message",e);
+            logger.error("Error occurs when creating the SOAP message", e);
         }
     }
 
@@ -103,9 +103,9 @@ public class SoapCasConsumer extends CasConsumer_ImplBase {
 
         KeyStoreUtil.setTrustStoreParams();
 
-        username = (String)getConfigParameterValue("username");
-        password = (String)getConfigParameterValue("password");
-        soapEndPoint = (String)getConfigParameterValue("SOAPEndPoint");
+        username = (String) getConfigParameterValue("username");
+        password = (String) getConfigParameterValue("password");
+        soapEndPoint = (String) getConfigParameterValue("SOAPEndPoint");
 
     }
 
@@ -124,7 +124,7 @@ public class SoapCasConsumer extends CasConsumer_ImplBase {
             soapConnection.close();
 
         } catch (Exception e) {
-            logger.error("Error occurred while sending SOAP Request to Server",e);
+            logger.error("Error occurred while sending SOAP Request to Server", e);
         }
     }
 }

@@ -33,7 +33,8 @@
             <configurationParameter>
                 <name>JMSUrL</name>
                 <description>URL of the ActiveMQ Broker
-                    by default this is "tcp://localhost:61616"</description>
+                    by default this is "tcp://localhost:61616"
+                </description>
                 <type>String</type>
                 <multiValued>false</multiValued>
                 <mandatory>true</mandatory>
@@ -47,39 +48,39 @@
                 <mandatory>true</mandatory>
             </configurationParameter>
 
-    </configurationParameters>
+        </configurationParameters>
 
         <!--- Configuration Parameter Values -->
         <configurationParameterSettings>
-    <nameValuePair>
-        <name>topicName</name>
-        <value>
-          <string>Feed</string>
-        </value>
-      </nameValuePair>
-      <nameValuePair>
-        <name>JMSUrL</name>
-        <value>
-          <string>tcp://localhost:61616</string>
-        </value>
-      </nameValuePair>
-    </configurationParameterSettings>
+            <nameValuePair>
+                <name>topicName</name>
+                <value>
+                    <string>Feed</string>
+                </value>
+            </nameValuePair>
+            <nameValuePair>
+                <name>JMSUrL</name>
+                <value>
+                    <string>tcp://localhost:61616</string>
+                </value>
+            </nameValuePair>
+        </configurationParameterSettings>
         <typeSystemDescription>
-      <types>
-        <typeDescription>
-          <name>org.wso2.uima.types.TimeStamp</name>
-          <description/>
-          <supertypeName>uima.tcas.Annotation</supertypeName>
-          <features>
-            <featureDescription>
-              <name>TimeStamp</name>
-              <description/>
-              <rangeTypeName>uima.cas.Long</rangeTypeName>
-            </featureDescription>
-          </features>
-        </typeDescription>
-      </types>
-    </typeSystemDescription>
+            <types>
+                <typeDescription>
+                    <name>org.wso2.uima.types.TimeStamp</name>
+                    <description/>
+                    <supertypeName>uima.tcas.Annotation</supertypeName>
+                    <features>
+                        <featureDescription>
+                            <name>TimeStamp</name>
+                            <description/>
+                            <rangeTypeName>uima.cas.Long</rangeTypeName>
+                        </featureDescription>
+                    </features>
+                </typeDescription>
+            </types>
+        </typeSystemDescription>
         <typePriorities/>
         <fsIndexCollection/>
         <capabilities>

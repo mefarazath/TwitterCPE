@@ -37,10 +37,10 @@ import java.sql.Timestamp;
 import java.util.Date;
 
 /**
- *Send the info extracted from CAS object and send it as a http/https request.
+ * Send the info extracted from CAS object and send it as a http/https request to CEP.
  */
 
-public class HttpCasConsumer  extends CasConsumer_ImplBase {
+public class HttpCasConsumer extends CasConsumer_ImplBase {
 
     private HttpClient httpClient;
 
@@ -57,15 +57,16 @@ public class HttpCasConsumer  extends CasConsumer_ImplBase {
     private static Logger logger = Logger.getLogger(HttpCasConsumer.class);
 
     @Override
-    public void  initialize() throws ResourceInitializationException {
+    public void initialize() throws ResourceInitializationException {
         httpClient = new SystemDefaultHttpClient();
         KeyStoreUtil.setTrustStoreParams();
 
-        username = (String)getConfigParameterValue(PARAM_USERNAME);
-        password = (String)getConfigParameterValue(PARAM_PASSWORD);
-        httpEndPoint = (String)getConfigParameterValue(PARAM_HTTP_ENDPOINT);
+        username = (String) getConfigParameterValue(PARAM_USERNAME);
+        password = (String) getConfigParameterValue(PARAM_PASSWORD);
+        httpEndPoint = (String) getConfigParameterValue(PARAM_HTTP_ENDPOINT);
 
     }
+
     @Override
     public void processCas(CAS cas) throws ResourceProcessException {
 
@@ -73,29 +74,30 @@ public class HttpCasConsumer  extends CasConsumer_ImplBase {
         String locationString = TweetScanner.getLocationString(cas);
         String trafficLevel = TweetScanner.getTrafficLevel(cas);
 
-        if(locationString.isEmpty()){
+        if (locationString.isEmpty()) {
             return;
         }
 
         logger.debug("Annotated Location :  " + locationString.trim());
         logger.debug("Annotated Traffic :  " + trafficLevel);
 
-       if (!locationString.equals(""))
+        if (!locationString.equals(""))
             publish(tweetText, locationString, trafficLevel);
         //TODO write a Util class
     }
 
-    /***
+    /**
      * Send the parameter info as a http/https message to CEP.
-     * @param tweetText the exact tweet received.
+     *
+     * @param tweetText      the exact tweet received.
      * @param locationString the list of locations annotated from the tweet.
-     * @param trafficLevel the traffic level found as indicated by the tweet.
+     * @param trafficLevel   the traffic level found as indicated by the tweet.
      */
 
-    public void publish(String tweetText, String locationString, String trafficLevel){
+    public void publish(String tweetText, String locationString, String trafficLevel) {
 
-        Date date= new Date();
-        String time=new Timestamp(date.getTime()).toString();
+        Date date = new Date();
+        String time = new Timestamp(date.getTime()).toString();
 
         try {
             HttpPost method = new HttpPost(httpEndPoint);
@@ -103,22 +105,22 @@ public class HttpCasConsumer  extends CasConsumer_ImplBase {
             if (httpClient != null) {
                 String[] xmlElements = new String[]
                         {
-                      "<events>"+
-                            "<event>"+
-                                "<metaData>"+
-                                        "<Timestamp>"+time+"</Timestamp>"+
-                                "</metaData>"+
+                                "<events>" +
+                                        "<event>" +
+                                        "<metaData>" +
+                                        "<Timestamp>" + time + "</Timestamp>" +
+                                        "</metaData>" +
 
-                                "<payloadData>"+
+                                        "<payloadData>" +
 
-                                    "<Traffic_Location>"+locationString+"</Traffic_Location>"+
-                                    "<Traffic_Level>"+trafficLevel+"</Traffic_Level>"+
-                                    "<Twitter_Text>"+tweetText+"</Twitter_Text>"+
+                                        "<Traffic_Location>" + locationString + "</Traffic_Location>" +
+                                        "<Traffic_Level>" + trafficLevel + "</Traffic_Level>" +
+                                        "<Twitter_Text>" + tweetText + "</Twitter_Text>" +
 
-                                "</payloadData>"+
+                                        "</payloadData>" +
 
-                            "</event>"+
-                        "</events>"
+                                        "</event>" +
+                                        "</events>"
                         };
 
                 try {
@@ -129,7 +131,7 @@ public class HttpCasConsumer  extends CasConsumer_ImplBase {
                             processAuthentication(method, username, password);
                         }
                         httpClient.execute(method).getEntity().getContent().close();
-                        logger.info("Event Published Successfully to "+ httpEndPoint+"\n");
+                        logger.info("Event Published Successfully to " + httpEndPoint + "\n");
                     }
                 } catch (Exception e) {
                     logger.error("Error While Sending Events to HTTP Endpoint : Connection Refused");
@@ -143,9 +145,10 @@ public class HttpCasConsumer  extends CasConsumer_ImplBase {
         }
     }
 
-    /***
+    /**
      * Handles request when message is https.
-     * @param method gives the method used to post with specified endpoint.
+     *
+     * @param method   gives the method used to post with specified endpoint.
      * @param username gives the username.
      * @param password gives the password for authentication.
      */

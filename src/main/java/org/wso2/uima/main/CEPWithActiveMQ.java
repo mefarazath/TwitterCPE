@@ -61,26 +61,24 @@ public class CEPWithActiveMQ {
 
             Scanner scanner = new Scanner(System.in);
 
-            while(!scanner.nextLine().equals("exit")){
+            while (!scanner.nextLine().equals("exit")) {
 
             }
             System.out.println(cpe.getPerformanceReport().toString());
             System.exit(0);
         } catch (ResourceInitializationException e) {
-            logger.error("Error Initializing the CPE",e);
+            logger.error("Error Initializing the CPE", e);
         }
 
-
-
-        }
 
     }
 
+}
 
 
 class StatusCallBackCPE implements StatusCallbackListener {
 
-    public StatusCallBackCPE(){
+    public StatusCallBackCPE() {
         org.apache.log4j.PropertyConfigurator.configure("conf/log4j.properties");
 
     }

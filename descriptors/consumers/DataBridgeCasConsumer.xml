@@ -20,106 +20,106 @@
   -->
 
 <casConsumerDescription xmlns="http://uima.apache.org/resourceSpecifier">
-  <frameworkImplementation>org.apache.uima.java</frameworkImplementation>
-  <implementationName>org.wso2.uima.collectionProccesingEngine.consumers.DataBridgeCasConsumer</implementationName>
-  <processingResourceMetaData>
-    <name>twitterCPE_Databridge</name>
-    <description/>
-    <version>1.0</version>
-    <vendor/>
-    <configurationParameters>
+    <frameworkImplementation>org.apache.uima.java</frameworkImplementation>
+    <implementationName>org.wso2.uima.collectionProccesingEngine.consumers.DataBridgeCasConsumer</implementationName>
+    <processingResourceMetaData>
+        <name>twitterCPE_Databridge</name>
+        <description/>
+        <version>1.0</version>
+        <vendor/>
+        <configurationParameters>
 
-      <configurationParameter>
-        <name>serverURL</name>
-        <description>Address of the thrift port to which the databridge connects to</description>
-        <type>String</type>
-        <multiValued>false</multiValued>
-        <mandatory>true</mandatory>
-      </configurationParameter>
+            <configurationParameter>
+                <name>serverURL</name>
+                <description>Address of the thrift port to which the databridge connects to</description>
+                <type>String</type>
+                <multiValued>false</multiValued>
+                <mandatory>true</mandatory>
+            </configurationParameter>
 
-      <configurationParameter>
-        <name>username</name>
-        <description>Username of the tenant to connect to databridge</description>
-        <type>String</type>
-        <multiValued>false</multiValued>
-        <mandatory>true</mandatory>
-      </configurationParameter>
+            <configurationParameter>
+                <name>username</name>
+                <description>Username of the tenant to connect to databridge</description>
+                <type>String</type>
+                <multiValued>false</multiValued>
+                <mandatory>true</mandatory>
+            </configurationParameter>
 
-      <configurationParameter>
-        <name>password</name>
-        <description>Password to authenticate</description>
-        <type>String</type>
-        <multiValued>false</multiValued>
-        <mandatory>true</mandatory>
-      </configurationParameter>
+            <configurationParameter>
+                <name>password</name>
+                <description>Password to authenticate</description>
+                <type>String</type>
+                <multiValued>false</multiValued>
+                <mandatory>true</mandatory>
+            </configurationParameter>
 
-      <configurationParameter>
-        <name>streamName</name>
-        <description>Stream to which to send the extracted data as events to</description>
-        <type>String</type>
-        <multiValued>false</multiValued>
-        <mandatory>true</mandatory>
-      </configurationParameter>
+            <configurationParameter>
+                <name>streamName</name>
+                <description>Stream to which to send the extracted data as events to</description>
+                <type>String</type>
+                <multiValued>false</multiValued>
+                <mandatory>true</mandatory>
+            </configurationParameter>
 
-      <configurationParameter>
-        <name>streamVersion</name>
-        <description>Version of the stream to which events are sent</description>
-        <type>String</type>
-        <multiValued>false</multiValued>
-        <mandatory>true</mandatory>
-      </configurationParameter>
+            <configurationParameter>
+                <name>streamVersion</name>
+                <description>Version of the stream to which events are sent</description>
+                <type>String</type>
+                <multiValued>false</multiValued>
+                <mandatory>true</mandatory>
+            </configurationParameter>
 
 
-    </configurationParameters>
-    <configurationParameterSettings>
-      <nameValuePair>
-        <name>serverURL</name>
-        <value>
-          <string>tcp://localhost:7611</string>
-        </value>
-      </nameValuePair>
-      <nameValuePair>
-        <name>username</name>
-        <value>
-          <string>admin</string>
-        </value>
-      </nameValuePair>
-      <nameValuePair>
-        <name>password</name>
-        <value>
-          <string>admin</string>
-        </value>
-      </nameValuePair>
-      <nameValuePair>
-        <name>streamName</name>
-        <value>
-          <string>org.wso2.uima.TwitterExtractedInputFeed</string>
-        </value>
-      </nameValuePair>
-      <nameValuePair>
-        <name>streamVersion</name>
-        <value>
-          <string>1.0.0</string>
-        </value>
-      </nameValuePair>
+        </configurationParameters>
+        <configurationParameterSettings>
+            <nameValuePair>
+                <name>serverURL</name>
+                <value>
+                    <string>tcp://localhost:7611</string>
+                </value>
+            </nameValuePair>
+            <nameValuePair>
+                <name>username</name>
+                <value>
+                    <string>admin</string>
+                </value>
+            </nameValuePair>
+            <nameValuePair>
+                <name>password</name>
+                <value>
+                    <string>admin</string>
+                </value>
+            </nameValuePair>
+            <nameValuePair>
+                <name>streamName</name>
+                <value>
+                    <string>org.wso2.uima.TwitterExtractedInputFeed</string>
+                </value>
+            </nameValuePair>
+            <nameValuePair>
+                <name>streamVersion</name>
+                <value>
+                    <string>1.0.0</string>
+                </value>
+            </nameValuePair>
 
-    </configurationParameterSettings>
+        </configurationParameterSettings>
 
-    <typeSystemDescription/>
-    <typePriorities/>
-    <fsIndexCollection/>
-    <capabilities>
-      <capability>
-        <inputs/>
-        <outputs/>
-        <languagesSupported/>
-      </capability>
-    </capabilities>
-  <operationalProperties>
-      <modifiesCas>false</modifiesCas>
-      <multipleDeploymentAllowed>true</multipleDeploymentAllowed>
-      <outputsNewCASes>false</outputsNewCASes>
-    </operationalProperties>
-  </processingResourceMetaData>
-  <resourceManagerConfiguration/>
+        <typeSystemDescription/>
+        <typePriorities/>
+        <fsIndexCollection/>
+        <capabilities>
+            <capability>
+                <inputs/>
+                <outputs/>
+                <languagesSupported/>
+            </capability>
+        </capabilities>
+        <operationalProperties>
+            <modifiesCas>false</modifiesCas>
+            <multipleDeploymentAllowed>true</multipleDeploymentAllowed>
+            <outputsNewCASes>false</outputsNewCASes>
+        </operationalProperties>
+    </processingResourceMetaData>
+    <resourceManagerConfiguration/>
 </casConsumerDescription>

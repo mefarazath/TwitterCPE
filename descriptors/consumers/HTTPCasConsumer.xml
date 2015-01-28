@@ -59,7 +59,7 @@
             <nameValuePair>
                 <name>httpEndPoint</name>
                 <value>
-                    <string> http://localhost:9763/endpoints/org.wso2.uima.HttpEventInputAdaptor/TrafficUpdate</string>
+                    <string>http://localhost:9763/endpoints/org.wso2.uima.HttpEventInputAdaptor/TrafficUpdate</string>
                 </value>
             </nameValuePair>
             <nameValuePair>

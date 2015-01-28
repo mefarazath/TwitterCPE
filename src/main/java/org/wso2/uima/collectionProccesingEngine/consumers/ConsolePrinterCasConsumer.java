@@ -30,28 +30,29 @@ import org.wso2.uima.types.LocationIdentification;
 
 import java.util.Iterator;
 
-public class ConsolePrinterCasConsumer extends CasConsumer_ImplBase{
+public class ConsolePrinterCasConsumer extends CasConsumer_ImplBase {
 
-	private static Logger logger = Logger.getLogger(ConsolePrinterCasConsumer.class);
-	// TODO remove this class
-	@Override
-	public void processCas(CAS cas) throws ResourceProcessException {
-		JCas jcas = null;
+    private static Logger logger = Logger.getLogger(ConsolePrinterCasConsumer.class);
 
-		try {
-			jcas = cas.getJCas();
-		} catch (CASException e) {
-			logger.error("Unable to get the JCas from the cas when trying to process Cas", e);
-		}
-		
-		Iterator iterator = jcas.getAnnotationIndex(
-					LocationIdentification.type).iterator();
-			System.out.println("\nTweet : " + jcas.getDocumentText());
-			while (iterator.hasNext()) {
-				LocationIdentification tag = (LocationIdentification) iterator
-						.next();
-				System.out.println("\nAnnotation : " + tag.getCoveredText());
-			}
-		
-	}
+    // TODO remove this class
+    @Override
+    public void processCas(CAS cas) throws ResourceProcessException {
+        JCas jcas = null;
+
+        try {
+            jcas = cas.getJCas();
+        } catch (CASException e) {
+            logger.error("Unable to get the JCas from the cas when trying to process Cas", e);
+        }
+
+        Iterator iterator = jcas.getAnnotationIndex(
+                LocationIdentification.type).iterator();
+        System.out.println("\nTweet : " + jcas.getDocumentText());
+        while (iterator.hasNext()) {
+            LocationIdentification tag = (LocationIdentification) iterator
+                    .next();
+            System.out.println("\nAnnotation : " + tag.getCoveredText());
+        }
+
+    }
 }

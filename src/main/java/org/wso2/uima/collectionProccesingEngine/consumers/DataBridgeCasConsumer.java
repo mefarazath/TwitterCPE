@@ -19,6 +19,7 @@
  */
 
 package org.wso2.uima.collectionProccesingEngine.consumers;
+
 import org.apache.log4j.Logger;
 import org.apache.uima.cas.CAS;
 import org.apache.uima.collection.CasConsumer_ImplBase;
@@ -36,6 +37,10 @@ import java.net.MalformedURLException;
 import java.sql.Timestamp;
 import java.util.Date;
 
+/**
+ * Send the info extracted from CAS object and send it to the CEP via DataBridge.
+ */
+
 public class DataBridgeCasConsumer extends CasConsumer_ImplBase {
     private static final String STREAM_NAME = "org.wso2.uima.TwitterExtractedInputFeed";
     private static final String VERSION = "1.0.0";
@@ -48,6 +53,7 @@ public class DataBridgeCasConsumer extends CasConsumer_ImplBase {
     private String url;
     private String username;
     private String password;
+
     @Override
     public void processCas(CAS cas) throws ResourceProcessException {
 
@@ -55,7 +61,7 @@ public class DataBridgeCasConsumer extends CasConsumer_ImplBase {
         String locationString = TweetScanner.getLocationString(cas);
         String trafficLevel = TweetScanner.getTrafficLevel(cas);
 
-        if(locationString.isEmpty()){
+        if (locationString.isEmpty()) {
             return;
         }
 
@@ -75,6 +81,7 @@ public class DataBridgeCasConsumer extends CasConsumer_ImplBase {
             }
         }
     }
+
     @Override
     public void initialize() throws ResourceInitializationException {
         KeyStoreUtil.setTrustStoreParams();
@@ -129,6 +136,14 @@ public class DataBridgeCasConsumer extends CasConsumer_ImplBase {
         }
 
     }
+
+    /***
+     *
+     * @param dataPublisher gives the data publisher specified by username, password, url that used to sends the data.
+     * @param streamId gives the stream id that is available with the dataPublisher.
+     * @param payloadArgs the info that needs to be sent.
+     * @throws AgentException
+     */
 
     private void publishEvents(DataPublisher dataPublisher, String streamId, String... payloadArgs)
             throws AgentException {
