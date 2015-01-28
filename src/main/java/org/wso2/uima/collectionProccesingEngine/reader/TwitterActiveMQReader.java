@@ -79,13 +79,15 @@ public class TwitterActiveMQReader extends CollectionReader_ImplBase {
             Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
             Topic topic = session.createTopic(topicName);
 
-            logger.info("Consumer Created Successfully");
+            logger.debug("Consumer Created Successfully");
             consumer = session.createDurableSubscriber(topic,clientID);
 
         } catch (JMSException e) {
-             logger.error("Error Intializing the Subscriber for ActiveMQReader",e);
-
+             logger.error("Error Initializing the Subscriber for ActiveMQReader",e);
+            throw new RuntimeException("Unable to initialize the CAS Reader");
         }
+
+        logger.info("ActiveMQ Cas Reader Initialized Successfully");
     }
 
 

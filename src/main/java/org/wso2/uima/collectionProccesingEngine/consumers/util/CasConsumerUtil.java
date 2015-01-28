@@ -28,12 +28,9 @@ import org.wso2.uima.types.TrafficLevelIdentifier;
 
 import java.util.Iterator;
 
-/**
- * Created by supun on 1/27/15.
- */
-public class TweetScanner {
+public class CasConsumerUtil {
 
-    private TweetScanner(){
+    private CasConsumerUtil(){
 
     }
 

@@ -78,6 +78,7 @@ public class LocationIdentifier extends JCasAnnotator_ImplBase {
             IOUtils.closeQuietly(nameFinderStream);
             IOUtils.closeQuietly(tokenizerStream);
             IOUtils.closeQuietly(sentenceStream);
+            logger.info(LocationIdentifier.class.getSimpleName()+" Analysis Engine initialized successfully");
         }
     }
 
@@ -97,7 +98,7 @@ public class LocationIdentifier extends JCasAnnotator_ImplBase {
                 tokens[i] = tokSpans[i].getCoveredText(sentence).toString();
             }
             
-			logger.info("Tweet Text: "+jcas.getDocumentText());
+			logger.debug("Tweet Text: "+jcas.getDocumentText());
 			Span locationSpans[] = locationFinder.find(tokens);
 			LocationIdentification annotation = new LocationIdentification(jcas);
 			for (Span location: locationSpans) {
