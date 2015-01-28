@@ -37,7 +37,7 @@ import java.sql.Timestamp;
 import java.util.Date;
 
 /**
- *Sends the info extracted from CAS object and send it as a http/https request.
+ *Send the info extracted from CAS object and send it as a http/https request.
  */
 
 public class HttpCasConsumer  extends CasConsumer_ImplBase {
